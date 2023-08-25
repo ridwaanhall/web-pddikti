@@ -26,3 +26,12 @@ class STUDY_PROGRAMS:
     studyprograms_list = reader.read_json(
       'https://api-frontend.kemdikbud.go.id/loadprodi')
     return studyprograms_list
+
+
+class PROVINCES:
+
+  def ProvincesList(self):
+    reader = ReadUrl()
+    provinces_list = reader.read_json(
+      'https://api-frontend.kemdikbud.go.id/get_provinsi')
+    return provinces_list
