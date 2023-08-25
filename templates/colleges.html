@@ -13,7 +13,27 @@
           </div>
         </div>
         <div class="card-body px-0 pb-2">
-          <div class="table-responsive p-0">
+          <div class="table-responsive">
+            <table class="table table-flush" id="datatable-basic">
+              <thead class="thead-light">
+                <tr>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">ID</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Code</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for college in college_list %}
+                <tr>
+                  <td class="text-sm font-weight-normal">{{ college.id_sp }}</td>
+                  <td class="text-sm font-weight-normal">{{ college.kode_pt }}</td>
+                  <td class="text-sm font-weight-normal">{{ college.nama_pt }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!--<div class="table-responsive p-0">
             <table class="table align-items-center justify-content-center mb-0">
               <thead>
                 <tr>
@@ -38,7 +58,8 @@
                 {% endfor %}
               </tbody>
             </table>
-          </div>
+          </div>-->
+          
         </div>
       </div>
     </div>
@@ -65,7 +86,7 @@
               <a href="https://www.instagram.com/ridwaanhall" class="nav-link text-muted" target="_blank">Instagram</a>
             </li>
             <li class="nav-item">
-              <a href=https://github.com/ridwaanhall" class="nav-link text-muted" target="_blank">Github</a>
+              <a href="https://github.com/ridwaanhall" class="nav-link text-muted" target="_blank">Github</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link pe-0 text-muted" target="_blank">License</a>

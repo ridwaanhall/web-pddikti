@@ -1,5 +1,6 @@
 import requests
 
+
 class ReadUrl:
 
   def read_json(self, url):
@@ -16,3 +17,12 @@ class COLLEGE:
     college_list = reader.read_json(
       'https://api-frontend.kemdikbud.go.id/loadpt')
     return college_list
+
+
+class STUDY_PROGRAMS:
+
+  def StudyProgramsList(self):
+    reader = ReadUrl()
+    studyprograms_list = reader.read_json(
+      'https://api-frontend.kemdikbud.go.id/loadprodi')
+    return studyprograms_list
