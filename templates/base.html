@@ -99,7 +99,7 @@
             <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">List Data</h6>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white {% if request.path == '/colleges' %}active bg-gradient-primary{% endif %}" href="#">
+            <a class="nav-link text-white {% if request.path == '/colleges' %}active bg-gradient-primary{% endif %}" href="{{ url_for('colleges') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-building-columns"></i>
               </div>
@@ -107,7 +107,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white {% if request.path == '/study-programs' %}active bg-gradient-primary{% endif %}" href="#">
+            <a class="nav-link text-white {% if request.path == '/study-programs' %}active bg-gradient-primary{% endif %}" href="{{ url_for('study_programs') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-school"></i>
               </div>
