@@ -10,6 +10,15 @@ class ReadUrl:
     return None
 
 
+class STUDENTS:
+
+  def GetMhsList(self):
+    reader = ReadUrl()
+    getmhs_list = reader.read_json(
+      'https://api-frontend.kemdikbud.go.id/hit_mhs/putri amanda kristanti')
+    return getmhs_list
+
+
 class COLLEGE:
 
   def CollegeList(self):

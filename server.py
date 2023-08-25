@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES
+from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS
 
 app = Flask(__name__)
 
@@ -13,7 +13,9 @@ def dashboard():
 # =============== STUDENTS =======================
 @app.route("/search-students")
 def search_students():
-  return render_template("search-students.html")
+  students = STUDENTS()
+  students_list = students.GetMhsList()
+  return render_template("search-students.html", students_list=students_list)
 
 # ============ COLLEGES ==============================
 @app.route("/colleges")
