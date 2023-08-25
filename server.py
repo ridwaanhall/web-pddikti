@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS
 
 app = Flask(__name__)
@@ -11,17 +11,27 @@ def dashboard():
 
 
 # =============== STUDENTS =======================
-@app.route("/search-students")
+@app.route("/search-students", methods=["GET", "POST"])
 def search_students():
-  students = STUDENTS()
-  students_list = students.GetMhsList()
-  return render_template("search-students.html", students_list=students_list)
+  students = []
+
+  if request.method == "POST":
+    search_name = request.form.get("search_name")
+    if search_name:
+      students = STUDENTS().GetMhsList(
+        search_name)  # Pass search_name parameter
+  else:
+    students = STUDENTS().GetMhsList()
+
+  return render_template("search-students.html", students_list=students)
+
 
 # ============ COLLEGES ==============================
 @app.route("/colleges")
 def colleges():
   colleges = COLLEGE()
   college_list = colleges.CollegeList()
+  print('ridddddddd', college_list)
   return render_template("colleges.html", college_list=college_list)
 
 

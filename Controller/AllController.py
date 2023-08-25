@@ -12,10 +12,12 @@ class ReadUrl:
 
 class STUDENTS:
 
-  def GetMhsList(self):
+  def GetMhsList(self, search_name=None):  # Accept search_name parameter
     reader = ReadUrl()
-    getmhs_list = reader.read_json(
-      'https://api-frontend.kemdikbud.go.id/hit_mhs/putri amanda kristanti')
+    url = 'https://api-frontend.kemdikbud.go.id/hit_mhs/'
+    if search_name:
+      url += f"{search_name}"  # Modify the URL with the search_name parameter
+    getmhs_list = reader.read_json(url)
     return getmhs_list
 
 

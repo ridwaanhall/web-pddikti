@@ -14,16 +14,14 @@
         </div>
         <div class="card-body">
           <div class="">
-            <form>
-                <div class="row">
-                  <div class="col-md-12">
+            <form method="post" action="/search-students">
+                <div class="col-md-12">
                     <div class="input-group input-group-outline mb-4">
-                      <label class="form-label">Input</label>
-                      <input type="text" class="form-control">
+                        <label class="form-label">Input</label>
+                        <input type="text" name="search_name" class="form-control">
                     </div>
-                  </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary">Primary</button>
+                <button type="submit" class="btn btn-outline-primary">Search</button>
             </form>
           </div>
         </div>
@@ -46,10 +44,10 @@
                 </tr>
               </thead>
               <tbody>
-                {% for students in students_list %}
+                {% for student in students_list.mahasiswa %}
                 <tr>
-                  <td class="text-sm font-weight-normal">{{ students.text }}</td>
-                  <td class="text-sm font-weight-normal">{{ students['website-link'] }}</td>
+                  <td class="text-sm font-weight-normal">{{ student.text }}</td>
+                  <td class="text-sm font-weight-normal"><a href="{{ student['website-link'] }}">Website Link</a></td>
                 </tr>
                 {% endfor %}
               </tbody>
