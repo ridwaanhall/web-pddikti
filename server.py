@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-  return render_template('datatable.html')
+  return render_template('dashboard.html')
 
 
 @app.route("/colleges")
@@ -28,5 +28,4 @@ def study_programs():
 def provinces():
   provinces = PROVINCES()
   provinces_list = provinces.ProvincesList()
-  return render_template("provinces.html",
-                         provinces_list=provinces_list)
+  return render_template("provinces.html", provinces_list=provinces_list)
