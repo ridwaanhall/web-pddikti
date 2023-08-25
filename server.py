@@ -4,11 +4,18 @@ from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES
 app = Flask(__name__)
 
 
+# ============== HOME =========================
 @app.route('/')
-def home():
+def dashboard():
   return render_template('dashboard.html')
 
 
+# =============== STUDENTS =======================
+@app.route("/search-students")
+def search_students():
+  return render_template("search-students.html")
+
+# ============ COLLEGES ==============================
 @app.route("/colleges")
 def colleges():
   colleges = COLLEGE()
@@ -16,6 +23,7 @@ def colleges():
   return render_template("colleges.html", college_list=college_list)
 
 
+# ================= STUDY PROGRAMS ===================
 @app.route("/study-programs")
 def study_programs():
   studyprograms = STUDY_PROGRAMS()
@@ -24,6 +32,7 @@ def study_programs():
                          studyprograms_list=studyprograms_list)
 
 
+# ================= PROVINCES ========================
 @app.route("/provinces")
 def provinces():
   provinces = PROVINCES()
