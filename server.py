@@ -14,16 +14,20 @@ def dashboard():
 @app.route("/search-students", methods=["GET", "POST"])
 def search_students():
   students = []
+  search_name = None  # Initialize search_name here
 
   if request.method == "POST":
     search_name = request.form.get("search_name")
     if search_name:
-      students = STUDENTS().GetMhsList(
-        search_name)  # Pass search_name parameter
+      students = STUDENTS().GetMhsList(search_name)
   else:
     students = STUDENTS().GetMhsList()
 
-  return render_template("search-students.html", students_list=students)
+  print("HEHE", students)
+  print("searchhh", search_name)
+  return render_template("search-students.html",
+                         students=students,
+                         search_name=search_name)
 
 
 # ============ COLLEGES ==============================
