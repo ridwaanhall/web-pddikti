@@ -12,13 +12,38 @@ class ReadUrl:
 
 class STUDENTS:
 
-  def GetMhsList(self, search_name=None):  # Accept search_name parameter
+  def GetMhsList(self, search_name=None):
     reader = ReadUrl()
     url = 'https://api-frontend.kemdikbud.go.id/hit_mhs/'
     if search_name:
-      url += f"{search_name}"  # Modify the URL with the search_name parameter
+      url += f"{search_name}"
     getmhs_list = reader.read_json(url)
-    return getmhs_list
+
+    if getmhs_list is None:
+      return []
+
+    if "Cari kata kunci" in getmhs_list.get("mahasiswa", [])[0]["text"]:
+      return [{"text": getmhs_list["mahasiswa"][0]["text"]}]
+
+    filtered_students = []
+    for student in getmhs_list.get("mahasiswa", []):
+      if search_name and search_name.lower() not in student["text"].lower():
+        continue
+      info = student["text"].split(", ")
+      name = info[0].split("(")[0]
+      id_number = info[0].split("(")[1].split(")")[0]
+      college = info[1].split(" : ")[1]
+      program = info[2].split(": ")[1]
+      link = student["website-link"]
+      filtered_students.append({
+        "name": name,
+        "id_number": id_number,
+        "college": college,
+        "program": program,
+        "website-link": link
+      })
+
+    return filtered_students
 
 
 class COLLEGE:
