@@ -59,7 +59,7 @@
                   <td class="text-sm font-weight-normal">{{ student.id_number }}</td>
                   <td class="text-sm font-weight-normal">{{ student.college }}</td>
                   <td class="text-sm font-weight-normal">{{ student.program }}</td>
-                  <td class="text-sm font-weight-normal align-middle"><a href="{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-student{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                 </tr>
                 {% endfor %}
                 {% endif %}

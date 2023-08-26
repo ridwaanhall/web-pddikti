@@ -23,8 +23,8 @@ def search_students():
   else:
     students = STUDENTS().GetMhsList()
 
-  print("HEHE", students)
-  print("searchhh", search_name)
+  #print("HEHE", students)
+  #print("searchhh", search_name)
   return render_template("search-students.html",
                          students=students,
                          search_name=search_name)
@@ -32,7 +32,17 @@ def search_students():
 
 @app.route('/detail-student')
 def detail_student():
-  return render_template('detail-student.html')
+  default_student_details = {"dataumum": {"nm_pd": "No Student Selected"}}
+  return render_template('detail-student.html', student_details=default_student_details)
+
+
+@app.route("/detail-student/<student_id>")
+def detail_student_id(student_id):
+  students = STUDENTS()
+  student_details = students.GetStudentDetail(student_id)
+  print(student_details)
+  return render_template("detail-student.html",
+                         student_details=student_details)
 
 
 # ============ COLLEGES ==============================
