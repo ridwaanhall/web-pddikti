@@ -1,4 +1,5 @@
 import requests
+from urllib.parse import quote
 
 
 class ReadUrl:
@@ -16,9 +17,11 @@ class STUDENTS:
     reader = ReadUrl()
     url = 'https://api-frontend.kemdikbud.go.id/hit_mhs/'
     if search_name:
-      url += f"{search_name}"
+      encoded_search_name = quote(search_name)
+      url += encoded_search_name
+    print('iniiiii url ', url)
     getmhs_list = reader.read_json(url)
-
+    print("hhe list mhs", getmhs_list)
     if getmhs_list is None:
       return []
 
@@ -27,8 +30,9 @@ class STUDENTS:
 
     filtered_students = []
     for student in getmhs_list.get("mahasiswa", []):
-      if search_name and search_name.lower() not in student["text"].lower():
-        continue
+      # this for more specify
+      #if search_name and search_name.lower() not in student["text"].lower():
+      #  continue
       info = student["text"].split(", ")
       name = info[0].split("(")[0]
       id_number = info[0].split("(")[1].split(")")[0]
