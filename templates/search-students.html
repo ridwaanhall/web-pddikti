@@ -39,18 +39,39 @@
             <table class="table table-flush" id="datatable-basic">
               <thead class="thead-light">
                 <tr>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">ID</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NAME</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Student ID</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Study Program</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Detail</th>
                 </tr>
               </thead>
               <tbody>
-                {% for student in students_list.mahasiswa %}
-                <tr>
-                  <td class="text-sm font-weight-normal">{{ student.text }}</td>
-                  <td class="text-sm font-weight-normal"><a href="{{ student['website-link'] }}">Website Link</a></td>
-                </tr>
-                {% endfor %}
+                  {% if students %}
+                      {% if students and "Cari kata kunci" in students[0].text %}
+                          <tr>
+                              <td colspan="4" class="text-center">{{ students[0].text }}</td>
+                          </tr>
+                      {% elif students %}
+                          {% for student in students %}
+                          <tr>
+                              <td class="text-sm font-weight-normal">{{ student.name }}</td>
+                              <td class="text-sm font-weight-normal">{{ student.id_number }}</td>
+                              <td class="text-sm font-weight-normal">{{ student.college }}</td>
+                              <td class="text-sm font-weight-normal">{{ student.program }}</td>
+                              <td class="text-sm font-weight-normal"><a href="{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                          </tr>
+                          {% endfor %}
+                      {% endif %}
+                  {% else %}
+                      <tr>
+                          <td colspan="5" class="text-center">
+                              Please search to see table data.
+                          </td>
+                      </tr>
+                  {% endif %}
               </tbody>
+
             </table>
           </div>
         </div>
