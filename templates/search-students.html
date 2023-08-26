@@ -15,13 +15,13 @@
         <div class="card-body">
           <div class="">
             <form method="post" action="/search-students">
-                <div class="col-md-12">
-                    <div class="input-group input-group-outline mb-4">
-                        <label class="form-label">Input</label>
-                        <input type="text" name="search_name" class="form-control">
-                    </div>
+              <div class="col-md-12">
+                <div class="input-group input-group-outline mb-4">
+                  <label class="form-label">Input</label>
+                  <input type="text" name="search_name" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-outline-primary">Search</button>
+              </div>
+              <button type="submit" class="btn btn-outline-primary">Search</button>
             </form>
           </div>
         </div>
@@ -47,31 +47,30 @@
                 </tr>
               </thead>
               <tbody>
-                  {% if students %}
-                      {% if students and "Cari kata kunci" in students[0].text %}
-                          <tr>
-                              <td colspan="4" class="text-center">{{ students[0].text }}</td>
-                          </tr>
-                      {% elif students %}
-                          {% for student in students %}
-                          <tr>
-                              <td class="text-sm font-weight-normal">{{ student.name }}</td>
-                              <td class="text-sm font-weight-normal">{{ student.id_number }}</td>
-                              <td class="text-sm font-weight-normal">{{ student.college }}</td>
-                              <td class="text-sm font-weight-normal">{{ student.program }}</td>
-                              <td class="text-sm font-weight-normal align-middle"><a href="{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
-                          </tr>
-                          {% endfor %}
-                      {% endif %}
-                  {% else %}
-                      <tr>
-                          <td colspan="5" class="text-center">
-                              Please search to see table data.
-                          </td>
-                      </tr>
-                  {% endif %}
+                {% if students %}
+                {% if students and "Cari kata kunci" in students[0].text %}
+                <tr>
+                  <td colspan="4" class="text-center">{{ students[0].text }}</td>
+                </tr>
+                {% elif students %}
+                {% for student in students %}
+                <tr>
+                  <td class="text-sm font-weight-normal">{{ student.name }}</td>
+                  <td class="text-sm font-weight-normal">{{ student.id_number }}</td>
+                  <td class="text-sm font-weight-normal">{{ student.college }}</td>
+                  <td class="text-sm font-weight-normal">{{ student.program }}</td>
+                  <td class="text-sm font-weight-normal align-middle"><a href="{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                {% else %}
+                <tr>
+                  <td colspan="5" class="text-center">
+                    Please search to see table data.
+                  </td>
+                </tr>
+                {% endif %}
               </tbody>
-
             </table>
           </div>
         </div>
@@ -112,7 +111,6 @@
   </footer>
 </div>
 {% endblock %}
-
 {% block settings %}
 <div class="fixed-plugin">
   <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
