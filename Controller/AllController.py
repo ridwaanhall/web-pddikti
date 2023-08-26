@@ -13,6 +13,12 @@ class ReadUrl:
 
 class STUDENTS:
 
+  def GetStudentDetail(self, student_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/detail_mhs/{student_id}'
+    student_details = reader.read_json(detail_url)
+    return student_details
+
   def GetMhsList(self, search_name=None):
     reader = ReadUrl()
     url = 'https://api-frontend.kemdikbud.go.id/hit_mhs/'
@@ -39,6 +45,7 @@ class STUDENTS:
       college = info[1].split(" : ")[1]
       program = info[2].split(": ")[1]
       link = student["website-link"]
+      link = link.replace("/data_mahasiswa", "")
       filtered_students.append({
         "name": name,
         "id_number": id_number,
