@@ -30,6 +30,11 @@ def search_students():
                          search_name=search_name)
 
 
+@app.route('/detail-student')
+def detail_student():
+  return render_template('detail-student.html')
+
+
 # ============ COLLEGES ==============================
 @app.route("/colleges")
 def colleges():
