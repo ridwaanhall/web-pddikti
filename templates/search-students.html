@@ -43,7 +43,7 @@
                   <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Student ID</th>
                   <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
                   <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Study Program</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Detail</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
                 </tr>
               </thead>
               <tbody>
@@ -59,7 +59,7 @@
                               <td class="text-sm font-weight-normal">{{ student.id_number }}</td>
                               <td class="text-sm font-weight-normal">{{ student.college }}</td>
                               <td class="text-sm font-weight-normal">{{ student.program }}</td>
-                              <td class="text-sm font-weight-normal"><a href="{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                              <td class="text-sm font-weight-normal align-middle"><a href="{{ student['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                           </tr>
                           {% endfor %}
                       {% endif %}
