@@ -25,9 +25,9 @@ class STUDENTS:
     if search_name:
       encoded_search_name = quote(search_name)
       url += encoded_search_name
-    print('iniiiii url ', url)
+    #print('iniiiii url ', url)
     getmhs_list = reader.read_json(url)
-    print("hhe list mhs", getmhs_list)
+    #print("hhe list mhs", getmhs_list)
     if getmhs_list is None:
       return []
 
@@ -82,3 +82,39 @@ class PROVINCES:
     provinces_list = reader.read_json(
       'https://api-frontend.kemdikbud.go.id/get_provinsi')
     return provinces_list
+
+
+class SEARCH_OTHER:
+  
+  def GetDsnList(self, search_name=None):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/hit/'
+    if search_name:
+      encoded_search_name = quote(search_name)
+      url += encoded_search_name
+    getdsn_list = reader.read_json(url)
+    print("list dosen", getdsn_list)
+    if getdsn_list is None:
+      return []
+
+    if "Cari kata kunci" in getdsn_list.get("dosen", [])[0]["text"]:
+      return [{"text": getdsn_list["dosen"][0]["text"]}]
+
+    filtered_dosens = []
+    for dosen in getdsn_list.get("dosen", []):
+      info = dosen["text"].split(", ")
+      name = info[0]
+      nidn = info[1].split(": ")[1]
+      college = info[2].split(": ")[1]
+      program = info[3].split(": ")[1]
+      link = dosen["website-link"].replace("/data_dosen", "")
+      
+      filtered_dosens.append({
+          "name": name,
+          "nidn": nidn,
+          "college": college,
+          "program": program,
+          "website-link": link
+      })
+    print('filterrrr',filtered_dosens)
+    return filtered_dosens

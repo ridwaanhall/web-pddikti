@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS
+from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS, SEARCH_OTHER
 
 app = Flask(__name__)
 
@@ -8,6 +8,26 @@ app = Flask(__name__)
 @app.route('/')
 def dashboard():
   return render_template('dashboard.html')
+
+
+# =============== LECTURER =======================
+@app.route("/search-lecturers", methods=["GET", "POST"])
+def search_lecturers():
+  lecturers = []
+  search_name = None  # Initialize search_name here
+
+  if request.method == "POST":
+    search_name = request.form.get("search_name")
+    if search_name:
+      lecturers = SEARCH_OTHER().GetDsnList(search_name)
+  else:
+    lecturers = SEARCH_OTHER().GetDsnList()
+
+  print("HEHE", lecturers)
+  print("searchhh", search_name)
+  return render_template("search-lecturers.html",
+                         lecturers=lecturers,
+                         search_name=search_name)
 
 
 # =============== STUDENTS =======================
