@@ -13,20 +13,26 @@ def dashboard():
 # =============== LECTURER =======================
 @app.route("/search-other", methods=["GET", "POST"])
 def search_lecturers():
+  # HEAD
   lecturers = []
+  studyprograms = []
+  
   search_name = None  # Initialize search_name here
 
+  # lecturers, study programs
   if request.method == "POST":
     search_name = request.form.get("search_name")
     if search_name:
       lecturers = SEARCH_OTHER().GetDsnList(search_name)
+      studyprograms = SEARCH_OTHER().GetProdiList(search_name)
   else:
     lecturers = SEARCH_OTHER().GetDsnList()
+    studyprograms = SEARCH_OTHER().GetProdiList()
 
-  print("HEHE", lecturers)
-  print("searchhh", search_name)
+
   return render_template("search-other.html",
                          lecturers=lecturers,
+                         studyprograms=studyprograms,
                          search_name=search_name)
 
 
