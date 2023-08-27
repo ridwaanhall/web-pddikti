@@ -12,6 +12,7 @@ class ReadUrl:
 
 
 class LECTURERS:
+
   def GetLecturerDetail(self, lecturer_id):
     reader = ReadUrl()
     detail_url = f'https://api-frontend.kemdikbud.go.id/detail_dosen/{lecturer_id}'
@@ -72,6 +73,12 @@ class COLLEGE:
     college_list = reader.read_json(
       'https://api-frontend.kemdikbud.go.id/loadpt')
     return college_list
+
+  def GetCollegeDetail(self, college_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/v2/detail_pt/{college_id}'
+    college_details = reader.read_json(detail_url)
+    return college_details
 
 
 class STUDY_PROGRAMS:
