@@ -94,7 +94,7 @@ class SEARCH_OTHER:
       encoded_search_name = quote(search_name)
       url += encoded_search_name
     getdsn_list = reader.read_json(url)
-    print("list dosen", getdsn_list)
+    #print("list dosen", getdsn_list)
     if getdsn_list is None:
       return []
 
@@ -119,3 +119,33 @@ class SEARCH_OTHER:
       })
     #print('filterrrr', filtered_dosens)
     return filtered_dosens
+
+  def GetProdiList(self, search_name=None):
+    reader = ReadUrl()
+    url = self.url_base
+    if search_name:
+      encoded_search_name = quote(search_name)
+      url += encoded_search_name
+    getprodi_list = reader.read_json(url)
+    #print("list prodi", getprodi_list)
+    if getprodi_list is None:
+      return []
+
+    if "Cari kata kunci" in getprodi_list.get("prodi", [])[0]["text"]:
+      return [{"text": getprodi_list["prodi"][0]["text"]}]
+
+    filtered_prodis = []
+    for prodi in getprodi_list.get("prodi", []):
+      info = prodi["text"].split(", ")
+      program = info[0].split(": ")[1]
+      level = info[1].split(": ")[1]
+      college = info[2].split(": ")[1]
+      link = prodi["website-link"].replace("/data_prodi", "")
+
+      filtered_prodis.append({
+        "program": program,
+        "level": level,
+        "college": college,
+        "website-link": link
+      })
+    return filtered_prodis
