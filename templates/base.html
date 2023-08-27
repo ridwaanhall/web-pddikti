@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href="#">
+            <a class="nav-link text-white {% if request.path == '/search-other' %}active bg-gradient-primary{% endif %} " href="{{ url_for('search_other') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-building-columns"></i>
               </div>
