@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS, SEARCH_OTHER
+from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS, SEARCH_OTHER, LECTURERS
 
 app = Flask(__name__)
 
@@ -10,7 +10,24 @@ def dashboard():
   return render_template('dashboard.html')
 
 
-# =============== LECTURER =======================
+# ========== LECTURERS ===================
+@app.route('/detail-lecturer')
+def detail_lecturer():
+  default_lecturer_details = {"dataumum": {"nm_sdm": "No Lecturer Selected"}}
+  return render_template('detail-lecturer.html',
+                         lecturer_details=default_lecturer_details)
+
+
+@app.route("/detail-lecturer/<lecturer_id>")
+def detail_lecturer_id(lecturer_id):
+  lecturer = LECTURERS()
+  lecturer_details = lecturer.GetLecturerDetail(lecturer_id)
+  return render_template("detail-lecturer.html",
+                         lecturer_id=lecturer_id,
+                         lecturer_details=lecturer_details)
+  
+
+# =============== SEARCH OTHER =======================
 @app.route("/search-other", methods=["GET", "POST"])
 def search_other():
   # HEAD

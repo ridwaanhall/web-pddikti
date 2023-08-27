@@ -11,6 +11,14 @@ class ReadUrl:
     return None
 
 
+class LECTURERS:
+  def GetLecturerDetail(self, lecturer_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/detail_dosen/{lecturer_id}'
+    lecturer_details = reader.read_json(detail_url)
+    return lecturer_details
+
+
 class STUDENTS:
 
   def GetStudentDetail(self, student_id):
