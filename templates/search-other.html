@@ -50,7 +50,7 @@
                 {% if lecturers %}
                 {% if lecturers and "Cari kata kunci" in lecturers[0].text %}
                 <tr>
-                  <td colspan="4" class="text-center">{{ lecturers[0].text }}</td>
+                  <td colspan="5" class="text-center">{{ lecturers[0].text }}</td>
                 </tr>
                 {% elif lecturers %}
                 {% for lecturer in lecturers %}
@@ -88,33 +88,31 @@
             <table class="table table-flush" id="datatable-basic2">
               <thead class="thead-light">
                 <tr>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Student ID</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
                   <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Study Program</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Level</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
                   <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
                 </tr>
               </thead>
               <tbody>
-                {% if lecturers %}
-                {% if lecturers and "Cari kata kunci" in lecturers[0].text %}
+                {% if studyprograms %}
+                {% if studyprograms and "Cari kata kunci" in studyprograms[0].text %}
                 <tr>
-                  <td colspan="4" class="text-center">{{ lecturers[0].text }}</td>
+                  <td colspan="4" class="text-center">{{ studyprograms[0].text }}</td>
                 </tr>
-                {% elif lecturers %}
-                {% for lecturer in lecturers %}
+                {% elif studyprograms %}
+                {% for program in studyprograms %}
                 <tr>
-                  <td class="text-sm font-weight-normal">{{ lecturer.name }}</td>
-                  <td class="text-sm font-weight-normal">{{ lecturer.nidn }}</td>
-                  <td class="text-sm font-weight-normal">{{ lecturer.college }}</td>
-                  <td class="text-sm font-weight-normal">{{ lecturer.program }}</td>
-                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-lecturer{{ lecturer['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                  <td class="text-sm font-weight-normal">{{ program.program }}</td>
+                  <td class="text-sm font-weight-normal">{{ program.level }}</td>
+                  <td class="text-sm font-weight-normal">{{ program.college }}</td>
+                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-program{{ program['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                 </tr>
                 {% endfor %}
                 {% endif %}
                 {% else %}
                 <tr>
-                  <td colspan="5" class="text-center">
+                  <td colspan="4" class="text-center">
                     Please search to see table data.
                   </td>
                 </tr>
