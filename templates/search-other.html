@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Search Lecturers - Search Lecturers Data{% endblock %}
-{% block listupper %}Search Lecturers{% endblock %}
-{% block hsixupper %}Search Lecturers List{% endblock %}
+{% block title %}Search Lecturers, Study Programs, and Coleges - Search Lecturers Data{% endblock %}
+{% block listupper %}Search Lecturers, Study Programs, and Coleges{% endblock %}
+{% block hsixupper %}Search Lecturers, Study Programs, and Coleges List{% endblock %}
 {% block content %}
 <div class="container-fluid py-4">
   <div class="row">
@@ -9,12 +9,12 @@
       <div class="card card-frame my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Search Lecturers Table</h6>
+            <h6 class="text-white text-capitalize ps-3">Search Lecturers, Study Programs, and Coleges</h6>
           </div>
         </div>
         <div class="card-body">
           <div class="">
-            <form method="post" action="/search-lecturers">
+            <form method="post" action="/search-other">
               <div class="col-md-12">
                 <div class="input-group input-group-outline mb-4">
                   <label class="form-label">Input</label>
@@ -37,6 +37,55 @@
         <div class="card-body px-0 pb-2">
           <div class="table-responsive">
             <table class="table table-flush" id="datatable-basic">
+              <thead class="thead-light">
+                <tr>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NIDN</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Study Program</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if lecturers %}
+                {% if lecturers and "Cari kata kunci" in lecturers[0].text %}
+                <tr>
+                  <td colspan="4" class="text-center">{{ lecturers[0].text }}</td>
+                </tr>
+                {% elif lecturers %}
+                {% for lecturer in lecturers %}
+                <tr>
+                  <td class="text-sm font-weight-normal">{{ lecturer.name }}</td>
+                  <td class="text-sm font-weight-normal">{{ lecturer.nidn }}</td>
+                  <td class="text-sm font-weight-normal">{{ lecturer.college }}</td>
+                  <td class="text-sm font-weight-normal">{{ lecturer.program }}</td>
+                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-lecturer{{ lecturer['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                {% else %}
+                <tr>
+                  <td colspan="5" class="text-center">
+                    Please search to see table data.
+                  </td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+            <h6 class="text-white text-capitalize ps-3">Study Programs Table</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive">
+            <table class="table table-flush" id="datatable-basic2">
               <thead class="thead-light">
                 <tr>
                   <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name</th>
