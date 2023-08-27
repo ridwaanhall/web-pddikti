@@ -12,7 +12,7 @@ def dashboard():
 
 # =============== LECTURER =======================
 @app.route("/search-other", methods=["GET", "POST"])
-def search_lecturers():
+def search_other():
   # HEAD
   lecturers = []
   studyprograms = []
