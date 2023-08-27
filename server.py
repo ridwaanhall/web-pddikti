@@ -11,7 +11,7 @@ def dashboard():
 
 
 # =============== LECTURER =======================
-@app.route("/search-lecturers", methods=["GET", "POST"])
+@app.route("/search-other", methods=["GET", "POST"])
 def search_lecturers():
   lecturers = []
   search_name = None  # Initialize search_name here
@@ -25,7 +25,7 @@ def search_lecturers():
 
   print("HEHE", lecturers)
   print("searchhh", search_name)
-  return render_template("search-lecturers.html",
+  return render_template("search-other.html",
                          lecturers=lecturers,
                          search_name=search_name)
 
