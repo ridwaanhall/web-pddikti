@@ -102,6 +102,13 @@ def colleges():
   return render_template("colleges.html", college_list=college_list)
 
 
+@app.route('/detail-college')
+def detail_college():
+  default_college_details = {"dataumum": {"nm_lemb": "No College Selected"}}
+  return render_template('detail-college.html',
+                         college_details=default_college_details)
+
+
 # ================= STUDY PROGRAMS ===================
 @app.route("/study-programs")
 def study_programs():
