@@ -64,7 +64,7 @@
             <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Detail Data</h6>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href="#">
+            <a class="nav-link text-white {% if request.path.startswith('/detail-student') %}active bg-gradient-primary{% endif %}" href="{{ url_for('detail_student') if not student_id else url_for('detail_student_id', student_id=student_id) }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fa-regular fa-address-card"></i>
               </div>
