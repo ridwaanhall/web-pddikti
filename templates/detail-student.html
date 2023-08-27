@@ -133,12 +133,14 @@
             <tr>
               <td>College</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;<a href="/detail-college{{ student_details.dataumum.link_pt.replace('/data_pt', '') }}"><u>{{ student_details.dataumum.namapt }}</u></a></td>
+              <td>&nbsp;{% if 'link_pt' in student_details.dataumum %}<a href="/detail-college{{ student_details.dataumum.link_pt.replace('/data_pt', '') }}"><u>{{ student_details.dataumum.namapt }}</u></a>{% else %}{{ student_details.dataumum.namapt }}{% endif %}
+              </td>
             </tr>
             <tr>
-              <td>Level - Study Program</td>
+              <td>Level - Study Programs</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ student_details.dataumum.namajenjang }} - <a href="/detail-sp{{ student_details.dataumum.link_prodi.replace('/data_prodi', '') }}"><u>{{ student_details.dataumum.namaprodi }}</u></li></a></td>
+              <td>&nbsp;{{ student_details.dataumum.namajenjang }} - {% if 'link_prodi' in student_details.dataumum %}<a href="/detail-sp{{ student_details.dataumum.link_prodi.replace('/data_prodi', '') }}"><u>{{ student_details.dataumum.namaprodi }}</u></a>{% else %}{{ student_details.dataumum.namaprodi }}{% endif %}
+              </td>
             </tr>
             <tr>
               <td>Student ID Number</td>
@@ -148,7 +150,7 @@
             <tr>
               <td>Start Semester</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{% set year = student_details.dataumum.mulai_smt[:4] %}{% set last_digit = student_details.dataumum.mulai_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ student_details.dataumum.mulai_smt }}{% endif %}
+              <td>&nbsp;{% if 'mulai_smt' in student_details.dataumum %}{% set year = student_details.dataumum.mulai_smt[:4] %}{% set last_digit = student_details.dataumum.mulai_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ student_details.dataumum.mulai_smt }}{% endif %}{% else %}{% endif %}
               </td>
             </tr>
             <tr>
