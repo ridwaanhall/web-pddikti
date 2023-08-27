@@ -109,6 +109,15 @@ def detail_college():
                          college_details=default_college_details)
 
 
+@app.route('/detail-college/<college_id>')
+def detail_college_id(college_id):
+  college = COLLEGE()
+  college_details = college.GetCollegeDetail(college_id)
+  return render_template("detail-college.html",
+                         college_id=college_id,
+                         college_details=college_details)
+
+
 # ================= STUDY PROGRAMS ===================
 @app.route("/study-programs")
 def study_programs():
