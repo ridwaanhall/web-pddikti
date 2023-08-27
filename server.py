@@ -16,6 +16,7 @@ def search_other():
   # HEAD
   lecturers = []
   studyprograms = []
+  colleges = []
   
   search_name = None  # Initialize search_name here
 
@@ -25,14 +26,17 @@ def search_other():
     if search_name:
       lecturers = SEARCH_OTHER().GetDsnList(search_name)
       studyprograms = SEARCH_OTHER().GetProdiList(search_name)
+      colleges = SEARCH_OTHER().GetPTList(search_name)
   else:
     lecturers = SEARCH_OTHER().GetDsnList()
     studyprograms = SEARCH_OTHER().GetProdiList()
+    colleges = SEARCH_OTHER().GetPTList()
 
 
   return render_template("search-other.html",
                          lecturers=lecturers,
                          studyprograms=studyprograms,
+                         colleges=colleges,
                          search_name=search_name)
 
 

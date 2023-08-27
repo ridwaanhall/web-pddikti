@@ -123,6 +123,55 @@
         </div>
       </div>
     </div>
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+            <h6 class="text-white text-capitalize ps-3">College Table</h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive">
+            <table class="table table-flush" id="datatable-basic3">
+              <thead class="thead-light">
+                <tr>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NPSN</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Short</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Address</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if colleges %}
+                {% if colleges and "Cari kata kunci" in colleges[0].text %}
+                <tr>
+                  <td colspan="5" class="text-center">{{ colleges[0].text }}</td>
+                </tr>
+                {% elif colleges %}
+                {% for college in colleges %}
+                <tr>
+                  <td class="text-sm font-weight-normal">{{ college.college }}</td>
+                  <td class="text-sm font-weight-normal">{{ college.npsn }}</td>
+                  <td class="text-sm font-weight-normal">{{ college.abbreviation }}</td>
+                  <td class="text-sm font-weight-normal">{{ college.address }}</td>
+                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-college{{ college['website-link'] }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                {% else %}
+                <tr>
+                  <td colspan="5" class="text-center">
+                    Please search to see table data.
+                  </td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
   <footer class="footer py-4  ">

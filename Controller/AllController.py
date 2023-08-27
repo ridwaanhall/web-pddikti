@@ -149,3 +149,36 @@ class SEARCH_OTHER:
         "website-link": link
       })
     return filtered_prodis
+
+  def GetPTList(self, search_name=None):
+    reader = ReadUrl()
+    url = self.url_base
+    if search_name:
+      encoded_search_name = quote(search_name)
+      url += encoded_search_name
+    getpt_list = reader.read_json(url)
+    #print("list prodi", getpt_list)
+    if getpt_list is None:
+      return []
+
+    if "Cari kata kunci" in getpt_list.get("pt", [])[0]["text"]:
+      return [{"text": getpt_list["pt"][0]["text"]}]
+
+    filtered_pts = []
+    for pt in getpt_list.get("pt", []):
+      info = pt["text"].split(", ")
+      college = info[0].split(": ")[1]
+      npsn = info[1].split(": ")[1].strip()
+      abbreviation = info[2].split(": ")[1]
+      address = " ".join(info[3].split(": ")[1:])
+
+      link = pt["website-link"].replace("/data_pt", "")
+
+      filtered_pts.append({
+        "college": college,
+        "npsn": npsn,
+        "abbreviation": abbreviation,
+        "address": address,
+        "website-link": link
+      })
+    return filtered_pts
