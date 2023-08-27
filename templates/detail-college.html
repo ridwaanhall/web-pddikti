@@ -17,10 +17,10 @@
       <div class="col-auto my-auto text-dark">
         <div class="h-100">
           <span class="mb-1 font-weight-bold text-dark">
-          {{ lecturer_details.dataumum.nm_sdm }}
+          {{ college_details.dataumum.nm_lemb }}
           </span>
           <h6 class="mb-0 text-sm text-dark">
-            {{ lecturer_details.dataumum.namapt }}
+            {{ college_details.dataumum.namapt }}
           </h6>
         </div>
       </div>
@@ -108,64 +108,64 @@
         </div>
         <div class="card-body p-3">
           <!--<ul class="list-unstyled">
-            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-white">Full Name:</strong> &nbsp; {{ lecturer_details.dataumum.nm_pd }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Gender:</strong> &nbsp; {{ lecturer_details.dataumum.jk }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">College:</strong> &nbsp; <a href="{{ lecturer_details.dataumum.link_pt }}"><u>{{ lecturer_details.dataumum.namapt }}</u></li></a>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Study Program:</strong> &nbsp; {{ lecturer_details.dataumum.namajenjang }} - <a href="{{ lecturer_details.dataumum.link_prodi }}"><u>{{ lecturer_details.dataumum.namaprodi }}</u></li></a>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">College ID Number:</strong> &nbsp; {{ lecturer_details.dataumum.nipd }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Early Semester:</strong> &nbsp; {{ lecturer_details.dataumum.mulai_smt }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Initial College Status:</strong> &nbsp; {{ lecturer_details.dataumum.nm_jns_daftar }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Current College Status:</strong> &nbsp; {{ lecturer_details.dataumum.ket_keluar }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Exit Date:</strong> &nbsp; {{ lecturer_details.dataumum.tgl_keluar }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Certificate SN:</strong> &nbsp; {{ lecturer_details.dataumum.no_seri_ijazah }}</li>
+            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-white">Full Name:</strong> &nbsp; {{ college_details.dataumum.nm_pd }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Gender:</strong> &nbsp; {{ college_details.dataumum.jk }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">College:</strong> &nbsp; <a href="{{ college_details.dataumum.link_pt }}"><u>{{ college_details.dataumum.namapt }}</u></li></a>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Study Program:</strong> &nbsp; {{ college_details.dataumum.namajenjang }} - <a href="{{ college_details.dataumum.link_prodi }}"><u>{{ college_details.dataumum.namaprodi }}</u></li></a>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">College ID Number:</strong> &nbsp; {{ college_details.dataumum.nipd }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Early Semester:</strong> &nbsp; {{ college_details.dataumum.mulai_smt }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Initial College Status:</strong> &nbsp; {{ college_details.dataumum.nm_jns_daftar }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Current College Status:</strong> &nbsp; {{ college_details.dataumum.ket_keluar }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Exit Date:</strong> &nbsp; {{ college_details.dataumum.tgl_keluar }}</li>
+            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Certificate SN:</strong> &nbsp; {{ college_details.dataumum.no_seri_ijazah }}</li>
             </ul>-->
           <table>
             <tr>
               <td>Full Name</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.nm_sdm }}</td>
+              <td>&nbsp;{{ college_details.dataumum.nm_sdm }}</td>
             </tr>
             <tr>
                 <td>Gender</td>
                 <td>&nbsp;:</td>
-                <td>&nbsp;{% if lecturer_details.dataumum.jk == 'L' %}Male (L){% elif lecturer_details.dataumum.jk == 'P' %}Female (P){% else %}{{ lecturer_details.dataumum.jk }}{% endif %}</td>
+                <td>&nbsp;{% if college_details.dataumum.jk == 'L' %}Male (L){% elif college_details.dataumum.jk == 'P' %}Female (P){% else %}{{ college_details.dataumum.jk }}{% endif %}</td>
             </tr>
             <tr>
               <td>Work Bond - College</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.ikatankerja }} - {% if 'linkpt' in lecturer_details.dataumum %}<a href="/detail-college{{ lecturer_details.dataumum.linkpt.replace('/data_pt', '') }}"><u>{{ lecturer_details.dataumum.namapt }}</u></a>{% else %}{{ lecturer_details.dataumum.namapt }}{% endif %}
+              <td>&nbsp;{{ college_details.dataumum.ikatankerja }} - {% if 'linkpt' in college_details.dataumum %}<a href="/detail-college{{ college_details.dataumum.linkpt.replace('/data_pt', '') }}"><u>{{ college_details.dataumum.namapt }}</u></a>{% else %}{{ college_details.dataumum.namapt }}{% endif %}
               </td>
             </tr>
             <tr>
               <td>Study Program</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{% if 'linkprodi' in lecturer_details.dataumum %}<a href="/detail-sp{{ lecturer_details.dataumum.linkprodi.replace('/data_prodi', '') }}"><u>{{ lecturer_details.dataumum.namaprodi }}</u></a>{% else %}{{ lecturer_details.dataumum.namaprodi }}{% endif %}
+              <td>&nbsp;{% if 'linkprodi' in college_details.dataumum %}<a href="/detail-sp{{ college_details.dataumum.linkprodi.replace('/data_prodi', '') }}"><u>{{ college_details.dataumum.namaprodi }}</u></a>{% else %}{{ college_details.dataumum.namaprodi }}{% endif %}
               </td>
             </tr>
             <tr>
               <td>College ID</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.id_sdm }}</td>
+              <td>&nbsp;{{ college_details.dataumum.id_sdm }}</td>
             </tr>
             <tr>
               <td>Place of Birth</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.tmpt_lahir }}</td>
+              <td>&nbsp;{{ college_details.dataumum.tmpt_lahir }}</td>
             </tr>
             <tr>
               <td>Higher Education</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.pend_tinggi }}</td>
+              <td>&nbsp;{{ college_details.dataumum.pend_tinggi }}</td>
             </tr>
             <tr>
               <td>Functional Department</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.fungsional }}</td>
+              <td>&nbsp;{{ college_details.dataumum.fungsional }}</td>
             </tr>
             <tr>
               <td>Work Bond</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ lecturer_details.dataumum.statuskeaktifan }}</td>
+              <td>&nbsp;{{ college_details.dataumum.statuskeaktifan }}</td>
             </tr>
           </table>
         </div>
@@ -178,7 +178,7 @@
         </div>
         <div class="card-body p-3">
           <div class="timeline timeline-one-side">
-            {% for pendidikan in lecturer_details.datapendidikan %}
+            {% for pendidikan in college_details.datapendidikan %}
             <div class="timeline-block mb-3">
               <span class="timeline-step">
               <i class="material-icons text-success text-gradient">history</i>
@@ -213,7 +213,7 @@
                 </tr>
               </thead>
               <tbody>
-                {% for teaching in lecturer_details.datamengajar %}
+                {% for teaching in college_details.datamengajar %}
                 <tr>
                   <td class="text-sm font-weight-normal">{{ teaching.kode_mk }}</td>
                   <td class="text-sm font-weight-normal">{{ teaching.nm_mk }}</td>
