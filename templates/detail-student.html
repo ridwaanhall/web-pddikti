@@ -126,19 +126,19 @@
               <td>&nbsp;{{ student_details.dataumum.nm_pd }}</td>
             </tr>
             <tr>
-              <td>Gender</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ student_details.dataumum.jk }}</td>
+                <td>Gender</td>
+                <td>&nbsp;:</td>
+                <td>&nbsp;{% if student_details.dataumum.jk == 'L' %}Male (L){% elif student_details.dataumum.jk == 'P' %}Female (P){% else %}{{ student_details.dataumum.jk }}{% endif %}</td>
             </tr>
             <tr>
               <td>College</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;<a href="{{ student_details.dataumum.link_pt }}"><u>{{ student_details.dataumum.namapt }}</u></a></td>
+              <td>&nbsp;<a href="/detail-college{{ student_details.dataumum.link_pt.replace('/data_pt', '') }}"><u>{{ student_details.dataumum.namapt }}</u></a></td>
             </tr>
             <tr>
               <td>Level - Study Program</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ student_details.dataumum.namajenjang }} - <a href="{{ student_details.dataumum.link_prodi }}"><u>{{ student_details.dataumum.namaprodi }}</u></li></a></td>
+              <td>&nbsp;{{ student_details.dataumum.namajenjang }} - <a href="/detail-sp{{ student_details.dataumum.link_prodi.replace('/data_prodi', '') }}"><u>{{ student_details.dataumum.namaprodi }}</u></li></a></td>
             </tr>
             <tr>
               <td>Student ID Number</td>
@@ -146,9 +146,10 @@
               <td>&nbsp;{{ student_details.dataumum.nipd }}</td>
             </tr>
             <tr>
-              <td>Early Semester</td>
+              <td>Start Semester</td>
               <td>&nbsp;:</td>
-              <td>&nbsp;{{ student_details.dataumum.mulai_smt }}</td>
+              <td>&nbsp;{% set year = student_details.dataumum.mulai_smt[:4] %}{% set last_digit = student_details.dataumum.mulai_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ student_details.dataumum.mulai_smt }}{% endif %}
+              </td>
             </tr>
             <tr>
               <td>Initial Student Status</td>
@@ -188,7 +189,7 @@
               </span>
               <div class="timeline-content">
                 <h6 class="text-dark text-sm font-weight-bold mb-0">Status : {{ status.nm_stat_mhs }} - {{ status.sks_smt }} SKS</h6>
-                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{{ status.id_smt }}</p>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{% set year = status.id_smt[:4] %}{% set last_digit = status.id_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ status.id_smt }}{% endif %}</p>
               </div>
             </div>
             {% endfor %}
@@ -197,6 +198,41 @@
       </div>
     </div>
   </div>
+
+        <div class="col-12 mt-4">
+          <div class="card mb-4">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-1">Study History</h6>
+            </div>
+            <div class="card-body p-3">
+          <div class="table-responsive">
+            <table class="table table-flush" id="datatable-basic">
+              <thead class="thead-light">
+                <tr>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Code</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Name</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Credits</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Semester</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for study in student_details.datastudi %}
+                <tr>
+                  <td class="text-sm font-weight-normal">{{ study.kode_mk }}</td>
+                  <td class="text-sm font-weight-normal">{{ study.nm_mk }}</td>
+                  <td class="text-sm font-weight-normal">{{ study.sks_mk }}</td>
+                  <td class="text-sm font-weight-normal">{% set year = study.id_smt[:4] %}{% set last_digit = study.id_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ study.id_smt }}{% endif %}</td>
+                  <td class="text-sm font-weight-normal">{{ study.nilai_huruf }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+            </div>
+          </div>
+        </div>
+
 </div>
 <footer class="footer py-4  ">
   <div class="container-fluid">
