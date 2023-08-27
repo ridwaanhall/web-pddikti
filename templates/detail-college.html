@@ -10,17 +10,17 @@
   <div class="card  card-body blur shadow-blur mx-4 mt-n6 overflow-hidden text-dark">
     <div class="row gx-4">
       <div class="col-auto">
-        <div class="avatar avatar-xl position-relative">
-          <img src="https://i.pinimg.com/originals/05/11/45/051145a8e366876f859378154aa7df8b.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+        <div class="avatar avatar-xl position-relative ">
+          <img src="https://api-frontend.kemdikbud.go.id/v2/detail_pt_logo/{{ college_id }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
         </div>
       </div>
       <div class="col-auto my-auto text-dark">
         <div class="h-100">
           <span class="mb-1 font-weight-bold text-dark">
-          {{ college_details.dataumum.nm_lemb }}
+          {{ college_details.nm_lemb }}
           </span>
           <h6 class="mb-0 text-sm text-dark">
-            {{ college_details.dataumum.namapt }}
+          Rector/Chairman : {{ college_details.nama_rektor }}
           </h6>
         </div>
       </div>
@@ -94,12 +94,12 @@
 </div>
 <div class="container-fluid py-4">
   <div class="row">
-    <div class="col-12 col-md-7">
+    <div class="col-12 col-md-8">
       <div class="card h-100">
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-8 d-flex align-items-center">
-              <h6 class="mb-0">Profile Information</h6>
+              <h6 class="mb-0">College Information</h6>
             </div>
             <div class="col-md-4 text-end">
               <i class="fas fa-user text-secondary text-sm"></i>
@@ -107,71 +107,82 @@
           </div>
         </div>
         <div class="card-body p-3">
-          <!--<ul class="list-unstyled">
-            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-white">Full Name:</strong> &nbsp; {{ college_details.dataumum.nm_pd }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Gender:</strong> &nbsp; {{ college_details.dataumum.jk }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">College:</strong> &nbsp; <a href="{{ college_details.dataumum.link_pt }}"><u>{{ college_details.dataumum.namapt }}</u></li></a>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Study Program:</strong> &nbsp; {{ college_details.dataumum.namajenjang }} - <a href="{{ college_details.dataumum.link_prodi }}"><u>{{ college_details.dataumum.namaprodi }}</u></li></a>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">College ID Number:</strong> &nbsp; {{ college_details.dataumum.nipd }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Early Semester:</strong> &nbsp; {{ college_details.dataumum.mulai_smt }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Initial College Status:</strong> &nbsp; {{ college_details.dataumum.nm_jns_daftar }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Current College Status:</strong> &nbsp; {{ college_details.dataumum.ket_keluar }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Exit Date:</strong> &nbsp; {{ college_details.dataumum.tgl_keluar }}</li>
-            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-white">Certificate SN:</strong> &nbsp; {{ college_details.dataumum.no_seri_ijazah }}</li>
-            </ul>-->
           <table>
             <tr>
-              <td>Full Name</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.nm_sdm }}</td>
+              <td>College</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.nm_lemb }}</td>
             </tr>
             <tr>
-                <td>Gender</td>
-                <td>&nbsp;:</td>
-                <td>&nbsp;{% if college_details.dataumum.jk == 'L' %}Male (L){% elif college_details.dataumum.jk == 'P' %}Female (P){% else %}{{ college_details.dataumum.jk }}{% endif %}</td>
+                <td>NPSN</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ college_details.npsn }}</td>
             </tr>
             <tr>
-              <td>Work Bond - College</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.ikatankerja }} - {% if 'linkpt' in college_details.dataumum %}<a href="/detail-college{{ college_details.dataumum.linkpt.replace('/data_pt', '') }}"><u>{{ college_details.dataumum.namapt }}</u></a>{% else %}{{ college_details.dataumum.namapt }}{% endif %}
-              </td>
+              <td>Accreditation</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.akreditasi_list[0].akreditasi }}</td>
             </tr>
             <tr>
-              <td>Study Program</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{% if 'linkprodi' in college_details.dataumum %}<a href="/detail-sp{{ college_details.dataumum.linkprodi.replace('/data_prodi', '') }}"><u>{{ college_details.dataumum.namaprodi }}</u></a>{% else %}{{ college_details.dataumum.namaprodi }}{% endif %}
-              </td>
+              <td>College Status</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.stat_sp }}</td>
             </tr>
             <tr>
-              <td>College ID</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.id_sdm }}</td>
+              <td>Established Date</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.tgl_berdiri }}</td>
             </tr>
             <tr>
-              <td>Place of Birth</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.tmpt_lahir }}</td>
+              <td>SK of College</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.sk_pendirian_sp }}</td>
             </tr>
             <tr>
-              <td>Higher Education</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.pend_tinggi }}</td>
+              <td>Date SK of College</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.tgl_sk_pendirian_sp }}</td>
             </tr>
             <tr>
-              <td>Functional Department</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.fungsional }}</td>
+              <td>Street</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.jln }}</td>
             </tr>
             <tr>
-              <td>Work Bond</td>
-              <td>&nbsp;:</td>
-              <td>&nbsp;{{ college_details.dataumum.statuskeaktifan }}</td>
+              <td>Regency/City</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.nama_wil }}</td>
+            </tr>
+            <tr>
+              <td>Postal Code</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.kode_pos }}</td>
+            </tr>
+            <tr>
+              <td>Telephone Number</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.no_tel }}</td>
+            </tr>
+            <tr>
+              <td>Fax Number</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.no_fax }}</td>
+            </tr>
+            <tr>
+              <td>E-mail</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.email }}</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.website }}</td>
             </tr>
           </table>
         </div>
       </div>
     </div>
-    <div class="col-lg-5 col-md-6">
+    <div class="col-lg-4 col-md-6">
       <div class="card h-100">
         <div class="card-header pb-0">
           <h6>Educational History</h6>
