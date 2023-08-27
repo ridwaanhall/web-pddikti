@@ -85,10 +85,11 @@ class PROVINCES:
 
 
 class SEARCH_OTHER:
-  
+  url_base = 'https://api-frontend.kemdikbud.go.id/hit/'
+
   def GetDsnList(self, search_name=None):
     reader = ReadUrl()
-    url = 'https://api-frontend.kemdikbud.go.id/hit/'
+    url = self.url_base
     if search_name:
       encoded_search_name = quote(search_name)
       url += encoded_search_name
@@ -108,13 +109,13 @@ class SEARCH_OTHER:
       college = info[2].split(": ")[1]
       program = info[3].split(": ")[1]
       link = dosen["website-link"].replace("/data_dosen", "")
-      
+
       filtered_dosens.append({
-          "name": name,
-          "nidn": nidn,
-          "college": college,
-          "program": program,
-          "website-link": link
+        "name": name,
+        "nidn": nidn,
+        "college": college,
+        "program": program,
+        "website-link": link
       })
-    print('filterrrr',filtered_dosens)
+    #print('filterrrr', filtered_dosens)
     return filtered_dosens
