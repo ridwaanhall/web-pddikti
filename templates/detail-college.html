@@ -95,6 +95,21 @@
               <td>{{ college_details.tgl_sk_pendirian_sp }}</td>
             </tr>
             <tr>
+              <td>Total Fields Study</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ sum_details.jumlah_bidangilmu }}</td>
+            </tr>
+            <tr>
+              <td>Total Faculties</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ sum_details.jumlah_fakultas }}</td>
+            </tr>
+            <tr>
+              <td>Total Study Programs</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ sum_details.jumlah_prodi }}</td>
+            </tr>
+            <tr>
               <td>Street</td>
               <td>&nbsp;:&nbsp;</td>
               <td>{{ college_details.jln }}</td>
@@ -134,11 +149,11 @@
       </div>
     </div>
     <div class="col-md-3">
-<div class="card mb-3">
+<div class="card mb-4">
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-12 d-flex align-items-center">
-              <h6 class="mb-0">College Information</h6>
+              <h6 class="mb-0">Total Accreditation of SP</h6>
             </div>
           </div>
         </div>
@@ -148,11 +163,11 @@
     </div>
   </div>
 </div>
-<div class="card mb-3">
+<div class="card mb-4">
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-12 d-flex align-items-center">
-              <h6 class="mb-0">College Information</h6>
+              <h6 class="mb-0">Students : Lecturer</h6>
             </div>
           </div>
         </div>
@@ -308,11 +323,12 @@ Prodi application with red writing: study programs with less than 5 homebase lec
 
       // Doughnut chart
       var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
-
+      var akreditasiKeys = {{ akreditasi_keys | tojson | safe }};
+      var akreditasiValues = {{ akreditasi_values | tojson | safe }};
       new Chart(ctx3, {
         type: "doughnut",
         data: {
-          labels: ['Creative Tim', 'Github', 'Bootsnipp', 'Dev.to', 'Codeinwp'],
+          labels: akreditasiKeys,
           datasets: [{
             label: "Projects",
             weight: 9,
@@ -321,7 +337,7 @@ Prodi application with red writing: study programs with less than 5 homebase lec
             pointRadius: 2,
             borderWidth: 2,
             backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
-            data: [15, 20, 12, 60, 20],
+            data: akreditasiValues,
             fill: false
           }],
         },
@@ -366,11 +382,12 @@ Prodi application with red writing: study programs with less than 5 homebase lec
 
       // Pie chart
       var ctx4 = document.getElementById("pie-chart").getContext("2d");
-
+      var dosenValue = {{ dosen_value }};
+      var mahasiswaValue = {{ mahasiswa_value }};
       new Chart(ctx4, {
         type: "pie",
         data: {
-          labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
+          labels: ['Student', 'Lectuer'],
           datasets: [{
             label: "Projects",
             weight: 9,
@@ -378,8 +395,8 @@ Prodi application with red writing: study programs with less than 5 homebase lec
             tension: 0.9,
             pointRadius: 2,
             borderWidth: 2,
-            backgroundColor: ['#17c1e8', '#e3316e', '#3A416F', '#a8b8d8'],
-            data: [15, 20, 12, 60],
+            backgroundColor: ['#17c1e8', '#e3316e'],
+            data: [mahasiswaValue, dosenValue],
             fill: false
           }],
         },

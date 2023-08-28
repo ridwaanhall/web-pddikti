@@ -122,10 +122,21 @@ def detail_college_id(college_id):
   college = COLLEGE()
   college_details = college.GetCollegeDetail(college_id)
   sp_details = college.GetSPDetail(college_id)
+  sum_details = college.GetSumDetail(college_id)
+  akreditasi_keys = list(sum_details['jumlah_prodi_akreditasi'].keys())
+  akreditasi_values = list(sum_details['jumlah_prodi_akreditasi'].values())
+  # Extracting "dosen" and "mahasiswa" values from rasio_list
+  dosen_value = sum_details['rasio_list'][0]['dosen']
+  mahasiswa_value = sum_details['rasio_list'][0]['mahasiswa']
   return render_template("detail-college.html",
                          college_id=college_id,
                          college_details=college_details,
-                         sp_details=sp_details)
+                         sp_details=sp_details,
+                         sum_details=sum_details,
+                         akreditasi_keys=akreditasi_keys,
+                         akreditasi_values=akreditasi_values,
+                         dosen_value=dosen_value,
+                         mahasiswa_value=mahasiswa_value)
 
 
 # ================= STUDY PROGRAMS ===================

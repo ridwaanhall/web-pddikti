@@ -110,6 +110,11 @@ class COLLEGE:
     sp_details = reader.read_json(detail_url)
     return sp_details
 
+  def GetSumDetail(self, college_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/v2/detail_pt_jumlah/{college_id}'
+    sum_details = reader.read_json(detail_url)
+    return sum_details
 
 # ============= STUDY PROGRAMS ===================
 class STUDY_PROGRAMS:
