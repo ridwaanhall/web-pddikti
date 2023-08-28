@@ -12,6 +12,7 @@ class ReadUrl:
     return None
 
 
+# ============ LECTURERS ==========================
 class LECTURERS:
 
   def GetLecturerDetail(self, lecturer_id):
@@ -21,6 +22,7 @@ class LECTURERS:
     return lecturer_details
 
 
+# ============ STUDENTS ============================
 class STUDENTS:
 
   def GetStudentDetail(self, student_id):
@@ -67,6 +69,7 @@ class STUDENTS:
     return filtered_students
 
 
+# ============= COLLEGES =====================
 class COLLEGE:
 
   def _format_date(self, date_str):
@@ -86,7 +89,7 @@ class COLLEGE:
     reader = ReadUrl()
     detail_url = f'https://api-frontend.kemdikbud.go.id/v2/detail_pt/{college_id}'
     college_details = reader.read_json(detail_url)
-    
+
     college_details["tgl_sk_pendirian_sp"] = self._format_date(
       college_details.get("tgl_sk_pendirian_sp", ""))
 
@@ -101,7 +104,14 @@ class COLLEGE:
 
     return college_details
 
+  def GetSPDetail(self, college_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/v2/detail_pt_prodi/{college_id}'
+    sp_details = reader.read_json(detail_url)
+    return sp_details
 
+
+# ============= STUDY PROGRAMS ===================
 class STUDY_PROGRAMS:
 
   def StudyProgramsList(self):
@@ -111,6 +121,7 @@ class STUDY_PROGRAMS:
     return studyprograms_list
 
 
+# ================ PROVINCES =====================
 class PROVINCES:
 
   def ProvincesList(self):
@@ -120,6 +131,7 @@ class PROVINCES:
     return provinces_list
 
 
+# =============== SEARCH OTHERS ============================
 class SEARCH_OTHER:
   url_base = 'https://api-frontend.kemdikbud.go.id/hit/'
 

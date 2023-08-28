@@ -4,7 +4,7 @@
 {% block hsixupper %}Detail College List{% endblock %}
 {% block content %}
 <div class="container-fluid">
-  <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-position-y: 50%;">
+  <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1592930954854-7d00c87d0cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); background-position-y: 50%;">
     <span class="mask bg-gradient-primary opacity-6"></span>
   </div>
   <div class="card  card-body blur shadow-blur mx-4 mt-n6 overflow-hidden text-dark">
@@ -16,12 +16,18 @@
       </div>
       <div class="col-auto my-auto text-dark">
         <div class="h-100">
-          <span class="mb-1 font-weight-bold text-dark">
-          {{ college_details.get('nm_lemb', 'No College Selected') }}
-          </span>
-          <h6 class="mb-0 text-sm text-dark">
-          Rector/Chairman : {{ college_details.nama_rektor }}
-          </h6>
+          <table>
+            <tr>
+              <td class="mb-1 font-weight-bold text-dark">
+                {{ college_details.get('nm_lemb', 'No College Selected') }}
+              </td>
+            </tr>
+            <tr>
+              <td class="mb-0 text-sm text-dark">
+                {{ college_details.nama_rektor }}
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
@@ -162,7 +168,7 @@
         <div class="col-12 mt-4">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-1">Teaching History</h6>
+              <h6 class="mb-1">Study Programs at {{ college_details.nm_lemb }}</h6>
               <p class="text-sm mb-0">Student data is based on student activity reporting in the academic year. If it is not appropriate, universities are required to improve their reporting through the PDDikti Feeder
 Prodi application with red writing: study programs with less than 5 homebase lecturers and/or NIDN less than 60%</p>
             </div>
@@ -171,21 +177,23 @@ Prodi application with red writing: study programs with less than 5 homebase lec
             <table class="table table-flush" id="datatable-basic">
               <thead class="thead-light">
                 <tr>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Code</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Name</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Class</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Semester</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Code</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Name</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Status</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Level</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Accreditation</th>
+                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
                 </tr>
               </thead>
               <tbody>
-                {% for teaching in college_details.datamengajar %}
+                {% for sp_detail in sp_details %}
                 <tr>
-                  <td class="text-sm font-weight-normal">{{ teaching.kode_mk }}</td>
-                  <td class="text-sm font-weight-normal">{{ teaching.nm_mk }}</td>
-                  <td class="text-sm font-weight-normal">{{ teaching.nm_kls }}</td>
-                  <td class="text-sm font-weight-normal">{% set year = teaching.id_smt[:4] %}{% set last_digit = teaching.id_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ teaching.id_smt }}{% endif %}</td>
-                  <td class="text-sm font-weight-normal"><a href="/detail-college{{ teaching.linkpt.replace('/data_pt', '') }}"><u>{{ teaching.namapt }}</u></a></td>
+                  <td class="text-sm font-weight-normal">{{ sp_detail.kode_prodi }}</td>
+                  <td class="text-sm font-weight-normal">{{ sp_detail.nm_lemb }}</td>
+                  <td class="text-sm font-weight-normal">{{ sp_detail.stat_prodi }}</td>
+                  <td class="text-sm font-weight-normal">{{ sp_detail.jenjang }}</td>
+                  <td class="text-sm font-weight-normal">{{ sp_detail.akreditas }}</td>
+                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-sp{{ sp_detail.id_sms }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
                 </tr>
                 {% endfor %}
               </tbody>

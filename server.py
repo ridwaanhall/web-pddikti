@@ -121,9 +121,11 @@ def detail_college():
 def detail_college_id(college_id):
   college = COLLEGE()
   college_details = college.GetCollegeDetail(college_id)
+  sp_details = college.GetSPDetail(college_id)
   return render_template("detail-college.html",
                          college_id=college_id,
-                         college_details=college_details)
+                         college_details=college_details,
+                         sp_details=sp_details)
 
 
 # ================= STUDY PROGRAMS ===================
