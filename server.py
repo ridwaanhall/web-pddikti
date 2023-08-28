@@ -25,7 +25,7 @@ def detail_lecturer_id(lecturer_id):
   return render_template("detail-lecturer.html",
                          lecturer_id=lecturer_id,
                          lecturer_details=lecturer_details)
-  
+
 
 # =============== SEARCH OTHER =======================
 @app.route("/search-other", methods=["GET", "POST"])
@@ -34,7 +34,7 @@ def search_other():
   lecturers = []
   studyprograms = []
   colleges = []
-  
+
   search_name = None  # Initialize search_name here
 
   # lecturers, study programs
@@ -48,7 +48,6 @@ def search_other():
     lecturers = SEARCH_OTHER().GetDsnList()
     studyprograms = SEARCH_OTHER().GetProdiList()
     colleges = SEARCH_OTHER().GetPTList()
-
 
   return render_template("search-other.html",
                          lecturers=lecturers,
@@ -104,7 +103,16 @@ def colleges():
 
 @app.route('/detail-college')
 def detail_college():
-  default_college_details = {"dataumum": {"nm_lemb": "No College Selected"}}
+  default_college_details = {
+    "dataumum": {
+      "nm_lemb": "No College Selected"
+    },
+    "akreditasi_list": [{
+      "akreditasi": "No Data",
+      "tgl_akreditasi": "No Data",
+      "tgl_berlaku": "No Data"
+    }]
+  }
   return render_template('detail-college.html',
                          college_details=default_college_details)
 
