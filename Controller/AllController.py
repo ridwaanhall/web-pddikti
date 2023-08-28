@@ -1,5 +1,6 @@
 import requests
 from urllib.parse import quote
+from datetime import datetime
 
 
 class ReadUrl:
@@ -68,6 +69,13 @@ class STUDENTS:
 
 class COLLEGE:
 
+  def _format_date(self, date_str):
+    try:
+      date_obj = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
+      return date_obj.strftime("%A, %d %B %Y")
+    except Exception:
+      return "No Data"
+
   def CollegeList(self):
     reader = ReadUrl()
     college_list = reader.read_json(
@@ -78,6 +86,19 @@ class COLLEGE:
     reader = ReadUrl()
     detail_url = f'https://api-frontend.kemdikbud.go.id/v2/detail_pt/{college_id}'
     college_details = reader.read_json(detail_url)
+    
+    college_details["tgl_sk_pendirian_sp"] = self._format_date(
+      college_details.get("tgl_sk_pendirian_sp", ""))
+
+    college_details["tgl_berdiri"] = self._format_date(
+      college_details.get("tgl_berdiri", ""))
+
+    for akreditasi in college_details.get("akreditasi_list", []):
+      akreditasi["tgl_akreditasi"] = self._format_date(
+        akreditasi.get("tgl_akreditasi", ""))
+      akreditasi["tgl_berlaku"] = self._format_date(
+        akreditasi.get("tgl_berlaku", ""))
+
     return college_details
 
 
