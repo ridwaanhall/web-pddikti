@@ -55,9 +55,9 @@
               <td>{{ college_details.nm_lemb }}</td>
             </tr>
             <tr>
-                <td>NPSN</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td>{{ college_details.npsn }}</td>
+              <td>NPSN</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ college_details.npsn }}</td>
             </tr>
             <tr>
               <td>Accreditation</td>
@@ -149,7 +149,7 @@
       </div>
     </div>
     <div class="col-md-3">
-<div class="card mb-4">
+      <div class="card mb-4">
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-12 d-flex align-items-center">
@@ -157,13 +157,13 @@
             </div>
           </div>
         </div>
-  <div class="card-body p-3">
-    <div class="chart">
-      <canvas id="doughnut-chart" class="chart-canvas" height="200px"></canvas>
-    </div>
-  </div>
-</div>
-<div class="card mb-4">
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="doughnut-chart" class="chart-canvas" height="200px"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-md-12 d-flex align-items-center">
@@ -171,53 +171,109 @@
             </div>
           </div>
         </div>
-  <div class="card-body p-3">
-    <div class="chart">
-      <canvas id="pie-chart" class="chart-canvas" height="200px"></canvas>
-    </div>
-  </div>
-</div>
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="pie-chart" class="chart-canvas" height="200px"></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-        <div class="col-12 mt-4">
-          <div class="card mb-4">
-            <div class="card-header pb-0 p-3">
-              <h6 class="mb-1">Study Programs at {{ college_details.nm_lemb }}</h6>
-              <p class="text-sm mb-0">Student data is based on student activity reporting in the academic year. If it is not appropriate, universities are required to improve their reporting through the PDDikti Feeder
-Prodi application with red writing: study programs with less than 5 homebase lecturers and/or NIDN less than 60%</p>
+  <div class="col-12 mt-4">
+    <div class="card card-frame">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Permanent Lecturer</h6>
+      </div>
+      <div class="card-body p-3">
+        <!-- Nesting four vertical cards (col-md-3) inside the main card -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Number of Positions
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="tetap-jumlah-jabatan" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
             </div>
-            <div class="card-body p-3">
-          <div class="table-responsive">
-            <table class="table table-flush" id="datatable-basic">
-              <thead class="thead-light">
-                <tr>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Code</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Name</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Status</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Level</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Accreditation</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for sp_detail in sp_details %}
-                <tr>
-                  <td class="text-sm font-weight-normal">{{ sp_detail.kode_prodi }}</td>
-                  <td class="text-sm font-weight-normal">{{ sp_detail.nm_lemb }}</td>
-                  <td class="text-sm font-weight-normal">{{ sp_detail.stat_prodi }}</td>
-                  <td class="text-sm font-weight-normal">{{ sp_detail.jenjang }}</td>
-                  <td class="text-sm font-weight-normal">{{ sp_detail.akreditas }}</td>
-                  <td class="text-sm font-weight-normal align-middle"><a href="/detail-sp{{ sp_detail.id_sms }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
           </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Card 2
+              </div>
+              <div class="card-body p-3">
+                Content for Card 2
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Card 3
+              </div>
+              <div class="card-body p-3">
+                Content for Card 3
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Card 4
+              </div>
+              <div class="card-body p-3">
+                Content for Card 4
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
+  
+  <div class="col-12 mt-4">
+    <div class="card mb-4">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Study Programs at {{ college_details.nm_lemb }}</h6>
+        <p class="text-sm mb-0">Student data is based on student activity reporting in the academic year. If it is not appropriate, universities are required to improve their reporting through the PDDikti Feeder
+          Prodi application with red writing: study programs with less than 5 homebase lecturers and/or NIDN less than 60%
+        </p>
+      </div>
+      <div class="card-body p-3">
+        <div class="table-responsive">
+          <table class="table table-flush" id="datatable-basic">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Code</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Name</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Status</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Level</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Grade</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for sp_detail in sp_details %}
+              <tr>
+                <td class="text-sm font-weight-normal">{{ sp_detail.kode_prodi }}</td>
+                <td class="text-sm font-weight-normal">{{ sp_detail.nm_lemb }}</td>
+                <td class="text-sm font-weight-normal">{{ sp_detail.stat_prodi }}</td>
+                <td class="text-sm font-weight-normal">{{ sp_detail.jenjang }}</td>
+                <td class="text-sm font-weight-normal">{{ sp_detail.akreditas }}</td>
+                <td class="text-sm font-weight-normal align-middle"><a href="/detail-sp{{ sp_detail.id_sms }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <footer class="footer py-4  ">
   <div class="container-fluid">
@@ -316,129 +372,184 @@ Prodi application with red writing: study programs with less than 5 homebase lec
   </div>
 </div>
 {% endblock %}
-
 {% block chart_college %}
-
 <script type="text/javascript">
-
-      // Doughnut chart
-      var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
-      var akreditasiKeys = {{ akreditasi_keys | tojson | safe }};
-      var akreditasiValues = {{ akreditasi_values | tojson | safe }};
-      new Chart(ctx3, {
-        type: "doughnut",
-        data: {
-          labels: akreditasiKeys,
-          datasets: [{
-            label: "Projects",
-            weight: 9,
-            cutout: 60,
-            tension: 0.9,
-            pointRadius: 2,
-            borderWidth: 2,
-            backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
-            data: akreditasiValues,
-            fill: false
-          }],
+  // Doughnut chart
+  var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
+  var akreditasiKeys = {{ akreditasi_keys | tojson | safe }};
+  var akreditasiValues = {{ akreditasi_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: akreditasiKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
+        data: akreditasiValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            }
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
           },
-          interaction: {
-            intersect: false,
-            mode: 'index',
-          },
-          scales: {
-            y: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-              },
-              ticks: {
-                display: false
-              }
-            },
-            x: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-              },
-              ticks: {
-                display: false,
-              }
-            },
-          },
+          ticks: {
+            display: false,
+          }
         },
-      });
-
-      // Pie chart
-      var ctx4 = document.getElementById("pie-chart").getContext("2d");
-      var dosenValue = {{ dosen_value }};
-      var mahasiswaValue = {{ mahasiswa_value }};
-      new Chart(ctx4, {
-        type: "pie",
-        data: {
-          labels: ['Student', 'Lectuer'],
-          datasets: [{
-            label: "Projects",
-            weight: 9,
-            cutout: 0,
-            tension: 0.9,
-            pointRadius: 2,
-            borderWidth: 2,
-            backgroundColor: ['#17c1e8', '#e3316e'],
-            data: [mahasiswaValue, dosenValue],
-            fill: false
-          }],
+      },
+    },
+  });
+  
+  // Pie chart
+  var ctx4 = document.getElementById("pie-chart").getContext("2d");
+  var dosenValue = {{ dosen_value }};
+  var mahasiswaValue = {{ mahasiswa_value }};
+  new Chart(ctx4, {
+    type: "pie",
+    data: {
+      labels: ['Student', 'Lectuer'],
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 0,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#17c1e8', '#e3316e'],
+        data: [mahasiswaValue, dosenValue],
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            }
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
           },
-          interaction: {
-            intersect: false,
-            mode: 'index',
-          },
-          scales: {
-            y: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-              },
-              ticks: {
-                display: false
-              }
-            },
-            x: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-              },
-              ticks: {
-                display: false,
-              }
-            },
-          },
+          ticks: {
+            display: false,
+          }
         },
-      });
+      },
+    },
+  });
 
-    </script>
-
+  // jumlah jabatan
+  var ctx3 = document.getElementById("tetap-jumlah-jabatan").getContext("2d");
+  var tetap_jumlah_jabatanKeys = {{ tetap_jumlah_jabatan_keys | tojson | safe }};
+  var tetap_jumlah_jabatanValues = {{ tetap_jumlah_jabatan_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_jabatanKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
+        data: tetap_jumlah_jabatanValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+  
+</script>
 {% endblock %}

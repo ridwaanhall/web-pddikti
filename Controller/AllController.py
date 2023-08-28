@@ -116,6 +116,13 @@ class COLLEGE:
     sum_details = reader.read_json(detail_url)
     return sum_details
 
+  def GetLecturerCollegeDetail(self, college_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/v2/detail_pt_dosen/{college_id}'
+    lc_detail = reader.read_json(detail_url)
+    return lc_detail
+
+
 # ============= STUDY PROGRAMS ===================
 class STUDY_PROGRAMS:
 

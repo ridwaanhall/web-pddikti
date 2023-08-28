@@ -120,14 +120,22 @@ def detail_college():
 @app.route('/detail-college/<college_id>')
 def detail_college_id(college_id):
   college = COLLEGE()
+  # =================
   college_details = college.GetCollegeDetail(college_id)
   sp_details = college.GetSPDetail(college_id)
   sum_details = college.GetSumDetail(college_id)
+  lc_detail = college.GetLecturerCollegeDetail(college_id)
+  # =====================
   akreditasi_keys = list(sum_details['jumlah_prodi_akreditasi'].keys())
   akreditasi_values = list(sum_details['jumlah_prodi_akreditasi'].values())
   # Extracting "dosen" and "mahasiswa" values from rasio_list
   dosen_value = sum_details['rasio_list'][0]['dosen']
   mahasiswa_value = sum_details['rasio_list'][0]['mahasiswa']
+  # dataaaa
+  tetap_jumlah_jabatan_series = lc_detail['tetap']['jumlah_dosen_jabatan']['series']
+  tetap_jumlah_jabatan_keys = [item['name'] for item in tetap_jumlah_jabatan_series]
+  tetap_jumlah_jabatan_values = [item['data'][0] for item in tetap_jumlah_jabatan_series]
+  
   return render_template("detail-college.html",
                          college_id=college_id,
                          college_details=college_details,
@@ -136,7 +144,9 @@ def detail_college_id(college_id):
                          akreditasi_keys=akreditasi_keys,
                          akreditasi_values=akreditasi_values,
                          dosen_value=dosen_value,
-                         mahasiswa_value=mahasiswa_value)
+                         mahasiswa_value=mahasiswa_value,
+                         tetap_jumlah_jabatan_keys=tetap_jumlah_jabatan_keys,
+                         tetap_jumlah_jabatan_values=tetap_jumlah_jabatan_values)
 
 
 # ================= STUDY PROGRAMS ===================
