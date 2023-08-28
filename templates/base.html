@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="https://pddikti.kemdikbud.go.id/asset/gambar/box/pddikti_adminv2.png">
     <link rel="icon" type="image/png" href="https://pddikti.kemdikbud.go.id/asset/gambar/box/pddikti_adminv2.png">
-    <meta name="description" content="This website using bootstrap">
+    <meta name="description" content="COllege Data based in PDDIKTI">
     <meta name="author" content="Ridwan Halim">
     <title>{% block title %}BASE -- HTML{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -222,5 +222,8 @@
       });
     </script>
     <script src="{{ url_for('static', filename='assets/js/material-dashboard.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/plugins/chartjs.min.js') }}"></script>
+    {% block chart_college %}
+    {% endblock %}
   </body>
 </html>
