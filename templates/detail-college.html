@@ -191,7 +191,7 @@
           <div class="col-md-3">
             <div class="card">
               <div class="card-header pb-0 p-3">
-                Number of Positions
+                Position
               </div>
               <div class="card-body p-3">
                 <div class="chart">
@@ -203,30 +203,97 @@
           <div class="col-md-3">
             <div class="card">
               <div class="card-header pb-0 p-3">
-                Card 2
+                Gender
               </div>
               <div class="card-body p-3">
-                Content for Card 2
+                <div class="chart">
+                  <canvas id="tetap-jumlah-gender" class="chart-canvas" height="200px"></canvas>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="card">
               <div class="card-header pb-0 p-3">
-                Card 3
+                Degree
               </div>
               <div class="card-body p-3">
-                Content for Card 3
+                <div class="chart">
+                  <canvas id="tetap-jumlah-degree" class="chart-canvas" height="200px"></canvas>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="card">
               <div class="card-header pb-0 p-3">
-                Card 4
+                Registration
               </div>
               <div class="card-body p-3">
-                Content for Card 4
+                <div class="chart">
+                  <canvas id="tetap-jumlah-registrasi" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-4">
+    <div class="card card-frame">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Non-Permanent Lecturer</h6>
+      </div>
+      <div class="card-body p-3">
+        <!-- Nesting four vertical cards (col-md-3) inside the main card -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Position
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-jabatan" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Gender
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-gender" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Degree
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-degree" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Registration
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-registrasi" class="chart-canvas" height="200px"></canvas>
+                </div>
               </div>
             </div>
           </div>
@@ -492,7 +559,7 @@
     },
   });
 
-  // jumlah jabatan
+  // jumlah jabatan dosen tetap
   var ctx3 = document.getElementById("tetap-jumlah-jabatan").getContext("2d");
   var tetap_jumlah_jabatanKeys = {{ tetap_jumlah_jabatan_keys | tojson | safe }};
   var tetap_jumlah_jabatanValues = {{ tetap_jumlah_jabatan_values | tojson | safe }};
@@ -509,6 +576,447 @@
         borderWidth: 2,
         backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
         data: tetap_jumlah_jabatanValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah jenis kelamin dosen tetap
+  var ctx3 = document.getElementById("tetap-jumlah-gender").getContext("2d");
+  var tetap_jumlah_dosen_jenis_kelaminKeys = {{ tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
+  var tetap_jumlah_dosen_jenis_kelaminValues = {{ tetap_jumlah_dosen_jenis_kelamin_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_dosen_jenis_kelaminKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#fb8c00', '#a8b8d8'],
+        data: tetap_jumlah_dosen_jenis_kelaminValues,
+        fill: true
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  //# jumlah jenjang dosen tetap
+
+  // Generate random colors based on the length of the keys list
+  function generateRandomColors(count) {
+    const colors = [];
+    for (let i = 0; i < count; i++) {
+      const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      colors.push(color);
+    }
+    return colors;
+  }
+  
+  var ctx3 = document.getElementById("tetap-jumlah-degree").getContext("2d");
+  var tetap_jumlah_jenjangKeys = {{ tetap_jumlah_jenjang_keys | tojson | safe }};
+  var tetap_jumlah_jenjangValues = {{ tetap_jumlah_jenjang_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tetap_jumlah_jenjangKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_jenjangKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tetap_jumlah_jenjangValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah dosen registarsi
+  var ctx3 = document.getElementById("tetap-jumlah-registrasi").getContext("2d");
+  var tetap_jumlah_registrasiKeys = {{ tetap_jumlah_registrasi_keys | tojson | safe }};
+  var tetap_jumlah_registrasiValues = {{ tetap_jumlah_registrasi_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tetap_jumlah_registrasiKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_registrasiKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tetap_jumlah_registrasiValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+
+  // DOSEN TIDAK TETAP
+  // jumlah jabatan dosen tetap
+  var ctx3 = document.getElementById("non-tetap-jumlah-jabatan").getContext("2d");
+  var tidak_tetap_jumlah_jabatanKeys = {{ tidak_tetap_jumlah_jabatan_keys | tojson | safe }};
+  var tidak_tetap_jumlah_jabatanValues = {{ tidak_tetap_jumlah_jabatan_values | tojson | safe }};
+
+  var randomColors = generateRandomColors(tidak_tetap_jumlah_jabatanKeys.length);
+  
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_jabatanKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tidak_tetap_jumlah_jabatanValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah jenis kelamin dosen tidak tetap
+  var ctx3 = document.getElementById("non-tetap-jumlah-gender").getContext("2d");
+  var tidak_tetap_jumlah_dosen_jenis_kelaminKeys = {{ tidak_tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
+  var tidak_tetap_jumlah_dosen_jenis_kelaminValues = {{ tidak_tetap_jumlah_dosen_jenis_kelamin_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_dosen_jenis_kelaminKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#fb8c00', '#a8b8d8'],
+        data: tidak_tetap_jumlah_dosen_jenis_kelaminValues,
+        fill: true
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah jenjang dosen tidak tetap
+  var ctx3 = document.getElementById("non-tetap-jumlah-degree").getContext("2d");
+  var tidak_tetap_jumlah_jenjangKeys = {{ tidak_tetap_jumlah_jenjang_keys | tojson | safe }};
+  var tidak_tetap_jumlah_jenjangValues = {{ tidak_tetap_jumlah_jenjang_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tidak_tetap_jumlah_jenjangKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_jenjangKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tidak_tetap_jumlah_jenjangValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah dosen registarsi
+  var ctx3 = document.getElementById("non-tetap-jumlah-registrasi").getContext("2d");
+  var tidak_tetap_jumlah_registrasiKeys = {{ tidak_tetap_jumlah_registrasi_keys | tojson | safe }};
+  var tidak_tetap_jumlah_registrasiValues = {{ tidak_tetap_jumlah_registrasi_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tidak_tetap_jumlah_registrasiKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_registrasiKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tidak_tetap_jumlah_registrasiValues,
         fill: false
       }],
     },
