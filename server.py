@@ -114,7 +114,34 @@ def detail_college():
     }]
   }
   return render_template('detail-college.html',
-                         college_details=default_college_details)
+                         college_details=default_college_details,
+                         sum_details=None,
+                         stat_college=None,
+                         akreditasi_keys=None,
+                         akreditasi_values=None,
+                         dosen_value=None,
+                         mahasiswa_value=None,
+                         # latitude longitude
+                         latitude=None,
+                         longitude=None,
+                         # dosen tetap
+                         tetap_jumlah_jabatan_keys=None,
+                         tetap_jumlah_jabatan_values=None,
+                         tetap_jumlah_dosen_jenis_kelamin_keys=None,
+                         tetap_jumlah_dosen_jenis_kelamin_values=None,
+                         tetap_jumlah_jenjang_keys=None,
+                         tetap_jumlah_jenjang_values=None,
+                         tetap_jumlah_registrasi_keys=None,
+                         tetap_jumlah_registrasi_values=None,
+                         # dosen gk tetap
+                         tidak_tetap_jumlah_jabatan_keys=None,
+                         tidak_tetap_jumlah_jabatan_values=None,
+                         tidak_tetap_jumlah_dosen_jenis_kelamin_keys=None,
+                         tidak_tetap_jumlah_dosen_jenis_kelamin_values=None,
+                         tidak_tetap_jumlah_jenjang_keys=None,
+                         tidak_tetap_jumlah_jenjang_values=None,
+                         tidak_tetap_jumlah_registrasi_keys=None,
+                         tidak_tetap_jumlah_registrasi_values=None)
 
 
 @app.route('/detail-college/<college_id>')
