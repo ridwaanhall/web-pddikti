@@ -122,6 +122,25 @@ class COLLEGE:
     lc_detail = reader.read_json(detail_url)
     return lc_detail
 
+  def StatisticCollege(self, college_id):
+    reader = ReadUrl()
+    detail_url = f'https://api-frontend.kemdikbud.go.id/stat_pt/{college_id}'
+    stat_college = reader.read_json(detail_url)
+    return stat_college
+
+  def calculate_pass_percentage(self, college_id):
+    stat_college = self.StatisticCollege(college_id)
+    total_lulus = sum(item["total_kurang_6"] for item in stat_college["rasio"])
+    total_semua = sum(item["total_semua"] for item in stat_college["rasio"])
+    pass_percentage = (total_lulus / total_semua) * 100
+    return pass_percentage
+
+  def calculate_average_study_time(self, college_id):
+    stat_college = self.StatisticCollege(college_id)
+    total_years = sum(item["total_years"] * item["total_count"] for item in stat_college["rata_lama_studi"])
+    total_count = sum(item["total_count"] for item in stat_college["rata_lama_studi"])
+    average_study_time = total_years / total_count
+    return average_study_time
 
 # ============= STUDY PROGRAMS ===================
 class STUDY_PROGRAMS:
