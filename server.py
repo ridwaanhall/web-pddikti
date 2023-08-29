@@ -125,6 +125,7 @@ def detail_college_id(college_id):
   sp_details = college.GetSPDetail(college_id)
   sum_details = college.GetSumDetail(college_id)
   lc_detail = college.GetLecturerCollegeDetail(college_id)
+  stat_college = college.StatisticCollege(college_id)
   # latitude and longitude
   latitude = college_details.get("lintang", 0)  # Use the "lintang" value from the JSON
   longitude = college_details.get("bujur", 0)   # Use the "bujur" value from the JSON
@@ -198,7 +199,8 @@ def detail_college_id(college_id):
                          tidak_tetap_jumlah_jenjang_keys=tidak_tetap_jumlah_jenjang_keys,
                          tidak_tetap_jumlah_jenjang_values=tidak_tetap_jumlah_jenjang_values,
                          tidak_tetap_jumlah_registrasi_keys=tidak_tetap_jumlah_registrasi_keys,
-                         tidak_tetap_jumlah_registrasi_values=tidak_tetap_jumlah_registrasi_values)
+                         tidak_tetap_jumlah_registrasi_values=tidak_tetap_jumlah_registrasi_values,
+                         stat_college=stat_college)
 
 
 # ================= STUDY PROGRAMS ===================
