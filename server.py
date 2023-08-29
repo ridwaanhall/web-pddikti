@@ -125,6 +125,9 @@ def detail_college_id(college_id):
   sp_details = college.GetSPDetail(college_id)
   sum_details = college.GetSumDetail(college_id)
   lc_detail = college.GetLecturerCollegeDetail(college_id)
+  # latitude and longitude
+  latitude = college_details.get("lintang", 0)  # Use the "lintang" value from the JSON
+  longitude = college_details.get("bujur", 0)   # Use the "bujur" value from the JSON
   # akreditasi jumlah
   akreditasi_keys = list(sum_details['jumlah_prodi_akreditasi'].keys())
   akreditasi_values = list(sum_details['jumlah_prodi_akreditasi'].values())
@@ -175,6 +178,9 @@ def detail_college_id(college_id):
                          akreditasi_values=akreditasi_values,
                          dosen_value=dosen_value,
                          mahasiswa_value=mahasiswa_value,
+                         # latitude longitude
+                         latitude=latitude,
+                         longitude=longitude,
                          # dosen tetap
                          tetap_jumlah_jabatan_keys=tetap_jumlah_jabatan_keys,
                          tetap_jumlah_jabatan_values=tetap_jumlah_jabatan_values,
