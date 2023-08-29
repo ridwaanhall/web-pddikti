@@ -2,15 +2,30 @@
 {% block title %}Detail College - Detail College Data{% endblock %}
 {% block listupper %}Detail College{% endblock %}
 {% block hsixupper %}Detail College List{% endblock %}
+{% block head_maps %}
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+{% endblock %}
 {% block content %}
 <div class="container-fluid">
-  <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1592930954854-7d00c87d0cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); background-position-y: 50%;">
+  <div id="collegeMap" style="z-index: 1;" class="page-header min-height-300 border-radius-xl mt-4">
     <span class="mask bg-gradient-primary opacity-6"></span>
   </div>
-  <div class="card  card-body blur shadow-blur mx-4 mt-n6 overflow-hidden text-dark">
+  <div class="card  card-body blur shadow-blur mx-4 mt-n6 overflow-hidden text-dark" style="z-index: 2;">
     <div class="row gx-4">
       <div class="col-auto">
-        <div class="avatar avatar-xl position-relative ">
+        <div class="avatar avatar-xl position-relative">
           <img src="https://api-frontend.kemdikbud.go.id/v2/detail_pt_logo/{{ college_id }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
         </div>
       </div>
@@ -33,6 +48,7 @@
     </div>
   </div>
 </div>
+
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-md-9">
@@ -1060,4 +1076,54 @@
   });
   
 </script>
+
+{% endblock %}
+
+{% block foot_maps %}
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        const mymap = L.map('collegeMap').setView([{{ latitude }}, {{ longitude }}], 7);
+        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+
+        const locIcon = L.icon({
+            iconUrl: '/static/img/college.png',
+            iconSize: [50, 50],
+            iconAnchor: [25, 25]
+        });
+        let marker = L.marker([{{ latitude }}, {{ longitude }}], 
+        //{ icon: locIcon }
+        )
+          .addTo(mymap)
+          .bindPopup('hehe');
+
+
+        // Google Map Layer
+        googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3']
+         });
+         googleStreets.addTo(mymap);
+        
+         // Satelite Layer
+        googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+           maxZoom: 20,
+           subdomains:['mt0','mt1','mt2','mt3']
+         });
+        googleSat.addTo(mymap);
+
+        const baseLayers = {
+            "Satellite":googleSat,
+            "Google Map":googleStreets,
+            "OpenStreetMap": tiles,
+        };
+      
+        L.control.layers(baseLayers).addTo(mymap);
+
+      
+    </script>
 {% endblock %}
