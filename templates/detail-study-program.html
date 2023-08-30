@@ -151,7 +151,7 @@
                 <tr>
                   <td>Description</td>
                   <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.deskripsi }}</td>
+                  <td>{{ studyprogram_detail.detailumum.deskripsi | safe }}</td>
                 </tr>
                 <tr>
                   <td>Vision</td>
@@ -166,12 +166,12 @@
                 <tr>
                   <td>Competence</td>
                   <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.kompetensi }}</td>
+                  <td>{{ studyprogram_detail.detailumum.kompetensi | safe }}</td>
                 </tr>
                 <tr>
                   <td>Achievements</td>
                   <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.capaian }}</td>
+                  <td>{{ studyprogram_detail.detailumum.capaian | safe }}</td>
                 </tr>
               </table>
             </div>
