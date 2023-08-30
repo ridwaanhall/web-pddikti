@@ -1,0 +1,1102 @@
+{% extends 'base.html' %}
+{% block title %}Detail Study Program - Detail Study Program Data{% endblock %}
+{% block listupper %}Detail Study Program{% endblock %}
+{% block hsixupper %}Detail Study Program List{% endblock %}
+{% block head_maps %}
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+  <div id="collegeMap" style="z-index: 1;" class="page-header min-height-300 border-radius-xl mt-4">
+    <span class="h4 mask bg-gradient-primary opacity-6">No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) No Study Program Selected :) </span>
+  </div>
+  <div class="card  card-body blur shadow-blur mx-4 mt-n6 overflow-hidden text-dark" style="z-index: 2;">
+    <div class="row gx-4">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img src="https://api-frontend.kemdikbud.go.id/v2/detail_pt_logo/{{ linkpt_short }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+        </div>
+      </div>
+      <div class="col-auto my-auto text-dark">
+        <div class="h-100">
+          <table>
+            <tr>
+              <td class="mb-1 font-weight-bold text-dark">
+                 {{ studyprogram_detail.detailumum.namajenjang }} - {{ studyprogram_detail.detailumum.nm_lemb }}
+              </td>
+            </tr>
+            <tr>
+              <td class="mb-0 text-sm text-dark">
+                 {{ studyprogram_detail.detailumum.namapt }}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card h-100">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-8 d-flex align-items-center">
+              <h6 class="mb-0">Study Program Information</h6>
+            </div>
+            <div class="col-md-4 text-end">
+              <i class="fas fa-user text-secondary text-sm"></i>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <table>
+            <tr>
+              <td>Study Program</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.nm_lemb }}</td>
+            </tr>
+            <tr>
+              <td>NPSN</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.npsn }}</td>
+            </tr>
+            <tr>
+              <td>Accreditation</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.akreditas }}</td>
+            </tr>
+            <tr>
+              <td>Accreditation Date</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Validity Date</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Study Program Status</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.stat_sp }}</td>
+            </tr>
+            <tr>
+              <td>Established Date</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.tgl_berdiri }}</td>
+            </tr>
+            <tr>
+              <td>SK of Study Program</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.sk_pendirian_sp }}</td>
+            </tr>
+            <tr>
+              <td>Date SK of Study Program</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.tgl_sk_pendirian_sp }}</td>
+            </tr>
+            <tr>
+              <td>Total Fields Study</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> sum_details.jumlah_bidangilmu }}</td>
+            </tr>
+            <tr>
+              <td>Total Faculties</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> sum_details.jumlah_fakultas }}</td>
+            </tr>
+            <tr>
+              <td>Total Study Programs</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> sum_details.jumlah_prodi }}</td>
+            </tr>
+            <tr>
+              <td>Street</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.jln }}</td>
+            </tr>
+            <tr>
+              <td>Regency/City</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.nama_wil }}</td>
+            </tr>
+            <tr>
+              <td>Postal Code</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.kode_pos }}</td>
+            </tr>
+            <tr>
+              <td>Telephone Number</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.no_tel }}</td>
+            </tr>
+            <tr>
+              <td>Fax Number</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.no_fax }}</td>
+            </tr>
+            <tr>
+              <td>E-mail</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.email }}</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td> studyprogram_detail.website }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card mb-4">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-12 d-flex align-items-center">
+              <h6 class="mb-0">Total Accreditation of SP</h6>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="doughnut-chart" class="chart-canvas" height="200px"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-12 d-flex align-items-center">
+              <h6 class="mb-0">Students : Lecturer</h6>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="pie-chart" class="chart-canvas" height="200px"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-4">
+    <div class="card card-frame">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Permanent Lecturer</h6>
+      </div>
+      <div class="card-body p-3">
+        <!-- Nesting four vertical cards (col-md-3) inside the main card -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Position
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="tetap-jumlah-jabatan" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Gender
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="tetap-jumlah-gender" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Degree
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="tetap-jumlah-degree" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Registration
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="tetap-jumlah-registrasi" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-4">
+    <div class="card card-frame">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Non-Permanent Lecturer</h6>
+      </div>
+      <div class="card-body p-3">
+        <!-- Nesting four vertical cards (col-md-3) inside the main card -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Position
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-jabatan" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Gender
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-gender" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Degree
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-degree" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header pb-0 p-3">
+                Registration
+              </div>
+              <div class="card-body p-3">
+                <div class="chart">
+                  <canvas id="non-tetap-jumlah-registrasi" class="chart-canvas" height="200px"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mt-4">
+        <div class="card card-frame">
+            <div class="card-header pb-0 p-3">
+                <h6 class="mb-1">Pass Percentage and Average Study Time of Students</h6>
+            </div>
+              <div class="card-body p-3">
+                <div class="table-responsive">
+                  <table class="table table-flush">
+                    <thead>
+                        <tr>
+                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree</th>
+                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Not Pass</th>
+                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass</th>
+                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Total</th>
+                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass Percentage</th>
+                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Average Study Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in studyprogram_detail.rasio %}
+                            <tr>
+                                <td class="text-center text-sm font-weight-normal"> item.nm_jenj_didik }}</td>
+                                <td class="text-center text-sm font-weight-normal"> item.total_lebih_6 }}</td>
+                                <td class="text-center text-sm font-weight-normal"> item.total_kurang_6 }}</td>
+                                <td class="text-center text-sm font-weight-normal"> item.total_semua }}</td>
+                                <td class="text-center text-sm font-weight-normal"> '%.2f'|format(item.total_kurang_6 / item.total_semua * 100) }}%</td>
+                                <td class="text-center text-sm font-weight-normal">
+                                    {% for study_item in studyprogram_detail.rata_lama_studi %}
+                                        {% if study_item.nm_jenj_didik == item.nm_jenj_didik %}
+                                             '%.2f'|format(study_item.total_years / study_item.total_count) }} years
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+
+  
+  <div class="col-12 mt-4">
+    <div class="card mb-4">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Study Programs at  studyprogram_detail.nm_lemb }}</h6>
+        <p class="text-sm mb-0">Student data is based on student activity reporting in the academic year. If it is not appropriate, universities are required to improve their reporting through the PDDikti Feeder
+          Prodi application with red writing: study programs with less than 5 homebase lecturers and/or NIDN less than 60%
+        </p>
+      </div>
+      <div class="card-body p-3">
+        <div class="table-responsive">
+          <table class="table table-flush" id="datatable-basic">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Code</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Name</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Status</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Level</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Grade</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for sp_detail in sp_details %}
+              <tr>
+                <td class="text-sm font-weight-normal"> sp_detail.kode_prodi }}</td>
+                <td class="text-sm font-weight-normal"> sp_detail.nm_lemb }}</td>
+                <td class="text-sm font-weight-normal"> sp_detail.stat_prodi }}</td>
+                <td class="text-sm font-weight-normal"> sp_detail.jenjang }}</td>
+                <td class="text-sm font-weight-normal"> sp_detail.akreditas }}</td>
+                <td class="text-sm font-weight-normal align-middle"><a href="/detail-sp sp_detail.id_sms }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="footer py-4  ">
+  <div class="container-fluid">
+    <div class="row align-items-center justify-content-lg-between">
+      <div class="col-lg-6 mb-lg-0 mb-4">
+        <div class="copyright text-center text-sm text-muted text-lg-start">
+          © <script>
+            document.write(new Date().getFullYear())
+          </script>,
+          made with <i class="fa fa-heart"></i> by
+          <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+          for a better web.
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+          <li class="nav-item">
+            <a href="#" class="nav-link text-muted" target="_blank">RidwaanHall</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.instagram.com/ridwaanhall" class="nav-link text-muted" target="_blank">Instagram</a>
+          </li>
+          <li class="nav-item">
+            <a href=https://github.com/ridwaanhall" class="nav-link text-muted" target="_blank">Github</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link pe-0 text-muted" target="_blank">License</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+{% block settings %}
+<div class="fixed-plugin">
+  <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+  <i class="material-icons py-2">settings</i>
+  </a>
+  <div class="card shadow-lg">
+    <div class="card-header pb-0 pt-3">
+      <div class="float-start">
+        <h5 class="mt-3 mb-0">Configurator</h5>
+        <p>See our dashboard options.</p>
+      </div>
+      <div class="float-end mt-4">
+        <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+        <i class="material-icons">clear</i>
+        </button>
+      </div>
+      <!-- End Toggle Button -->
+    </div>
+    <hr class="horizontal dark my-1">
+    <div class="card-body pt-sm-3 pt-0">
+      <!-- Sidebar Backgrounds -->
+      <div>
+        <h6 class="mb-0">Sidebar Colors</h6>
+      </div>
+      <a href="javascript:void(0)" class="switch-trigger background-color">
+        <div class="badge-colors my-2 text-start">
+          <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+          <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+        </div>
+      </a>
+      <!-- Sidenav Type -->
+      <div class="mt-3">
+        <h6 class="mb-0">Sidenav Type</h6>
+        <p class="text-sm">Choose between 2 different sidenav types.</p>
+      </div>
+      <div class="d-flex">
+        <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+      </div>
+      <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+      <!-- Navbar Fixed -->
+      <div class="mt-3 d-flex">
+        <h6 class="mb-0">Navbar Fixed</h6>
+        <div class="form-check form-switch ps-0 ms-auto my-auto">
+          <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+        </div>
+      </div>
+      <hr class="horizontal dark my-3">
+      <div class="mt-2 d-flex">
+        <h6 class="mb-0">Light / Dark</h6>
+        <div class="form-check form-switch ps-0 ms-auto my-auto">
+          <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+        </div>
+      </div>
+      <hr class="horizontal dark my-sm-4">
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block chart_college %}
+<script type="text/javascript">
+  // Doughnut chart
+  var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
+  var akreditasiKeys =  akreditasi_keys | tojson | safe }};
+  var akreditasiValues =  akreditasi_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: akreditasiKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
+        data: akreditasiValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+  
+  // Pie chart
+  var ctx4 = document.getElementById("pie-chart").getContext("2d");
+  var dosenValue =  dosen_value }};
+  var mahasiswaValue =  mahasiswa_value }};
+  new Chart(ctx4, {
+    type: "pie",
+    data: {
+      labels: ['Student', 'Lectuer'],
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 0,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#17c1e8', '#e3316e'],
+        data: [mahasiswaValue, dosenValue],
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah jabatan dosen tetap
+  var ctx3 = document.getElementById("tetap-jumlah-jabatan").getContext("2d");
+  var tetap_jumlah_jabatanKeys =  tetap_jumlah_jabatan_keys | tojson | safe }};
+  var tetap_jumlah_jabatanValues =  tetap_jumlah_jabatan_values | tojson | safe }};
+      new Chart(ctx3, {
+        type: "polarArea",
+        data: {
+          labels: tetap_jumlah_jabatanKeys,
+          datasets: [{
+            label: 'My First Dataset',
+            data: tetap_jumlah_jabatanValues,
+            backgroundColor: ['#17c1e8', '#e3316e', '#3A416F', '#a8b8d8', '#4caf50'],
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            }
+          }
+        }
+      });
+
+  // jumlah jenis kelamin dosen tetap
+  var ctx3 = document.getElementById("tetap-jumlah-gender").getContext("2d");
+  var tetap_jumlah_dosen_jenis_kelaminKeys =  tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
+  var tetap_jumlah_dosen_jenis_kelaminValues =  tetap_jumlah_dosen_jenis_kelamin_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_dosen_jenis_kelaminKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#fb8c00', '#a8b8d8'],
+        data: tetap_jumlah_dosen_jenis_kelaminValues,
+        fill: true
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  //# jumlah jenjang dosen tetap
+
+  // Generate random colors based on the length of the keys list
+  function generateRandomColors(count) {
+    const colors = [];
+    for (let i = 0; i < count; i++) {
+      const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      colors.push(color);
+    }
+    return colors;
+  }
+  
+  var ctx3 = document.getElementById("tetap-jumlah-degree").getContext("2d");
+  var tetap_jumlah_jenjangKeys =  tetap_jumlah_jenjang_keys | tojson | safe }};
+  var tetap_jumlah_jenjangValues =  tetap_jumlah_jenjang_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tetap_jumlah_jenjangKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_jenjangKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tetap_jumlah_jenjangValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah dosen registarsi
+  var ctx3 = document.getElementById("tetap-jumlah-registrasi").getContext("2d");
+  var tetap_jumlah_registrasiKeys =  tetap_jumlah_registrasi_keys | tojson | safe }};
+  var tetap_jumlah_registrasiValues =  tetap_jumlah_registrasi_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tetap_jumlah_registrasiKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tetap_jumlah_registrasiKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tetap_jumlah_registrasiValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+
+  // DOSEN TIDAK TETAP
+  // jumlah jabatan dosen tetap
+  var ctx3 = document.getElementById("non-tetap-jumlah-jabatan").getContext("2d");
+  var tidak_tetap_jumlah_jabatanKeys =  tidak_tetap_jumlah_jabatan_keys | tojson | safe }};
+  var tidak_tetap_jumlah_jabatanValues =  tidak_tetap_jumlah_jabatan_values | tojson | safe }};
+
+  var randomColors = generateRandomColors(tidak_tetap_jumlah_jabatanKeys.length);
+  
+      new Chart(ctx3, {
+        type: "polarArea",
+        data: {
+          labels: tidak_tetap_jumlah_jabatanKeys,
+          datasets: [{
+            label: 'My First Dataset',
+            data: tidak_tetap_jumlah_jabatanValues,
+            backgroundColor: randomColors,
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            }
+          }
+        }
+      });
+
+  // jumlah jenis kelamin dosen tidak tetap
+  var ctx3 = document.getElementById("non-tetap-jumlah-gender").getContext("2d");
+  var tidak_tetap_jumlah_dosen_jenis_kelaminKeys =  tidak_tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
+  var tidak_tetap_jumlah_dosen_jenis_kelaminValues =  tidak_tetap_jumlah_dosen_jenis_kelamin_values | tojson | safe }};
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_dosen_jenis_kelaminKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: ['#fb8c00', '#a8b8d8'],
+        data: tidak_tetap_jumlah_dosen_jenis_kelaminValues,
+        fill: true
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah jenjang dosen tidak tetap
+  var ctx3 = document.getElementById("non-tetap-jumlah-degree").getContext("2d");
+  var tidak_tetap_jumlah_jenjangKeys =  tidak_tetap_jumlah_jenjang_keys | tojson | safe }};
+  var tidak_tetap_jumlah_jenjangValues =  tidak_tetap_jumlah_jenjang_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tidak_tetap_jumlah_jenjangKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_jenjangKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tidak_tetap_jumlah_jenjangValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+
+  // jumlah dosen registarsi
+  var ctx3 = document.getElementById("non-tetap-jumlah-registrasi").getContext("2d");
+  var tidak_tetap_jumlah_registrasiKeys =  tidak_tetap_jumlah_registrasi_keys | tojson | safe }};
+  var tidak_tetap_jumlah_registrasiValues =  tidak_tetap_jumlah_registrasi_values | tojson | safe }};
+  
+  var randomColors = generateRandomColors(tidak_tetap_jumlah_registrasiKeys.length);
+
+  new Chart(ctx3, {
+    type: "doughnut",
+    data: {
+      labels: tidak_tetap_jumlah_registrasiKeys,
+      datasets: [{
+        label: "Projects",
+        weight: 9,
+        cutout: 60,
+        tension: 0.9,
+        pointRadius: 2,
+        borderWidth: 2,
+        backgroundColor: randomColors,
+        data: tidak_tetap_jumlah_registrasiValues,
+        fill: false
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false,
+          }
+        },
+      },
+    },
+  });
+  
+</script>
+
+{% endblock %}
+
+{% block foot_maps %}
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        const mymap = L.map('collegeMap').setView([{{ latitude }}, {{ longitude }}], 17);
+        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+
+        const locIcon = L.icon({
+            iconUrl: '/static/img/college.png',
+            iconSize: [50, 50],
+            iconAnchor: [25, 25]
+        });
+        let marker = L.marker([{{ latitude }}, {{ longitude }}], 
+        //{ icon: locIcon }
+        )
+          .addTo(mymap)
+          .bindPopup('hehe');
+
+
+        // Google Map Layer
+        googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3']
+         });
+         googleStreets.addTo(mymap);
+        
+         // Satelite Layer
+        googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+           maxZoom: 20,
+           subdomains:['mt0','mt1','mt2','mt3']
+         });
+        googleSat.addTo(mymap);
+
+        const baseLayers = {
+            "Google Map":googleStreets,
+            "OpenStreetMap": tiles,
+            "Satellite":googleSat,
+        };
+      
+        L.control.layers(baseLayers).addTo(mymap);
+
+      
+    </script>
+{% endblock %}
