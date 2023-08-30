@@ -24,7 +24,7 @@
             </tr>
             <tr>
               <td class="mb-0 text-sm text-dark">
-                 {{ student_details.dataumum.namapt }}
+                {{ student_details.dataumum.namapt }}
               </td>
             </tr>
           </table>
@@ -67,9 +67,9 @@
               <td>&nbsp;{{ student_details.dataumum.nm_pd }}</td>
             </tr>
             <tr>
-                <td>Gender</td>
-                <td>&nbsp;:</td>
-                <td>&nbsp;{% if student_details.dataumum.jk == 'L' %}Male (L){% elif student_details.dataumum.jk == 'P' %}Female (P){% else %}{{ student_details.dataumum.jk }}{% endif %}</td>
+              <td>Gender</td>
+              <td>&nbsp;:</td>
+              <td>&nbsp;{% if student_details.dataumum.jk == 'L' %}Male (L){% elif student_details.dataumum.jk == 'P' %}Female (P){% else %}{{ student_details.dataumum.jk }}{% endif %}</td>
             </tr>
             <tr>
               <td>College</td>
@@ -141,41 +141,39 @@
       </div>
     </div>
   </div>
-
-        <div class="col-12 mt-4">
-          <div class="card mb-4">
-            <div class="card-header pb-0 p-3">
-              <h6 class="mb-1">Study History</h6>
-            </div>
-            <div class="card-body p-3">
-          <div class="table-responsive">
-            <table class="table table-flush" id="datatable-basic">
-              <thead class="thead-light">
-                <tr>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Code</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Name</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Credits</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Semester</th>
-                  <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for study in student_details.datastudi %}
-                <tr>
-                  <td class="text-sm font-weight-normal">{{ study.kode_mk }}</td>
-                  <td class="text-sm font-weight-normal">{{ study.nm_mk }}</td>
-                  <td class="text-sm font-weight-normal">{{ study.sks_mk }}</td>
-                  <td class="text-sm font-weight-normal">{% set year = study.id_smt[:4] %}{% set last_digit = study.id_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ study.id_smt }}{% endif %}</td>
-                  <td class="text-sm font-weight-normal">{{ study.nilai_huruf }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-            </div>
-          </div>
+  <div class="col-12 mt-4">
+    <div class="card mb-4">
+      <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">Study History</h6>
+      </div>
+      <div class="card-body p-3">
+        <div class="table-responsive">
+          <table class="table table-flush" id="datatable-basic">
+            <thead class="thead-light">
+              <tr>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Code</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Name</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Course Credits</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Semester</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for study in student_details.datastudi %}
+              <tr>
+                <td class="text-sm font-weight-normal">{{ study.kode_mk }}</td>
+                <td class="text-sm font-weight-normal">{{ study.nm_mk }}</td>
+                <td class="text-sm font-weight-normal">{{ study.sks_mk }}</td>
+                <td class="text-sm font-weight-normal">{% set year = study.id_smt[:4] %}{% set last_digit = study.id_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ study.id_smt }}{% endif %}</td>
+                <td class="text-sm font-weight-normal">{{ study.nilai_huruf }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
-
+      </div>
+    </div>
+  </div>
 </div>
 <footer class="footer py-4  ">
   <div class="container-fluid">
