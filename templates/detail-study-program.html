@@ -51,367 +51,237 @@
 
 <div class="container-fluid py-4">
   <div class="row">
-    <div class="col-md-9">
-      <div class="card h-100">
-        <div class="card-header pb-0 p-3">
-          <div class="row">
-            <div class="col-md-8 d-flex align-items-center">
-              <h6 class="mb-0">Study Program Information</h6>
-            </div>
-            <div class="col-md-4 text-end">
-              <i class="fas fa-user text-secondary text-sm"></i>
-            </div>
-          </div>
-        </div>
-        <div class="card-body p-3">
-          <table>
-            <tr>
-              <td>Study Program</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.namajenjang }} - {{ studyprogram_detail.detailumum.nm_lemb }}</td>
-            </tr>
-            <tr>
-              <td>Study Program Code</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.kode_prodi }}</td>
-            </tr>
-            <tr>
-              <td>Status</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.stat_prodi }}</td>
-            </tr>
-            <tr>
-              <td>Accreditation</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.akreditas }}</td>
-            </tr>
-            <tr>
-              <td>College Name</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td><a href="/detail-college/{{ linkpt_short }}"><u> {{ studyprogram_detail.detailumum.namapt }}</u></a</td>
-            </tr>
-            <tr>
-              <td>NPSN</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.npsn }}</td>
-            </tr>
-            <tr>
-              <td>Established Date</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.tgl_berdiri }}</td>
-            </tr>
-            <tr>
-              <td>SK of Study Program</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.sk_selenggara }}</td>
-            </tr>
-            <tr>
-              <td>Date SK of Study Program</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.tgl_sk_selenggara }}</td>
-            </tr>
-            <tr>
-              <td>SK Accreditation SP</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.tgl_sk_akred_prodi }}</td>
-            </tr>
-            <tr>
-              <td>Street</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.jln }}</td>
-            </tr>
-            <tr>
-              <td>Postal Code</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.kode_pos }}</td>
-            </tr>
-            <tr>
-              <td>Telephone Number</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.no_tel }}</td>
-            </tr>
-            <tr>
-              <td>Fax Number</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.no_fax }}</td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.email }}</td>
-            </tr>
-            <tr>
-              <td>Website</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.website }}</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.deskripsi }}</td>
-            </tr>
-            <tr>
-              <td>Vision</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.visi | safe }}</td>
-            </tr>
-            <tr>
-              <td>Mission</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.misi | safe }}</td>
-            </tr>
-            <tr>
-              <td>Competence</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.kompetensi }}</td>
-            </tr>
-            <tr>
-              <td>Achievements</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.capaian }}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card mb-4">
-        <div class="card-header pb-0 p-3">
-          <div class="row">
-            <div class="col-md-12 d-flex align-items-center">
-              <h6 class="mb-0">Total Accreditation of SP</h6>
-            </div>
-          </div>
-        </div>
-        <div class="card-body p-3">
-          <div class="chart">
-            <canvas id="doughnut-chart" class="chart-canvas" height="200px"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-4">
-        <div class="card-header pb-0 p-3">
-          <div class="row">
-            <div class="col-md-12 d-flex align-items-center">
-              <h6 class="mb-0">Students : Lecturer</h6>
-            </div>
-          </div>
-        </div>
-        <div class="card-body p-3">
-          <div class="chart">
-            <canvas id="pie-chart" class="chart-canvas" height="200px"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12 mt-4">
-    <div class="card card-frame">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-1">Permanent Lecturer</h6>
-      </div>
-      <div class="card-body p-3">
-        <!-- Nesting four vertical cards (col-md-3) inside the main card -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Position
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="tetap-jumlah-jabatan" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Gender
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="tetap-jumlah-gender" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Degree
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="tetap-jumlah-degree" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Registration
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="tetap-jumlah-registrasi" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-12 mt-4">
-    <div class="card card-frame">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-1">Non-Permanent Lecturer</h6>
-      </div>
-      <div class="card-body p-3">
-        <!-- Nesting four vertical cards (col-md-3) inside the main card -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Position
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="non-tetap-jumlah-jabatan" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Gender
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="non-tetap-jumlah-gender" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Degree
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="non-tetap-jumlah-degree" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card">
-              <div class="card-header pb-0 p-3">
-                Registration
-              </div>
-              <div class="card-body p-3">
-                <div class="chart">
-                  <canvas id="non-tetap-jumlah-registrasi" class="chart-canvas" height="200px"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 mt-4">
-        <div class="card card-frame">
+    <div class="col-lg-8">
+      <!-- First Card -->
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <div class="card h-100">
             <div class="card-header pb-0 p-3">
-                <h6 class="mb-1">Pass Percentage and Average Study Time of Students</h6>
-            </div>
-              <div class="card-body p-3">
-                <div class="table-responsive">
-                  <table class="table table-flush">
-                    <thead>
-                        <tr>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Not Pass</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Total</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass Percentage</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Average Study Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in studyprogram_detail.rasio %}
-                            <tr>
-                                <td class="text-center text-sm font-weight-normal"> item.nm_jenj_didik }}</td>
-                                <td class="text-center text-sm font-weight-normal"> item.total_lebih_6 }}</td>
-                                <td class="text-center text-sm font-weight-normal"> item.total_kurang_6 }}</td>
-                                <td class="text-center text-sm font-weight-normal"> item.total_semua }}</td>
-                                <td class="text-center text-sm font-weight-normal"> '%.2f'|format(item.total_kurang_6 / item.total_semua * 100) }}%</td>
-                                <td class="text-center text-sm font-weight-normal">
-                                    {% for study_item in studyprogram_detail.rata_lama_studi %}
-                                        {% if study_item.nm_jenj_didik == item.nm_jenj_didik %}
-                                             '%.2f'|format(study_item.total_years / study_item.total_count) }} years
-                                        {% endif %}
-                                    {% endfor %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                  </table>
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Study Program Information</h6>
+                </div>
+                <div class="col-md-4 text-end">
+                  <i class="fas fa-user text-secondary text-sm"></i>
                 </div>
               </div>
+            </div>
+            <div class="card-body p-3">
+              <table>
+                <tr>
+                  <td>Study Program</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.namajenjang }} - {{ studyprogram_detail.detailumum.nm_lemb }}</td>
+                </tr>
+                <tr>
+                  <td>Study Program Code</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.kode_prodi }}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.stat_prodi }}</td>
+                </tr>
+                <tr>
+                  <td>Accreditation</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.akreditas }}</td>
+                </tr>
+                <tr>
+                  <td>College Name</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td><a href="/detail-college/{{ linkpt_short }}"><u> {{ studyprogram_detail.detailumum.namapt }}</u></a</td>
+                </tr>
+                <tr>
+                  <td>NPSN</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.npsn }}</td>
+                </tr>
+                <tr>
+                  <td>Established Date</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.tgl_berdiri }}</td>
+                </tr>
+                <tr>
+                  <td>SK of Study Program</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.sk_selenggara }}</td>
+                </tr>
+                <tr>
+                  <td>Date SK of Study Program</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.tgl_sk_selenggara }}</td>
+                </tr>
+                <tr>
+                  <td>SK Accreditation SP</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.tgl_sk_akred_prodi }}</td>
+                </tr>
+                <tr>
+                  <td>Street</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.jln }}</td>
+                </tr>
+                <tr>
+                  <td>Postal Code</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.kode_pos }}</td>
+                </tr>
+                <tr>
+                  <td>Telephone Number</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.no_tel }}</td>
+                </tr>
+                <tr>
+                  <td>Fax Number</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.no_fax }}</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.email }}</td>
+                </tr>
+                <tr>
+                  <td>Website</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.website }}</td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.deskripsi }}</td>
+                </tr>
+                <tr>
+                  <td>Vision</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.visi | safe }}</td>
+                </tr>
+                <tr>
+                  <td>Mission</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.misi | safe }}</td>
+                </tr>
+                <tr>
+                  <td>Competence</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.kompetensi }}</td>
+                </tr>
+                <tr>
+                  <td>Achievements</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td>{{ studyprogram_detail.detailumum.capaian }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
-    </div>
-  </div>
-
-  
-  <div class="col-12 mt-4">
-    <div class="card mb-4">
-      <div class="card-header pb-0 p-3">
-        <h6 class="mb-1">Study Programs at  studyprogram_detail.nm_lemb }}</h6>
-        <p class="text-sm mb-0">Student data is based on student activity reporting in the academic year. If it is not appropriate, universities are required to improve their reporting through the PDDikti Feeder
-          Prodi application with red writing: study programs with less than 5 homebase lecturers and/or NIDN less than 60%
-        </p>
       </div>
-      <div class="card-body p-3">
-        <div class="table-responsive">
-          <table class="table table-flush" id="datatable-basic">
-            <thead class="thead-light">
-              <tr>
-                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Code</th>
-                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Name</th>
-                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">SP Status</th>
-                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Level</th>
-                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Grade</th>
-                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for sp_detail in sp_details %}
-              <tr>
-                <td class="text-sm font-weight-normal"> sp_detail.kode_prodi }}</td>
-                <td class="text-sm font-weight-normal"> sp_detail.nm_lemb }}</td>
-                <td class="text-sm font-weight-normal"> sp_detail.stat_prodi }}</td>
-                <td class="text-sm font-weight-normal"> sp_detail.jenjang }}</td>
-                <td class="text-sm font-weight-normal"> sp_detail.akreditas }}</td>
-                <td class="text-sm font-weight-normal align-middle"><a href="/detail-sp sp_detail.id_sms }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+      <!-- Second Card -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-1">Ratio Lecturer Data</h6>
+            </div>
+            <div class="card-body p-3">
+              <div class="table-responsive">
+                <table class="table table-flush" id="datatable-basic">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name Lecturer</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree - Title</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NIDN</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Homebase Teach</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for rasio_dosen in studyprogram_detail.datadosenrasio %}
+                    <tr>
+                      <td class="text-sm font-weight-normal">{{ rasio_dosen.nama }}</td>
+                      <td class="text-sm font-weight-normal">{{ rasio_dosen.jenjang_dosen }} - {{ rasio_dosen.gelar_dosen }}</td>
+                      <td class="text-sm font-weight-normal">{{ rasio_dosen.nidn }}</td>
+                      <td class="text-sm font-weight-normal">{{ rasio_dosen.pt }}</td>
+                      <td class="text-sm font-weight-normal">{{ rasio_dosen.jenjang_homebase }} - {{ rasio_dosen.prodi_homebase }}</td>
+                      <td class="text-sm font-weight-normal align-middle"><a href="/detail-lecturer{{ rasio_dosen.id }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-1">Ratio Lecturer Data</h6>
+            </div>
+            <div class="card-body p-3">
+              <div class="table-responsive">
+                <table class="table table-flush" id="datatable-basic2">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name Lecturer</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree - Title</th>
+                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for data_dosen in studyprogram_detail.datadosen %}
+                    <tr>
+                      <td class="text-sm font-weight-normal">{{ data_dosen.nama }}</td>
+                      <td class="text-sm font-weight-normal">{{ data_dosen.pendidikan }} - {{ data_dosen.gelar }}</td>
+                      <td class="text-sm font-weight-normal align-middle"><a href="/detail-lecturer{{ data_dosen.linkdosen.replace('/data_dosen', '') }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-4">
+      <!-- Third Card -->
+      <div class="card mb-4">
+        <div class="card-header pb-0 p-3">
+          <div class="row">
+            <div class="col-md-12 d-flex align-items-center">
+              <h6 class="mb-0">Count Student</h6>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <div class="timeline timeline-one-side">
+            {% for data_mhs in studyprogram_detail.datamhs %}
+            <div class="timeline-block mb-3">
+              <span class="timeline-step">
+              <i class="material-icons text-success text-gradient">history</i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">{% set year = data_mhs.mulai_smt[:4] %}{% set last_digit = data_mhs.mulai_smt[-1] %}{% if last_digit == '1' %}Ogg {{ year }} (Ganjil {{ year }}){% elif last_digit == '2' %}Even {{ year }} (Genap {{ year }}){% else %}{{ data_mhs.mulai_smt }}{% endif %}</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">{{data_mhs.jml}}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
 <footer class="footer py-4  ">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-lg-between">
