@@ -97,7 +97,7 @@ def detail_student_id(student_id):
 def colleges():
   colleges = COLLEGE()
   college_list = colleges.CollegeList()
-  print('ridddddddd', college_list)
+  #print('ridddddddd', college_list)
   return render_template("colleges.html", college_list=college_list)
 
 
@@ -281,14 +281,14 @@ def study_programs():
 
 
 @app.route("/detail-sp")
-def detail_study_program():
+def detail_sp():
   studyprogram_detail = {"detailumum":None}
   return render_template("detail-study-program.html",
                          studyprogram_detail=studyprogram_detail)
 
 
 @app.route("/detail-sp/<sp_id>")
-def detail_study_program_id(sp_id):
+def detail_sp_id(sp_id):
   studyprograms = STUDY_PROGRAMS()
   studyprogram_detail = studyprograms.GetStudyProgramDetails(sp_id)
 
