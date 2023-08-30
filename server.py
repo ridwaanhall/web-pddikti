@@ -282,8 +282,7 @@ def study_programs():
 
 @app.route("/detail-sp")
 def detail_study_program():
-  studyprograms = STUDY_PROGRAMS()
-  studyprogram_detail = studyprograms.GetStudyProgramDetails()
+  studyprogram_detail = {"detailumum":None}
   return render_template("detail-study-program.html",
                          studyprogram_detail=studyprogram_detail)
 
@@ -298,7 +297,11 @@ def detail_study_program_id(sp_id):
   longitude = studyprogram_detail["detailumum"]["bujur"]
   # id college
   linkpt = studyprogram_detail["detailumum"]["linkpt"]
-  linkpt_short = linkpt.split("/data_pt/")[1]
+  linkpt_short = None  # Default value
+
+  if linkpt is not None and "/data_pt/" in linkpt:
+    linkpt_short = linkpt.split("/data_pt/")[1]
+  
   return render_template("detail-study-program.html",
                          studyprogram_detail=studyprogram_detail,
                          latitude=latitude,
