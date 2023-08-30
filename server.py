@@ -113,35 +113,36 @@ def detail_college():
       "tgl_berlaku": "No Data"
     }]
   }
-  return render_template('detail-college.html',
-                         college_details=default_college_details,
-                         sum_details=None,
-                         stat_college=None,
-                         akreditasi_keys=None,
-                         akreditasi_values=None,
-                         dosen_value=None,
-                         mahasiswa_value=None,
-                         # latitude longitude
-                         latitude=None,
-                         longitude=None,
-                         # dosen tetap
-                         tetap_jumlah_jabatan_keys=None,
-                         tetap_jumlah_jabatan_values=None,
-                         tetap_jumlah_dosen_jenis_kelamin_keys=None,
-                         tetap_jumlah_dosen_jenis_kelamin_values=None,
-                         tetap_jumlah_jenjang_keys=None,
-                         tetap_jumlah_jenjang_values=None,
-                         tetap_jumlah_registrasi_keys=None,
-                         tetap_jumlah_registrasi_values=None,
-                         # dosen gk tetap
-                         tidak_tetap_jumlah_jabatan_keys=None,
-                         tidak_tetap_jumlah_jabatan_values=None,
-                         tidak_tetap_jumlah_dosen_jenis_kelamin_keys=None,
-                         tidak_tetap_jumlah_dosen_jenis_kelamin_values=None,
-                         tidak_tetap_jumlah_jenjang_keys=None,
-                         tidak_tetap_jumlah_jenjang_values=None,
-                         tidak_tetap_jumlah_registrasi_keys=None,
-                         tidak_tetap_jumlah_registrasi_values=None)
+  return render_template(
+    'detail-college.html',
+    college_details=default_college_details,
+    sum_details=None,
+    stat_college=None,
+    akreditasi_keys=None,
+    akreditasi_values=None,
+    dosen_value=None,
+    mahasiswa_value=None,
+    # latitude longitude
+    latitude=None,
+    longitude=None,
+    # dosen tetap
+    tetap_jumlah_jabatan_keys=None,
+    tetap_jumlah_jabatan_values=None,
+    tetap_jumlah_dosen_jenis_kelamin_keys=None,
+    tetap_jumlah_dosen_jenis_kelamin_values=None,
+    tetap_jumlah_jenjang_keys=None,
+    tetap_jumlah_jenjang_values=None,
+    tetap_jumlah_registrasi_keys=None,
+    tetap_jumlah_registrasi_values=None,
+    # dosen gk tetap
+    tidak_tetap_jumlah_jabatan_keys=None,
+    tidak_tetap_jumlah_jabatan_values=None,
+    tidak_tetap_jumlah_dosen_jenis_kelamin_keys=None,
+    tidak_tetap_jumlah_dosen_jenis_kelamin_values=None,
+    tidak_tetap_jumlah_jenjang_keys=None,
+    tidak_tetap_jumlah_jenjang_values=None,
+    tidak_tetap_jumlah_registrasi_keys=None,
+    tidak_tetap_jumlah_registrasi_values=None)
 
 
 @app.route('/detail-college/<college_id>')
@@ -154,8 +155,10 @@ def detail_college_id(college_id):
   lc_detail = college.GetLecturerCollegeDetail(college_id)
   stat_college = college.StatisticCollege(college_id)
   # latitude and longitude
-  latitude = college_details.get("lintang", 0)  # Use the "lintang" value from the JSON
-  longitude = college_details.get("bujur", 0)   # Use the "bujur" value from the JSON
+  latitude = college_details.get("lintang",
+                                 0)  # Use the "lintang" value from the JSON
+  longitude = college_details.get("bujur",
+                                  0)  # Use the "bujur" value from the JSON
   # akreditasi jumlah
   akreditasi_keys = list(sum_details['jumlah_prodi_akreditasi'].keys())
   akreditasi_values = list(sum_details['jumlah_prodi_akreditasi'].values())
@@ -164,70 +167,108 @@ def detail_college_id(college_id):
   mahasiswa_value = sum_details['rasio_list'][0]['mahasiswa']
   # ================ dosen tetap =============================
   # dosen tetap jumlah jabatan
-  tetap_jumlah_jabatan_series = lc_detail['tetap']['jumlah_dosen_jabatan']['series']
-  tetap_jumlah_jabatan_keys = [item['name'] for item in tetap_jumlah_jabatan_series]
-  tetap_jumlah_jabatan_values = [item['data'][0] for item in tetap_jumlah_jabatan_series]
+  tetap_jumlah_jabatan_series = lc_detail['tetap']['jumlah_dosen_jabatan'][
+    'series']
+  tetap_jumlah_jabatan_keys = [
+    item['name'] for item in tetap_jumlah_jabatan_series
+  ]
+  tetap_jumlah_jabatan_values = [
+    item['data'][0] for item in tetap_jumlah_jabatan_series
+  ]
   # dosen tetap jumlah female dan male
   tetap_gender = lc_detail['tetap']
-  tetap_jumlah_dosen_jenis_kelamin_keys = list(tetap_gender['jumlah_dosen_jenis_kelamin'].keys())
-  tetap_jumlah_dosen_jenis_kelamin_values = list(tetap_gender['jumlah_dosen_jenis_kelamin'].values())
+  tetap_jumlah_dosen_jenis_kelamin_keys = list(
+    tetap_gender['jumlah_dosen_jenis_kelamin'].keys())
+  tetap_jumlah_dosen_jenis_kelamin_values = list(
+    tetap_gender['jumlah_dosen_jenis_kelamin'].values())
   # dosen tetap jenjang
-  tetap_jumlah_jenjang_series = lc_detail['tetap']['jumlah_dosen_jenjang']['series']
-  tetap_jumlah_jenjang_keys = [item['name'] for item in tetap_jumlah_jenjang_series]
-  tetap_jumlah_jenjang_values = [item['data'][0] for item in tetap_jumlah_jenjang_series]
+  tetap_jumlah_jenjang_series = lc_detail['tetap']['jumlah_dosen_jenjang'][
+    'series']
+  tetap_jumlah_jenjang_keys = [
+    item['name'] for item in tetap_jumlah_jenjang_series
+  ]
+  tetap_jumlah_jenjang_values = [
+    item['data'][0] for item in tetap_jumlah_jenjang_series
+  ]
   # jumlah dosen registrasi
-  tetap_jumlah_registrasi_series = lc_detail['tetap']['jumlah_dosen_registrasi']['series']
-  tetap_jumlah_registrasi_keys = [item['name'] for item in tetap_jumlah_registrasi_series]
-  tetap_jumlah_registrasi_values = [item['data'][0] for item in tetap_jumlah_registrasi_series]
+  tetap_jumlah_registrasi_series = lc_detail['tetap'][
+    'jumlah_dosen_registrasi']['series']
+  tetap_jumlah_registrasi_keys = [
+    item['name'] for item in tetap_jumlah_registrasi_series
+  ]
+  tetap_jumlah_registrasi_values = [
+    item['data'][0] for item in tetap_jumlah_registrasi_series
+  ]
 
   # ================ dosen non tetap =============================
   # dosen non tetap jumlah jabatan
-  tidak_tetap_jumlah_jabatan_series = lc_detail['tidak_tetap']['jumlah_dosen_jabatan']['series']
-  tidak_tetap_jumlah_jabatan_keys = [item['name'] for item in tidak_tetap_jumlah_jabatan_series]
-  tidak_tetap_jumlah_jabatan_values = [item['data'][0] for item in tidak_tetap_jumlah_jabatan_series]
+  tidak_tetap_jumlah_jabatan_series = lc_detail['tidak_tetap'][
+    'jumlah_dosen_jabatan']['series']
+  tidak_tetap_jumlah_jabatan_keys = [
+    item['name'] for item in tidak_tetap_jumlah_jabatan_series
+  ]
+  tidak_tetap_jumlah_jabatan_values = [
+    item['data'][0] for item in tidak_tetap_jumlah_jabatan_series
+  ]
   # dosen non tidak_tetap jumlah female dan male
   tidak_tetap_gender = lc_detail['tidak_tetap']
-  tidak_tetap_jumlah_dosen_jenis_kelamin_keys = list(tidak_tetap_gender['jumlah_dosen_jenis_kelamin'].keys())
-  tidak_tetap_jumlah_dosen_jenis_kelamin_values = list(tidak_tetap_gender['jumlah_dosen_jenis_kelamin'].values())
+  tidak_tetap_jumlah_dosen_jenis_kelamin_keys = list(
+    tidak_tetap_gender['jumlah_dosen_jenis_kelamin'].keys())
+  tidak_tetap_jumlah_dosen_jenis_kelamin_values = list(
+    tidak_tetap_gender['jumlah_dosen_jenis_kelamin'].values())
   # dosen non tidak_tetap jenjang
-  tidak_tetap_jumlah_jenjang_series = lc_detail['tidak_tetap']['jumlah_dosen_jenjang']['series']
-  tidak_tetap_jumlah_jenjang_keys = [item['name'] for item in tidak_tetap_jumlah_jenjang_series]
-  tidak_tetap_jumlah_jenjang_values = [item['data'][0] for item in tidak_tetap_jumlah_jenjang_series]
+  tidak_tetap_jumlah_jenjang_series = lc_detail['tidak_tetap'][
+    'jumlah_dosen_jenjang']['series']
+  tidak_tetap_jumlah_jenjang_keys = [
+    item['name'] for item in tidak_tetap_jumlah_jenjang_series
+  ]
+  tidak_tetap_jumlah_jenjang_values = [
+    item['data'][0] for item in tidak_tetap_jumlah_jenjang_series
+  ]
   # jumlah dosen non registrasi
-  tidak_tetap_jumlah_registrasi_series = lc_detail['tidak_tetap']['jumlah_dosen_registrasi']['series']
-  tidak_tetap_jumlah_registrasi_keys = [item['name'] for item in tidak_tetap_jumlah_registrasi_series]
-  tidak_tetap_jumlah_registrasi_values = [item['data'][0] for item in tidak_tetap_jumlah_registrasi_series]
-  return render_template("detail-college.html",
-                         college_id=college_id,
-                         college_details=college_details,
-                         sp_details=sp_details,
-                         sum_details=sum_details,
-                         akreditasi_keys=akreditasi_keys,
-                         akreditasi_values=akreditasi_values,
-                         dosen_value=dosen_value,
-                         mahasiswa_value=mahasiswa_value,
-                         # latitude longitude
-                         latitude=latitude,
-                         longitude=longitude,
-                         # dosen tetap
-                         tetap_jumlah_jabatan_keys=tetap_jumlah_jabatan_keys,
-                         tetap_jumlah_jabatan_values=tetap_jumlah_jabatan_values,
-                         tetap_jumlah_dosen_jenis_kelamin_keys=tetap_jumlah_dosen_jenis_kelamin_keys,
-                         tetap_jumlah_dosen_jenis_kelamin_values=tetap_jumlah_dosen_jenis_kelamin_values,
-                         tetap_jumlah_jenjang_keys=tetap_jumlah_jenjang_keys,
-                         tetap_jumlah_jenjang_values=tetap_jumlah_jenjang_values,
-                         tetap_jumlah_registrasi_keys=tetap_jumlah_registrasi_keys,
-                         tetap_jumlah_registrasi_values=tetap_jumlah_registrasi_values,
-                         # dosen gk tetap
-                         tidak_tetap_jumlah_jabatan_keys=tidak_tetap_jumlah_jabatan_keys,
-                         tidak_tetap_jumlah_jabatan_values=tidak_tetap_jumlah_jabatan_values,
-                         tidak_tetap_jumlah_dosen_jenis_kelamin_keys=tidak_tetap_jumlah_dosen_jenis_kelamin_keys,
-                         tidak_tetap_jumlah_dosen_jenis_kelamin_values=tidak_tetap_jumlah_dosen_jenis_kelamin_values,
-                         tidak_tetap_jumlah_jenjang_keys=tidak_tetap_jumlah_jenjang_keys,
-                         tidak_tetap_jumlah_jenjang_values=tidak_tetap_jumlah_jenjang_values,
-                         tidak_tetap_jumlah_registrasi_keys=tidak_tetap_jumlah_registrasi_keys,
-                         tidak_tetap_jumlah_registrasi_values=tidak_tetap_jumlah_registrasi_values,
-                         stat_college=stat_college)
+  tidak_tetap_jumlah_registrasi_series = lc_detail['tidak_tetap'][
+    'jumlah_dosen_registrasi']['series']
+  tidak_tetap_jumlah_registrasi_keys = [
+    item['name'] for item in tidak_tetap_jumlah_registrasi_series
+  ]
+  tidak_tetap_jumlah_registrasi_values = [
+    item['data'][0] for item in tidak_tetap_jumlah_registrasi_series
+  ]
+  return render_template(
+    "detail-college.html",
+    college_id=college_id,
+    college_details=college_details,
+    sp_details=sp_details,
+    sum_details=sum_details,
+    akreditasi_keys=akreditasi_keys,
+    akreditasi_values=akreditasi_values,
+    dosen_value=dosen_value,
+    mahasiswa_value=mahasiswa_value,
+    # latitude longitude
+    latitude=latitude,
+    longitude=longitude,
+    # dosen tetap
+    tetap_jumlah_jabatan_keys=tetap_jumlah_jabatan_keys,
+    tetap_jumlah_jabatan_values=tetap_jumlah_jabatan_values,
+    tetap_jumlah_dosen_jenis_kelamin_keys=tetap_jumlah_dosen_jenis_kelamin_keys,
+    tetap_jumlah_dosen_jenis_kelamin_values=
+    tetap_jumlah_dosen_jenis_kelamin_values,
+    tetap_jumlah_jenjang_keys=tetap_jumlah_jenjang_keys,
+    tetap_jumlah_jenjang_values=tetap_jumlah_jenjang_values,
+    tetap_jumlah_registrasi_keys=tetap_jumlah_registrasi_keys,
+    tetap_jumlah_registrasi_values=tetap_jumlah_registrasi_values,
+    # dosen gk tetap
+    tidak_tetap_jumlah_jabatan_keys=tidak_tetap_jumlah_jabatan_keys,
+    tidak_tetap_jumlah_jabatan_values=tidak_tetap_jumlah_jabatan_values,
+    tidak_tetap_jumlah_dosen_jenis_kelamin_keys=
+    tidak_tetap_jumlah_dosen_jenis_kelamin_keys,
+    tidak_tetap_jumlah_dosen_jenis_kelamin_values=
+    tidak_tetap_jumlah_dosen_jenis_kelamin_values,
+    tidak_tetap_jumlah_jenjang_keys=tidak_tetap_jumlah_jenjang_keys,
+    tidak_tetap_jumlah_jenjang_values=tidak_tetap_jumlah_jenjang_values,
+    tidak_tetap_jumlah_registrasi_keys=tidak_tetap_jumlah_registrasi_keys,
+    tidak_tetap_jumlah_registrasi_values=tidak_tetap_jumlah_registrasi_values,
+    stat_college=stat_college)
 
 
 # ================= STUDY PROGRAMS ===================
@@ -237,6 +278,32 @@ def study_programs():
   studyprograms_list = studyprograms.StudyProgramsList()
   return render_template("study-programs.html",
                          studyprograms_list=studyprograms_list)
+
+
+@app.route("/detail-sp")
+def detail_study_program():
+  studyprograms = STUDY_PROGRAMS()
+  studyprogram_detail = studyprograms.GetStudyProgramDetails()
+  return render_template("detail-study-program.html",
+                         studyprogram_detail=studyprogram_detail)
+
+
+@app.route("/detail-sp/<sp_id>")
+def detail_study_program_id(sp_id):
+  studyprograms = STUDY_PROGRAMS()
+  studyprogram_detail = studyprograms.GetStudyProgramDetails(sp_id)
+
+  # Extract latitude and longitude from the detailumum object
+  latitude = studyprogram_detail["detailumum"]["lintang"]
+  longitude = studyprogram_detail["detailumum"]["bujur"]
+  # id college
+  linkpt = studyprogram_detail["detailumum"]["linkpt"]
+  linkpt_short = linkpt.split("/data_pt/")[1]
+  return render_template("detail-study-program.html",
+                         studyprogram_detail=studyprogram_detail,
+                         latitude=latitude,
+                         longitude=longitude,
+                         linkpt_short=linkpt_short)
 
 
 # ================= PROVINCES ========================
