@@ -137,20 +137,55 @@ class COLLEGE:
 
   def calculate_average_study_time(self, college_id):
     stat_college = self.StatisticCollege(college_id)
-    total_years = sum(item["total_years"] * item["total_count"] for item in stat_college["rata_lama_studi"])
-    total_count = sum(item["total_count"] for item in stat_college["rata_lama_studi"])
+    total_years = sum(item["total_years"] * item["total_count"]
+                      for item in stat_college["rata_lama_studi"])
+    total_count = sum(item["total_count"]
+                      for item in stat_college["rata_lama_studi"])
     average_study_time = total_years / total_count
     return average_study_time
 
+
 # ============= STUDY PROGRAMS ===================
 class STUDY_PROGRAMS:
+
+  def _format_date(self, date_str):
+    try:
+      date_obj = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
+      return date_obj.strftime("%A, %d %B %Y")
+    except Exception:
+      return "No Data"
+
+  def GetStudyProgramDetails(self, sp_id):
+    reader = ReadUrl(
+    )  # Diasumsikan Anda memiliki kelas ReadUrl yang sudah didefinisikan
+    detail_url = f'https://api-frontend.kemdikbud.go.id/detail_prodi/{sp_id}'
+    studyp_details = reader.read_json(detail_url)
+
+    # Format tanggal pada detailumum
+    detailumum = studyp_details.get("detailumum", {})
+    detailumum["tgl_berdiri"] = self._format_date(
+      detailumum.get("tgl_berdiri", ""))
+    detailumum["tgl_sk_selenggara"] = self._format_date(
+      detailumum.get("tgl_sk_selenggara", ""))
+    detailumum["tgl_sk_akred_prodi"] = self._format_date(
+      detailumum.get("tgl_sk_akred_prodi", ""))
+
+    # Gabungkan semua data
+    formatted_data = {
+      "datadosen": studyp_details.get("datadosen", []),
+      "datadosenrasio": studyp_details.get("datadosenrasio", []),
+      "datamhs": studyp_details.get("datamhs", []),
+      "detailumum": detailumum,
+      "rasio": studyp_details.get("rasio", [])
+    }
+
+    return formatted_data
 
   def StudyProgramsList(self):
     reader = ReadUrl()
     studyprograms_list = reader.read_json(
       'https://api-frontend.kemdikbud.go.id/loadprodi')
     return studyprograms_list
-
 
 # ================ PROVINCES =====================
 class PROVINCES:
