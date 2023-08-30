@@ -68,12 +68,17 @@
             <tr>
               <td>Study Program</td>
               <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.nm_lemb }}</td>
+              <td>{{ studyprogram_detail.detailumum.namajenjang }} - {{ studyprogram_detail.detailumum.nm_lemb }}</td>
             </tr>
             <tr>
-              <td>NPSN</td>
+              <td>Study Program Code</td>
               <td>&nbsp;:&nbsp;</td>
-              <td>{{ studyprogram_detail.detailumum.npsn }}</td>
+              <td>{{ studyprogram_detail.detailumum.kode_prodi }}</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.stat_prodi }}</td>
             </tr>
             <tr>
               <td>Accreditation</td>
@@ -81,84 +86,89 @@
               <td>{{ studyprogram_detail.detailumum.akreditas }}</td>
             </tr>
             <tr>
-              <td>Accreditation Date</td>
+              <td>College Name</td>
               <td>&nbsp;:&nbsp;</td>
-              <td></td>
+              <td><a href="/detail-college/{{ linkpt_short }}"><u> {{ studyprogram_detail.detailumum.namapt }}</u></a</td>
             </tr>
             <tr>
-              <td>Validity Date</td>
+              <td>NPSN</td>
               <td>&nbsp;:&nbsp;</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Study Program Status</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.stat_sp }}</td>
+              <td>{{ studyprogram_detail.detailumum.npsn }}</td>
             </tr>
             <tr>
               <td>Established Date</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.tgl_berdiri }}</td>
+              <td>{{ studyprogram_detail.detailumum.tgl_berdiri }}</td>
             </tr>
             <tr>
               <td>SK of Study Program</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.sk_pendirian_sp }}</td>
+              <td>{{ studyprogram_detail.detailumum.sk_selenggara }}</td>
             </tr>
             <tr>
               <td>Date SK of Study Program</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.tgl_sk_pendirian_sp }}</td>
+              <td>{{ studyprogram_detail.detailumum.tgl_sk_selenggara }}</td>
             </tr>
             <tr>
-              <td>Total Fields Study</td>
+              <td>SK Accreditation SP</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> sum_details.jumlah_bidangilmu }}</td>
-            </tr>
-            <tr>
-              <td>Total Faculties</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td> sum_details.jumlah_fakultas }}</td>
-            </tr>
-            <tr>
-              <td>Total Study Programs</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td> sum_details.jumlah_prodi }}</td>
+              <td>{{ studyprogram_detail.detailumum.tgl_sk_akred_prodi }}</td>
             </tr>
             <tr>
               <td>Street</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.jln }}</td>
-            </tr>
-            <tr>
-              <td>Regency/City</td>
-              <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.nama_wil }}</td>
+              <td>{{ studyprogram_detail.detailumum.jln }}</td>
             </tr>
             <tr>
               <td>Postal Code</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.kode_pos }}</td>
+              <td>{{ studyprogram_detail.detailumum.kode_pos }}</td>
             </tr>
             <tr>
               <td>Telephone Number</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.no_tel }}</td>
+              <td>{{ studyprogram_detail.detailumum.no_tel }}</td>
             </tr>
             <tr>
               <td>Fax Number</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.no_fax }}</td>
+              <td>{{ studyprogram_detail.detailumum.no_fax }}</td>
             </tr>
             <tr>
-              <td>E-mail</td>
+              <td>Email</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.email }}</td>
+              <td>{{ studyprogram_detail.detailumum.email }}</td>
             </tr>
             <tr>
               <td>Website</td>
               <td>&nbsp;:&nbsp;</td>
-              <td> studyprogram_detail.website }}</td>
+              <td>{{ studyprogram_detail.detailumum.website }}</td>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.deskripsi }}</td>
+            </tr>
+            <tr>
+              <td>Vision</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.visi | safe }}</td>
+            </tr>
+            <tr>
+              <td>Mission</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.misi | safe }}</td>
+            </tr>
+            <tr>
+              <td>Competence</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.kompetensi }}</td>
+            </tr>
+            <tr>
+              <td>Achievements</td>
+              <td>&nbsp;:&nbsp;</td>
+              <td>{{ studyprogram_detail.detailumum.capaian }}</td>
             </tr>
           </table>
         </div>
