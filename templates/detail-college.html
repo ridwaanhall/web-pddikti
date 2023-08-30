@@ -3,19 +3,19 @@
 {% block listupper %}Detail College{% endblock %}
 {% block hsixupper %}Detail College List{% endblock %}
 {% block head_maps %}
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-      crossorigin=""
-    ></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""
+  />
+<script
+  src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""
+  ></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 {% endblock %}
 {% block content %}
 <div class="container-fluid">
@@ -48,7 +48,6 @@
     </div>
   </div>
 </div>
-
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-md-9">
@@ -195,7 +194,6 @@
       </div>
     </div>
   </div>
-
   <div class="col-12 mt-4">
     <div class="card card-frame">
       <div class="card-header pb-0 p-3">
@@ -256,7 +254,6 @@
       </div>
     </div>
   </div>
-
   <div class="col-12 mt-4">
     <div class="card card-frame">
       <div class="card-header pb-0 p-3">
@@ -317,52 +314,49 @@
       </div>
     </div>
   </div>
-
   <div class="row">
     <div class="col-12 mt-4">
-        <div class="card card-frame">
-            <div class="card-header pb-0 p-3">
-                <h6 class="mb-1">Pass Percentage and Average Study Time of Students</h6>
-            </div>
-              <div class="card-body p-3">
-                <div class="table-responsive">
-                  <table class="table table-flush">
-                    <thead>
-                        <tr>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Not Pass</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Total</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass Percentage</th>
-                            <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Average Study Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in stat_college.rasio %}
-                            <tr>
-                                <td class="text-center text-sm font-weight-normal">{{ item.nm_jenj_didik }}</td>
-                                <td class="text-center text-sm font-weight-normal">{{ item.total_lebih_6 }}</td>
-                                <td class="text-center text-sm font-weight-normal">{{ item.total_kurang_6 }}</td>
-                                <td class="text-center text-sm font-weight-normal">{{ item.total_semua }}</td>
-                                <td class="text-center text-sm font-weight-normal">{{ '%.2f'|format(item.total_kurang_6 / item.total_semua * 100) }}%</td>
-                                <td class="text-center text-sm font-weight-normal">
-                                    {% for study_item in stat_college.rata_lama_studi %}
-                                        {% if study_item.nm_jenj_didik == item.nm_jenj_didik %}
-                                            {{ '%.2f'|format(study_item.total_years / study_item.total_count) }} years
-                                        {% endif %}
-                                    {% endfor %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+      <div class="card card-frame">
+        <div class="card-header pb-0 p-3">
+          <h6 class="mb-1">Pass Percentage and Average Study Time of Students</h6>
         </div>
+        <div class="card-body p-3">
+          <div class="table-responsive">
+            <table class="table table-flush">
+              <thead>
+                <tr>
+                  <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree</th>
+                  <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Not Pass</th>
+                  <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass</th>
+                  <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Total</th>
+                  <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Pass Percentage</th>
+                  <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Average Study Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in stat_college.rasio %}
+                <tr>
+                  <td class="text-center text-sm font-weight-normal">{{ item.nm_jenj_didik }}</td>
+                  <td class="text-center text-sm font-weight-normal">{{ item.total_lebih_6 }}</td>
+                  <td class="text-center text-sm font-weight-normal">{{ item.total_kurang_6 }}</td>
+                  <td class="text-center text-sm font-weight-normal">{{ item.total_semua }}</td>
+                  <td class="text-center text-sm font-weight-normal">{{ '%.2f'|format(item.total_kurang_6 / item.total_semua * 100) }}%</td>
+                  <td class="text-center text-sm font-weight-normal">
+                    {% for study_item in stat_college.rata_lama_studi %}
+                    {% if study_item.nm_jenj_didik == item.nm_jenj_didik %}
+                    {{ '%.2f'|format(study_item.total_years / study_item.total_count) }} years
+                    {% endif %}
+                    {% endfor %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  
   <div class="col-12 mt-4">
     <div class="card mb-4">
       <div class="card-header pb-0 p-3">
@@ -499,7 +493,6 @@
   </div>
 </div>
 {% endblock %}
-
 {% block chart_college %}
 <script type="text/javascript">
   // Doughnut chart
@@ -619,7 +612,7 @@
       },
     },
   });
-
+  
   // jumlah jabatan dosen tetap
   var ctx3 = document.getElementById("tetap-jumlah-jabatan").getContext("2d");
   var tetap_jumlah_jabatanKeys = {{ tetap_jumlah_jabatan_keys | tojson | safe }};
@@ -642,7 +635,7 @@
           }
         }
       });
-
+  
   // jumlah jenis kelamin dosen tetap
   var ctx3 = document.getElementById("tetap-jumlah-gender").getContext("2d");
   var tetap_jumlah_dosen_jenis_kelaminKeys = {{ tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
@@ -701,9 +694,9 @@
       },
     },
   });
-
+  
   //# jumlah jenjang dosen tetap
-
+  
   // Generate random colors based on the length of the keys list
   function generateRandomColors(count) {
     const colors = [];
@@ -719,7 +712,7 @@
   var tetap_jumlah_jenjangValues = {{ tetap_jumlah_jenjang_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tetap_jumlah_jenjangKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -774,14 +767,14 @@
       },
     },
   });
-
+  
   // jumlah dosen registarsi
   var ctx3 = document.getElementById("tetap-jumlah-registrasi").getContext("2d");
   var tetap_jumlah_registrasiKeys = {{ tetap_jumlah_registrasi_keys | tojson | safe }};
   var tetap_jumlah_registrasiValues = {{ tetap_jumlah_registrasi_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tetap_jumlah_registrasiKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -836,14 +829,14 @@
       },
     },
   });
-
-
+  
+  
   // DOSEN TIDAK TETAP
   // jumlah jabatan dosen tetap
   var ctx3 = document.getElementById("non-tetap-jumlah-jabatan").getContext("2d");
   var tidak_tetap_jumlah_jabatanKeys = {{ tidak_tetap_jumlah_jabatan_keys | tojson | safe }};
   var tidak_tetap_jumlah_jabatanValues = {{ tidak_tetap_jumlah_jabatan_values | tojson | safe }};
-
+  
   var randomColors = generateRandomColors(tidak_tetap_jumlah_jabatanKeys.length);
   
       new Chart(ctx3, {
@@ -864,7 +857,7 @@
           }
         }
       });
-
+  
   // jumlah jenis kelamin dosen tidak tetap
   var ctx3 = document.getElementById("non-tetap-jumlah-gender").getContext("2d");
   var tidak_tetap_jumlah_dosen_jenis_kelaminKeys = {{ tidak_tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
@@ -923,14 +916,14 @@
       },
     },
   });
-
+  
   // jumlah jenjang dosen tidak tetap
   var ctx3 = document.getElementById("non-tetap-jumlah-degree").getContext("2d");
   var tidak_tetap_jumlah_jenjangKeys = {{ tidak_tetap_jumlah_jenjang_keys | tojson | safe }};
   var tidak_tetap_jumlah_jenjangValues = {{ tidak_tetap_jumlah_jenjang_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tidak_tetap_jumlah_jenjangKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -985,14 +978,14 @@
       },
     },
   });
-
+  
   // jumlah dosen registarsi
   var ctx3 = document.getElementById("non-tetap-jumlah-registrasi").getContext("2d");
   var tidak_tetap_jumlah_registrasiKeys = {{ tidak_tetap_jumlah_registrasi_keys | tojson | safe }};
   var tidak_tetap_jumlah_registrasiValues = {{ tidak_tetap_jumlah_registrasi_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tidak_tetap_jumlah_registrasiKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -1049,54 +1042,52 @@
   });
   
 </script>
-
 {% endblock %}
-
 {% block foot_maps %}
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <script>
-        const mymap = L.map('collegeMap').setView([{{ latitude }}, {{ longitude }}], 17);
-        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-
-        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        const tiles = L.tileLayer(tileUrl, { attribution });
-        tiles.addTo(mymap);
-
-        const locIcon = L.icon({
-            iconUrl: '/static/img/college.png',
-            iconSize: [50, 50],
-            iconAnchor: [25, 25]
-        });
-        let marker = L.marker([{{ latitude }}, {{ longitude }}], 
-        //{ icon: locIcon }
-        )
-          .addTo(mymap)
-          .bindPopup('hehe');
-
-
-        // Google Map Layer
-        googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-            maxZoom: 20,
-            subdomains:['mt0','mt1','mt2','mt3']
-         });
-         googleStreets.addTo(mymap);
-        
-         // Satelite Layer
-        googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-           maxZoom: 20,
-           subdomains:['mt0','mt1','mt2','mt3']
-         });
-        googleSat.addTo(mymap);
-
-        const baseLayers = {
-            "Google Map":googleStreets,
-            "OpenStreetMap": tiles,
-            "Satellite":googleSat,
-        };
-      
-        L.control.layers(baseLayers).addTo(mymap);
-
-      
-    </script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script>
+  const mymap = L.map('collegeMap').setView([{{ latitude }}, {{ longitude }}], 17);
+  const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  
+  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const tiles = L.tileLayer(tileUrl, { attribution });
+  tiles.addTo(mymap);
+  
+  const locIcon = L.icon({
+      iconUrl: '/static/img/college.png',
+      iconSize: [50, 50],
+      iconAnchor: [25, 25]
+  });
+  let marker = L.marker([{{ latitude }}, {{ longitude }}], 
+  //{ icon: locIcon }
+  )
+    .addTo(mymap)
+    .bindPopup('hehe');
+  
+  
+  // Google Map Layer
+  googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+   });
+   googleStreets.addTo(mymap);
+  
+   // Satelite Layer
+  googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+     maxZoom: 20,
+     subdomains:['mt0','mt1','mt2','mt3']
+   });
+  googleSat.addTo(mymap);
+  
+  const baseLayers = {
+      "Google Map":googleStreets,
+      "OpenStreetMap": tiles,
+      "Satellite":googleSat,
+  };
+  
+  L.control.layers(baseLayers).addTo(mymap);
+  
+  
+</script>
 {% endblock %}
