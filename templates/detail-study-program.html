@@ -3,19 +3,19 @@
 {% block listupper %}Detail Study Program{% endblock %}
 {% block hsixupper %}Detail Study Program List{% endblock %}
 {% block head_maps %}
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-      crossorigin=""
-    ></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""
+  />
+<script
+  src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""
+  ></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 {% endblock %}
 {% block content %}
 <div class="container-fluid">
@@ -34,12 +34,12 @@
           <table>
             <tr>
               <td class="mb-1 font-weight-bold text-dark">
-                 {{ studyprogram_detail.detailumum.namajenjang }} - {{ studyprogram_detail.detailumum.nm_lemb }}
+                {{ studyprogram_detail.detailumum.namajenjang }} - {{ studyprogram_detail.detailumum.nm_lemb }}
               </td>
             </tr>
             <tr>
               <td class="mb-0 text-sm text-dark">
-                 {{ studyprogram_detail.detailumum.namapt }}
+                {{ studyprogram_detail.detailumum.namapt }}
               </td>
             </tr>
           </table>
@@ -48,7 +48,6 @@
     </div>
   </div>
 </div>
-
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-lg-8">
@@ -91,87 +90,90 @@
                 <tr>
                   <td>College Name</td>
                   <td>&nbsp;:&nbsp;</td>
-                  <td><a href="/detail-college/{{ linkpt_short }}"><u> {{ studyprogram_detail.detailumum.namapt }}</u></a</td>
+                  <td>
+                    <a href="/detail-college/{{ linkpt_short }}">
+                      <u> {{ studyprogram_detail.detailumum.namapt }}</u></a
+                  </td>
                 </tr>
                 <tr>
-                  <td>NPSN</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.npsn }}</td>
+                <td>NPSN</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.npsn }}</td>
                 </tr>
                 <tr>
-                  <td>Established Date</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.tgl_berdiri }}</td>
+                <td>Established Date</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.tgl_berdiri }}</td>
                 </tr>
                 <tr>
-                  <td>SK of Study Program</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.sk_selenggara }}</td>
+                <td>SK of Study Program</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.sk_selenggara }}</td>
                 </tr>
                 <tr>
-                  <td>Date SK of Study Program</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.tgl_sk_selenggara }}</td>
+                <td>Date SK of Study Program</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.tgl_sk_selenggara }}</td>
                 </tr>
                 <tr>
-                  <td>SK Accreditation SP</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.tgl_sk_akred_prodi }}</td>
+                <td>SK Accreditation SP</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.tgl_sk_akred_prodi }}</td>
                 </tr>
                 <tr>
-                  <td>Street</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.jln }}</td>
+                <td>Street</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.jln }}</td>
                 </tr>
                 <tr>
-                  <td>Postal Code</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.kode_pos }}</td>
+                <td>Postal Code</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.kode_pos }}</td>
                 </tr>
                 <tr>
-                  <td>Telephone Number</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.no_tel }}</td>
+                <td>Telephone Number</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.no_tel }}</td>
                 </tr>
                 <tr>
-                  <td>Fax Number</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.no_fax }}</td>
+                <td>Fax Number</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.no_fax }}</td>
                 </tr>
                 <tr>
-                  <td>Email</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.email }}</td>
+                <td>Email</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.email }}</td>
                 </tr>
                 <tr>
-                  <td>Website</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.website }}</td>
+                <td>Website</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.website }}</td>
                 </tr>
                 <tr>
-                  <td>Description</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.deskripsi | safe }}</td>
+                <td>Description</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.deskripsi | safe }}</td>
                 </tr>
                 <tr>
-                  <td>Vision</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.visi | safe }}</td>
+                <td>Vision</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.visi | safe }}</td>
                 </tr>
                 <tr>
-                  <td>Mission</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.misi | safe }}</td>
+                <td>Mission</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.misi | safe }}</td>
                 </tr>
                 <tr>
-                  <td>Competence</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.kompetensi | safe }}</td>
+                <td>Competence</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.kompetensi | safe }}</td>
                 </tr>
                 <tr>
-                  <td>Achievements</td>
-                  <td>&nbsp;:&nbsp;</td>
-                  <td>{{ studyprogram_detail.detailumum.capaian | safe }}</td>
+                <td>Achievements</td>
+                <td>&nbsp;:&nbsp;</td>
+                <td>{{ studyprogram_detail.detailumum.capaian | safe }}</td>
                 </tr>
               </table>
             </div>
@@ -180,43 +182,42 @@
       </div>
       <!-- Second Card -->
       <div class="row">
-        <div class="col-md-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0 p-3">
-              <h6 class="mb-1">Ratio Lecturer Data</h6>
-            </div>
-            <div class="card-body p-3">
-              <div class="table-responsive">
-                <table class="table table-flush" id="datatable-basic">
-                  <thead class="thead-light">
-                    <tr>
-                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name Lecturer</th>
-                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree - Title</th>
-                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NIDN</th>
-                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
-                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Homebase Teach</th>
-                      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for rasio_dosen in studyprogram_detail.datadosenrasio %}
-                    <tr>
-                      <td class="text-sm font-weight-normal">{{ rasio_dosen.nama }}</td>
-                      <td class="text-sm font-weight-normal">{{ rasio_dosen.jenjang_dosen }} - {{ rasio_dosen.gelar_dosen }}</td>
-                      <td class="text-sm font-weight-normal">{{ rasio_dosen.nidn }}</td>
-                      <td class="text-sm font-weight-normal">{{ rasio_dosen.pt }}</td>
-                      <td class="text-sm font-weight-normal">{{ rasio_dosen.jenjang_homebase }} - {{ rasio_dosen.prodi_homebase }}</td>
-                      <td class="text-sm font-weight-normal align-middle"><a href="/detail-lecturer{{ rasio_dosen.id }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-12">
+      <div class="card mb-4">
+      <div class="card-header pb-0 p-3">
+      <h6 class="mb-1">Ratio Lecturer Data</h6>
       </div>
-
+      <div class="card-body p-3">
+      <div class="table-responsive">
+      <table class="table table-flush" id="datatable-basic">
+      <thead class="thead-light">
+      <tr>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Name Lecturer</th>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Degree - Title</th>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NIDN</th>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">College</th>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Homebase Teach</th>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7"></th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for rasio_dosen in studyprogram_detail.datadosenrasio %}
+      <tr>
+      <td class="text-sm font-weight-normal">{{ rasio_dosen.nama }}</td>
+      <td class="text-sm font-weight-normal">{{ rasio_dosen.jenjang_dosen }} - {{ rasio_dosen.gelar_dosen }}</td>
+      <td class="text-sm font-weight-normal">{{ rasio_dosen.nidn }}</td>
+      <td class="text-sm font-weight-normal">{{ rasio_dosen.pt }}</td>
+      <td class="text-sm font-weight-normal">{{ rasio_dosen.jenjang_homebase }} - {{ rasio_dosen.prodi_homebase }}</td>
+      <td class="text-sm font-weight-normal align-middle"><a href="/detail-lecturer{{ rasio_dosen.id }}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
+      </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <div class="card mb-4">
@@ -248,7 +249,6 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="col-lg-4">
       <!-- Third Card -->
@@ -279,9 +279,6 @@
     </div>
   </div>
 </div>
-
-
-
 <footer class="footer py-4  ">
   <div class="container-fluid">
     <div class="row align-items-center justify-content-lg-between">
@@ -379,7 +376,6 @@
   </div>
 </div>
 {% endblock %}
-
 {% block chart_college %}
 <script type="text/javascript">
   // Doughnut chart
@@ -499,7 +495,7 @@
       },
     },
   });
-
+  
   // jumlah jabatan dosen tetap
   var ctx3 = document.getElementById("tetap-jumlah-jabatan").getContext("2d");
   var tetap_jumlah_jabatanKeys =  tetap_jumlah_jabatan_keys | tojson | safe }};
@@ -522,7 +518,7 @@
           }
         }
       });
-
+  
   // jumlah jenis kelamin dosen tetap
   var ctx3 = document.getElementById("tetap-jumlah-gender").getContext("2d");
   var tetap_jumlah_dosen_jenis_kelaminKeys =  tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
@@ -581,9 +577,9 @@
       },
     },
   });
-
+  
   //# jumlah jenjang dosen tetap
-
+  
   // Generate random colors based on the length of the keys list
   function generateRandomColors(count) {
     const colors = [];
@@ -599,7 +595,7 @@
   var tetap_jumlah_jenjangValues =  tetap_jumlah_jenjang_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tetap_jumlah_jenjangKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -654,14 +650,14 @@
       },
     },
   });
-
+  
   // jumlah dosen registarsi
   var ctx3 = document.getElementById("tetap-jumlah-registrasi").getContext("2d");
   var tetap_jumlah_registrasiKeys =  tetap_jumlah_registrasi_keys | tojson | safe }};
   var tetap_jumlah_registrasiValues =  tetap_jumlah_registrasi_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tetap_jumlah_registrasiKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -716,14 +712,14 @@
       },
     },
   });
-
-
+  
+  
   // DOSEN TIDAK TETAP
   // jumlah jabatan dosen tetap
   var ctx3 = document.getElementById("non-tetap-jumlah-jabatan").getContext("2d");
   var tidak_tetap_jumlah_jabatanKeys =  tidak_tetap_jumlah_jabatan_keys | tojson | safe }};
   var tidak_tetap_jumlah_jabatanValues =  tidak_tetap_jumlah_jabatan_values | tojson | safe }};
-
+  
   var randomColors = generateRandomColors(tidak_tetap_jumlah_jabatanKeys.length);
   
       new Chart(ctx3, {
@@ -744,7 +740,7 @@
           }
         }
       });
-
+  
   // jumlah jenis kelamin dosen tidak tetap
   var ctx3 = document.getElementById("non-tetap-jumlah-gender").getContext("2d");
   var tidak_tetap_jumlah_dosen_jenis_kelaminKeys =  tidak_tetap_jumlah_dosen_jenis_kelamin_keys | tojson | safe }};
@@ -803,14 +799,14 @@
       },
     },
   });
-
+  
   // jumlah jenjang dosen tidak tetap
   var ctx3 = document.getElementById("non-tetap-jumlah-degree").getContext("2d");
   var tidak_tetap_jumlah_jenjangKeys =  tidak_tetap_jumlah_jenjang_keys | tojson | safe }};
   var tidak_tetap_jumlah_jenjangValues =  tidak_tetap_jumlah_jenjang_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tidak_tetap_jumlah_jenjangKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -865,14 +861,14 @@
       },
     },
   });
-
+  
   // jumlah dosen registarsi
   var ctx3 = document.getElementById("non-tetap-jumlah-registrasi").getContext("2d");
   var tidak_tetap_jumlah_registrasiKeys =  tidak_tetap_jumlah_registrasi_keys | tojson | safe }};
   var tidak_tetap_jumlah_registrasiValues =  tidak_tetap_jumlah_registrasi_values | tojson | safe }};
   
   var randomColors = generateRandomColors(tidak_tetap_jumlah_registrasiKeys.length);
-
+  
   new Chart(ctx3, {
     type: "doughnut",
     data: {
@@ -929,54 +925,52 @@
   });
   
 </script>
-
 {% endblock %}
-
 {% block foot_maps %}
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <script>
-        const mymap = L.map('collegeMap').setView([{{ latitude }}, {{ longitude }}], 17);
-        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-
-        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        const tiles = L.tileLayer(tileUrl, { attribution });
-        tiles.addTo(mymap);
-
-        const locIcon = L.icon({
-            iconUrl: '/static/img/college.png',
-            iconSize: [50, 50],
-            iconAnchor: [25, 25]
-        });
-        let marker = L.marker([{{ latitude }}, {{ longitude }}], 
-        //{ icon: locIcon }
-        )
-          .addTo(mymap)
-          .bindPopup('hehe');
-
-
-        // Google Map Layer
-        googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-            maxZoom: 20,
-            subdomains:['mt0','mt1','mt2','mt3']
-         });
-         googleStreets.addTo(mymap);
-        
-         // Satelite Layer
-        googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-           maxZoom: 20,
-           subdomains:['mt0','mt1','mt2','mt3']
-         });
-        googleSat.addTo(mymap);
-
-        const baseLayers = {
-            "Google Map":googleStreets,
-            "OpenStreetMap": tiles,
-            "Satellite":googleSat,
-        };
-      
-        L.control.layers(baseLayers).addTo(mymap);
-
-      
-    </script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script>
+  const mymap = L.map('collegeMap').setView([{{ latitude }}, {{ longitude }}], 17);
+  const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  
+  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const tiles = L.tileLayer(tileUrl, { attribution });
+  tiles.addTo(mymap);
+  
+  const locIcon = L.icon({
+      iconUrl: '/static/img/college.png',
+      iconSize: [50, 50],
+      iconAnchor: [25, 25]
+  });
+  let marker = L.marker([{{ latitude }}, {{ longitude }}], 
+  //{ icon: locIcon }
+  )
+    .addTo(mymap)
+    .bindPopup('hehe');
+  
+  
+  // Google Map Layer
+  googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+   });
+   googleStreets.addTo(mymap);
+  
+   // Satelite Layer
+  googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+     maxZoom: 20,
+     subdomains:['mt0','mt1','mt2','mt3']
+   });
+  googleSat.addTo(mymap);
+  
+  const baseLayers = {
+      "Google Map":googleStreets,
+      "OpenStreetMap": tiles,
+      "Satellite":googleSat,
+  };
+  
+  L.control.layers(baseLayers).addTo(mymap);
+  
+  
+</script>
 {% endblock %}
