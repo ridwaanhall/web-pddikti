@@ -94,6 +94,12 @@ class DASHBOARD:
 
     return rerata_iku_keys, rerata_iku_values
 
+  def MhsBidang(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/mhsbidang'
+    mahasiswa_bidang = reader.read_json(url)
+    return mahasiswa_bidang
+
 # ============ LECTURERS ==========================
 class LECTURERS:
 
