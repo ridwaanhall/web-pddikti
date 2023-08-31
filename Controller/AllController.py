@@ -89,7 +89,10 @@ class DASHBOARD:
     }
 
     # Create lists for keys and values
-    rerata_iku_keys = [key_mapping.get(original_key) for original_key in rerata_capaian_iku.keys()]
+    rerata_iku_keys = [
+      key_mapping.get(original_key)
+      for original_key in rerata_capaian_iku.keys()
+    ]
     rerata_iku_values = list(rerata_capaian_iku.values())
 
     return rerata_iku_keys, rerata_iku_values
@@ -99,6 +102,25 @@ class DASHBOARD:
     url = 'https://api-frontend.kemdikbud.go.id/statistik/column/mhsbidang'
     mahasiswa_bidang = reader.read_json(url)
     return mahasiswa_bidang
+
+  def DsnKlmn(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/dsnklmn'
+    dsn_klmn = reader.read_json(url)
+
+    # Add a new series
+    new_series = {"name": "Tidak di isi", "data": [0]}
+    dsn_klmn["series"].append(new_series)
+
+    return dsn_klmn
+
+  def MhsKlmn(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/mhsklmn'
+    mhs_klmn = reader.read_json(url)
+
+    return mhs_klmn
+
 
 # ============ LECTURERS ==========================
 class LECTURERS:
@@ -274,6 +296,7 @@ class STUDY_PROGRAMS:
     studyprograms_list = reader.read_json(
       'https://api-frontend.kemdikbud.go.id/loadprodi')
     return studyprograms_list
+
 
 # ================ PROVINCES =====================
 class PROVINCES:
