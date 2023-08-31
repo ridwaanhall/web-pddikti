@@ -13,8 +13,20 @@ def dashboard():
   stat_pt = dashboard.StatColPT()
   rerata_iku_keys, rerata_iku_values = dashboard.RerataCapaianIKU()
   mhs_bidang = dashboard.MhsBidang()
+  dsn_klmn = dashboard.DsnKlmn()
+  mhs_klmn = dashboard.MhsKlmn()
 
-  # stat prodi name key and value
+  # kelamin dosen.
+  mhs_klmn_series = mhs_klmn['series']
+  mhs_klmn_keys = [item['name'] for item in mhs_klmn_series]
+  mhs_klmn_values = [item['data'][0] for item in mhs_klmn_series]
+  
+  # kelamin dosen.
+  dsn_klmn_series = dsn_klmn['series']
+  dsn_klmn_keys = [item['name'] for item in dsn_klmn_series]
+  dsn_klmn_values = [item['data'][0] for item in dsn_klmn_series]
+  
+  # stat bidang name key and value
   mhs_bidang_series = mhs_bidang['series']
   mhs_bidang_keys = [item['name'] for item in mhs_bidang_series]
   mhs_bidang_values = [item['data'][0] for item in mhs_bidang_series]
@@ -38,7 +50,11 @@ def dashboard():
                          rerata_iku_keys=rerata_iku_keys,
                          rerata_iku_values=rerata_iku_values,
                          mhs_bidang_keys=mhs_bidang_keys,
-                         mhs_bidang_values=mhs_bidang_values)
+                         mhs_bidang_values=mhs_bidang_values,
+                         dsn_klmn_keys=dsn_klmn_keys,
+                         dsn_klmn_values=dsn_klmn_values,
+                         mhs_klmn_keys=mhs_klmn_keys,
+                         mhs_klmn_values=mhs_klmn_values)
 
 
 # ========== LECTURERS ===================
