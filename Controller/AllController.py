@@ -48,6 +48,29 @@ class DASHBOARD:
 
     return stat_prodi
 
+  def StatColPT(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/pt'
+    stat_pt = reader.read_json(url)
+
+    # Mapping of original category names to new names
+    category_mapping = {
+      "Akademi": "A",
+      "Politeknik": "P",
+      "Sekolah Tinggi": "ST",
+      "Institut": "I",
+      "Universitas": "U",
+      "Akademi Komunitas": "AK"
+    }
+
+    # Rename the category names in the series
+    for series_item in stat_pt["series"]:
+      original_name = series_item["name"]
+      new_name = category_mapping.get(original_name, original_name)
+      series_item["name"] = new_name
+
+    return stat_pt
+
 # ============ LECTURERS ==========================
 class LECTURERS:
 
