@@ -11,6 +11,7 @@ def dashboard():
   home_jumlah = dashboard.HomeJumlah()
   stat_prodi = dashboard.StatColProdi()
   stat_pt = dashboard.StatColPT()
+  rerata_iku_keys, rerata_iku_values = dashboard.RerataCapaianIKU()
   # stat prodi name key and value
   stat_prodi_series = stat_prodi['series']
   stat_prodi_keys = [item['name'] for item in stat_prodi_series]
@@ -20,13 +21,16 @@ def dashboard():
   stat_pt_series = stat_pt['series']
   stat_pt_keys = [item['name'] for item in stat_pt_series]
   stat_pt_values = [item['data'][0] for item in stat_pt_series]
-  
+
   return render_template('dashboard.html',
                          home_jumlah=home_jumlah,
                          stat_prodi_keys=stat_prodi_keys,
                          stat_prodi_values=stat_prodi_values,
                          stat_pt_keys=stat_pt_keys,
-                         stat_pt_values=stat_pt_values)
+                         stat_pt_values=stat_pt_values,
+                         rerata_iku_keys=rerata_iku_keys,
+                         rerata_iku_values=rerata_iku_values)
+
 
 # ========== LECTURERS ===================
 @app.route('/detail-lecturer')
@@ -300,7 +304,7 @@ def study_programs():
 
 @app.route("/detail-sp")
 def detail_sp():
-  studyprogram_detail = {"detailumum":None}
+  studyprogram_detail = {"detailumum": None}
   return render_template("detail-study-program.html",
                          studyprogram_detail=studyprogram_detail)
 
@@ -319,7 +323,7 @@ def detail_sp_id(sp_id):
 
   if linkpt is not None and "/data_pt/" in linkpt:
     linkpt_short = linkpt.split("/data_pt/")[1]
-  
+
   return render_template("detail-study-program.html",
                          studyprogram_detail=studyprogram_detail,
                          latitude=latitude,
