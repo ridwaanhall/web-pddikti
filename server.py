@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS, SEARCH_OTHER, LECTURERS
+from Controller.AllController import COLLEGE, STUDY_PROGRAMS, PROVINCES, STUDENTS, SEARCH_OTHER, LECTURERS, DASHBOARD
 
 app = Flask(__name__)
 
@@ -7,8 +7,17 @@ app = Flask(__name__)
 # ============== HOME =========================
 @app.route('/')
 def dashboard():
-  return render_template('dashboard.html')
-
+  dashboard = DASHBOARD()
+  home_jumlah = dashboard.HomeJumlah()
+  stat_prodi = dashboard.StatColProdi()
+  # stat prodi name key and value
+  stat_prodi_series = stat_prodi['series']
+  stat_prodi_keys = [item['name'] for item in stat_prodi_series]
+  stat_prodi_values = [item['data'][0] for item in stat_prodi_series]
+  return render_template('dashboard.html',
+                         home_jumlah=home_jumlah,
+                         stat_prodi_keys=stat_prodi_keys,
+                         stat_prodi_values=stat_prodi_values)
 
 # ========== LECTURERS ===================
 @app.route('/detail-lecturer')
