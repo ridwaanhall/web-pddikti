@@ -12,6 +12,42 @@ class ReadUrl:
     return None
 
 
+# ======================== dashboard ==================
+class DASHBOARD:
+
+  def HomeJumlah(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/v2/home_jumlah'
+    home_jumlah = reader.read_json(url)
+    return home_jumlah
+
+  def StatColProdi(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/prodi'
+    stat_prodi = reader.read_json(url)
+
+    # Mapping of original category names to new names
+    category_mapping = {
+      "Agama": "Ag",
+      "Humaniora": "Hu",
+      "Sosial": "So",
+      "MIPA": "M",
+      "Seni": "Sn",
+      "Kesehatan": "Ks",
+      "Teknik": "T",
+      "Pertanian": "P",
+      "Ekonomi": "E",
+      "Pendidikan": "Pd"
+    }
+
+    # Rename the category names in the series
+    for series_item in stat_prodi["series"]:
+      original_name = series_item["name"]
+      new_name = category_mapping.get(original_name, original_name)
+      series_item["name"] = new_name
+
+    return stat_prodi
+
 # ============ LECTURERS ==========================
 class LECTURERS:
 
