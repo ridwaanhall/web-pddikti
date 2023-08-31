@@ -15,7 +15,13 @@ def dashboard():
   mhs_bidang = dashboard.MhsBidang()
   dsn_klmn = dashboard.DsnKlmn()
   mhs_klmn = dashboard.MhsKlmn()
+  dsn_pt = dashboard.DsnPt()
 
+  # kelamin dosen.
+  dsn_pt_series = dsn_pt['series']
+  dsn_pt_keys = [item['name'] for item in dsn_pt_series]
+  dsn_pt_values = [item['data'][0] for item in dsn_pt_series]
+  
   # kelamin dosen.
   mhs_klmn_series = mhs_klmn['series']
   mhs_klmn_keys = [item['name'] for item in mhs_klmn_series]
@@ -54,7 +60,9 @@ def dashboard():
                          dsn_klmn_keys=dsn_klmn_keys,
                          dsn_klmn_values=dsn_klmn_values,
                          mhs_klmn_keys=mhs_klmn_keys,
-                         mhs_klmn_values=mhs_klmn_values)
+                         mhs_klmn_values=mhs_klmn_values,
+                         dsn_pt_keys=dsn_pt_keys,
+                         dsn_pt_values=dsn_pt_values)
 
 
 # ========== LECTURERS ===================
