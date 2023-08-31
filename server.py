@@ -10,14 +10,23 @@ def dashboard():
   dashboard = DASHBOARD()
   home_jumlah = dashboard.HomeJumlah()
   stat_prodi = dashboard.StatColProdi()
+  stat_pt = dashboard.StatColPT()
   # stat prodi name key and value
   stat_prodi_series = stat_prodi['series']
   stat_prodi_keys = [item['name'] for item in stat_prodi_series]
   stat_prodi_values = [item['data'][0] for item in stat_prodi_series]
+
+  # stat prodi name key and value
+  stat_pt_series = stat_pt['series']
+  stat_pt_keys = [item['name'] for item in stat_pt_series]
+  stat_pt_values = [item['data'][0] for item in stat_pt_series]
+  
   return render_template('dashboard.html',
                          home_jumlah=home_jumlah,
                          stat_prodi_keys=stat_prodi_keys,
-                         stat_prodi_values=stat_prodi_values)
+                         stat_prodi_values=stat_prodi_values,
+                         stat_pt_keys=stat_pt_keys,
+                         stat_pt_values=stat_pt_values)
 
 # ========== LECTURERS ===================
 @app.route('/detail-lecturer')
