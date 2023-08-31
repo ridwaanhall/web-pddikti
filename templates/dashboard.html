@@ -74,7 +74,8 @@
         </div>
         <div class="card-body">
           <h6 class="mb-0 ">Study Programs Type</h6>
-          <p class="text-sm ">Agama: Ag, Humaniora: Hu, Sosial: So, MIPA: M, Seni: Sn, Kesehatan: Ks, Teknik: T, Pertanian: P, Ekonomi: E, Pendidikan: Pd</p>
+          <!--<p class="text-sm ">Agama: Ag, Humaniora: Hu, Sosial: So, MIPA: M, Seni: Sn, Kesehatan: Ks, Teknik: T, Pertanian: P, Ekonomi: E, Pendidikan: Pd</p>-->
+          <p class="text-sm " ><span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Agama">Ag</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Humaniora">Hu</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sosial">So</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="MIPA">M</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Seni">Sn</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kesehatan">Ks</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Teknik">T</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pertanian">P</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ekonomi">E</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pendidikan">Pd</span></p>
         </div>
       </div>
     </div>
@@ -89,7 +90,8 @@
         </div>
         <div class="card-body">
           <h6 class="mb-0 ">College Type</h6>
-          <p class="text-sm ">Akademi: A, Politeknik: P, Sekolah Tinggi: ST, Institut: I, Universitas: U, Akademi Komunitas: AK</p>
+          <!--<p class="text-sm ">Akademi: A, Politeknik: P, Sekolah Tinggi: ST, Institut: I, Universitas: U, Akademi Komunitas: AK</p>-->
+          <p class="text-sm "><span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Akademi">A</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Politeknik">P</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Sekolah Tinggi">ST</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Institut">I</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Universitas">U</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Akademi Komunitas">AK</span></p>
         </div>
       </div>
     </div>
@@ -98,18 +100,14 @@
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
           <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
             <div class="chart">
-              <canvas id="college-stat-tasks" class="chart-canvas" height="170"></canvas>
+              <canvas id="stat_iku" class="chart-canvas" height="170"></canvas>
             </div>
           </div>
         </div>
         <div class="card-body">
           <h6 class="mb-0 ">Key Performance Indicators</h6>
-          <p class="text-sm ">Last Campaign Performance</p>
-          <hr class="dark horizontal">
-          <div class="d-flex ">
-            <i class="material-icons text-sm my-auto me-1">schedule</i>
-            <p class="mb-0 text-sm">just updated</p>
-          </div>
+          <p class="text-sm " ><span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Lecturer Act Outside the Campus">A</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="The Results of The Lecturer's Work are Used by The Public">B</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Collaborative Class">C</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Graduates Get Decent Jobs">D</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Students Gain Experience Outside Campus">E</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Teaching Practitioners on Campus">F</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Study Program in Collaboration with World-Class Partners">G</span>, <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="International Standard Study Program">H</span></p>
+          <!--<p class="text-sm " >Lecturer Act Outside the Campus: A, The Results of The Lecturer's Work are Used by The Public: B, Collaborative Class: C, Graduates Get Decent Jobs: D, Students Gain Experience Outside Campus: E, Teaching Practitioners on Campus: F, Study Program in Collaboration with World-Class Partners: G, International Standard Study Program: H</p>-->
         </div>
       </div>
     </div>
@@ -726,27 +724,24 @@
         },
       });
       
-      var ctx3 = document.getElementById("college-stat-tasks").getContext("2d");
+      var ctx3 = document.getElementById("stat_iku").getContext("2d");
+      var rerata_ikuKeys   = {{ rerata_iku_keys | tojson | safe }};
+      var rerata_ikuValues = {{ rerata_iku_values | tojson | safe }};
       
       new Chart(ctx3, {
-        type: "line",
+        type: "bar",
         data: {
-          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          labels: rerata_ikuKeys,
           datasets: [{
-            label: "Mobile apps",
-            tension: 0,
+            label: "IKU",
+            tension: 0.4,
             borderWidth: 0,
-            pointRadius: 5,
-            pointBackgroundColor: "rgba(255, 255, 255, .8)",
-            pointBorderColor: "transparent",
-            borderColor: "rgba(255, 255, 255, .8)",
-            borderWidth: 4,
-            backgroundColor: "transparent",
-            fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+            borderRadius: 4,
+            borderSkipped: false,
+            backgroundColor: "rgba(255, 255, 255, .8)",
+            data: rerata_ikuValues,
             maxBarThickness: 6
-      
-          }],
+          }, ],
         },
         options: {
           responsive: true,
@@ -771,9 +766,10 @@
                 color: 'rgba(255, 255, 255, .2)'
               },
               ticks: {
-                display: true,
+                suggestedMin: 0,
+                suggestedMax: 500,
+                beginAtZero: true,
                 padding: 10,
-                color: '#f8f9fa',
                 font: {
                   size: 14,
                   weight: 300,
@@ -781,15 +777,17 @@
                   style: 'normal',
                   lineHeight: 2
                 },
-              }
+                color: "#fff"
+              },
             },
             x: {
               grid: {
                 drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
+                display: true,
+                drawOnChartArea: true,
                 drawTicks: false,
-                borderDash: [5, 5]
+                borderDash: [5, 5],
+                color: 'rgba(255, 255, 255, .2)'
               },
               ticks: {
                 display: true,
@@ -807,6 +805,7 @@
           },
         },
       });
+      
     </script>
 {% endblock %}
 
