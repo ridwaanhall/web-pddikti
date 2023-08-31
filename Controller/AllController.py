@@ -78,23 +78,21 @@ class DASHBOARD:
 
     # Mapping of original keys to new keys
     key_mapping = {
-        "dosen_berkegiatan_diluar_kampus": "A",
-        "hasil_kerja_dosen_digunakan_masyarakat": "B",
-        "kelas_yang_kolaboratif": "C",
-        "lulusan_mendapat_pekerjaan_yang_layak": "D",
-        "mahasiswa_mendapatkan_pengalaman_diluar_kampus": "E",
-        "praktisi_mengajar_didalam_kampus": "F",
-        "program_studi_bekerja_sama_dengan_mitra_kelas_dunia": "G",
-        "program_studi_berstandar_internasional": "H"
+      "dosen_berkegiatan_diluar_kampus": "A",
+      "hasil_kerja_dosen_digunakan_masyarakat": "B",
+      "kelas_yang_kolaboratif": "C",
+      "lulusan_mendapat_pekerjaan_yang_layak": "D",
+      "mahasiswa_mendapatkan_pengalaman_diluar_kampus": "E",
+      "praktisi_mengajar_didalam_kampus": "F",
+      "program_studi_bekerja_sama_dengan_mitra_kelas_dunia": "G",
+      "program_studi_berstandar_internasional": "H"
     }
 
-    # Create a new dictionary with renamed keys
-    renamed_rerata_capaian_iku = {
-        key_mapping.get(original_key, original_key): value
-        for original_key, value in rerata_capaian_iku.items()
-    }
+    # Create lists for keys and values
+    rerata_iku_keys = [key_mapping.get(original_key) for original_key in rerata_capaian_iku.keys()]
+    rerata_iku_values = list(rerata_capaian_iku.values())
 
-    return renamed_rerata_capaian_iku
+    return rerata_iku_keys, rerata_iku_values
 
 # ============ LECTURERS ==========================
 class LECTURERS:
