@@ -12,6 +12,13 @@ def dashboard():
   stat_prodi = dashboard.StatColProdi()
   stat_pt = dashboard.StatColPT()
   rerata_iku_keys, rerata_iku_values = dashboard.RerataCapaianIKU()
+  mhs_bidang = dashboard.MhsBidang()
+
+  # stat prodi name key and value
+  mhs_bidang_series = mhs_bidang['series']
+  mhs_bidang_keys = [item['name'] for item in mhs_bidang_series]
+  mhs_bidang_values = [item['data'][0] for item in mhs_bidang_series]
+
   # stat prodi name key and value
   stat_prodi_series = stat_prodi['series']
   stat_prodi_keys = [item['name'] for item in stat_prodi_series]
@@ -29,7 +36,9 @@ def dashboard():
                          stat_pt_keys=stat_pt_keys,
                          stat_pt_values=stat_pt_values,
                          rerata_iku_keys=rerata_iku_keys,
-                         rerata_iku_values=rerata_iku_values)
+                         rerata_iku_values=rerata_iku_values,
+                         mhs_bidang_keys=mhs_bidang_keys,
+                         mhs_bidang_values=mhs_bidang_values)
 
 
 # ========== LECTURERS ===================
