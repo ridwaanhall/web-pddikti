@@ -121,6 +121,13 @@ class DASHBOARD:
 
     return mhs_klmn
 
+  def DsnPt(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/dsnpt'
+    dsn_pt = reader.read_json(url)
+
+    return dsn_pt
+
 
 # ============ LECTURERS ==========================
 class LECTURERS:
