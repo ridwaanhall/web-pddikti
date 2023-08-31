@@ -12,12 +12,12 @@
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-header p-3 pt-2">
-          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-            <i class="fa-solid fa-user-tie"></i>
+          <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+            <i class="fa-solid fa-user-graduate"></i>
           </div>
           <div class="text-end pt-1">
-            <p class="text-sm mb-0 text-capitalize">Total Lecturers</p>
-            <h4 class="font-weight-bolder"><span class="small"></span><span id="state1" countTo="{{ home_jumlah.jumlah_dosen }}"></span></h4>
+            <p class="text-sm mb-0 text-capitalize">Total Students</p>
+            <h4 class="font-weight-bolder"><span class="small"></span><span id="state2" countTo="{{ home_jumlah.jumlah_mhs }}"></span></h4>
           </div>
         </div>
       </div>
@@ -25,12 +25,12 @@
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-header p-3 pt-2">
-          <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-            <i class="fa-solid fa-user-graduate"></i>
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="fa-solid fa-user-tie"></i>
           </div>
           <div class="text-end pt-1">
-            <p class="text-sm mb-0 text-capitalize">Total Students</p>
-            <h4 class="font-weight-bolder"><span class="small"></span><span id="state2" countTo="{{ home_jumlah.jumlah_mhs }}"></span></h4>
+            <p class="text-sm mb-0 text-capitalize">Total Lecturers</p>
+            <h4 class="font-weight-bolder"><span class="small"></span><span id="state1" countTo="{{ home_jumlah.jumlah_dosen }}"></span></h4>
           </div>
         </div>
       </div>
@@ -139,7 +139,9 @@
           </div>
         </div>
         <div class="card-body">
-          hehehe body 2
+            <div class="chart">
+              <canvas id="dsn-pt" class="chart-canvas" height="170"></canvas>
+            </div>
         </div>
       </div>
       <div class="card mt-4">
@@ -157,43 +159,18 @@
     </div>
     <div class="col-lg-4 col-md-6">
       <div class="card mb-4">
-        <div class="card-header">
-          <h6>Orders overview 1</h6>
-        </div>
         <div class="card-body">
-          <div class="chart">
+          <h6 class="text-body font-weight-bold">Student Gender</h6>
+          <div class="chart mt-2">
             <canvas id="mhs-klmn" class="chart-canvas" height="200px"></canvas>
           </div>
         </div>
       </div>
       <div class="card mb-4">
-        <div class="card-header pb-0">
-          <h6>Orders overview 1 tiri</h6>
-          <p class="text-sm">
-            <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-            <span class="font-weight-bold">24%</span> this month
-          </p>
-        </div>
-        <div class="card-body p-3">
-          <div class="timeline timeline-one-side">
-            <div class="timeline-block mb-3">
-              <span class="timeline-step">
-              <i class="material-icons text-primary text-gradient">key</i>
-              </span>
-              <div class="timeline-content">
-                <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-              </div>
-            </div>
-            <div class="timeline-block">
-              <span class="timeline-step">
-              <i class="material-icons text-dark text-gradient">payments</i>
-              </span>
-              <div class="timeline-content">
-                <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
-              </div>
-            </div>
+        <div class="card-body">
+          <h6 class="text-body font-weight-bold">Lecturer Gender</h6>
+          <div class="chart mt-2">
+            <canvas id="dsn-klmn" class="chart-canvas" height="200px"></canvas>
           </div>
         </div>
       </div>
@@ -579,7 +556,7 @@
         },
       });
 
-      // Line chart with gradient
+      // study field
       var ctx6 = document.getElementById("mhs-bidang").getContext("2d");
       var mhs_bidangKeys   = {{ mhs_bidang_keys | tojson | safe }};
       var mhs_bidangValues = {{ mhs_bidang_values | tojson | safe }};
@@ -666,24 +643,197 @@
         },
       });
 
-    // Radar chart
+      // dosen pt
+      var ctx5 = document.getElementById("dsn-pt").getContext("2d");
+      var dsn_ptKeys   = {{ dsn_pt_keys | tojson | safe }};
+      var dsn_ptValues = {{ dsn_pt_values | tojson | safe }};
+
+      var gradientStroke1 = ctx6.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+      gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+      gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+      new Chart(ctx5, {
+        type: "line",
+        data: {
+          labels: dsn_ptKeys,
+          datasets: [{
+              label: "Lecturer Degree",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 0,
+              borderColor: "#cb0c9f",
+              borderWidth: 3,
+              backgroundColor: gradientStroke1,
+              fill: true,
+              data: dsn_ptValues,
+              maxBarThickness: 6
+
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                color: '#b2b9bf',
+                padding: 10,
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+          },
+        },
+      });
+
+    // kelamin bahasisswa
       var ctx9 = document.getElementById("mhs-klmn").getContext("2d");
       var mhs_klmnKeys   = {{ mhs_klmn_keys | tojson | safe }};
       var mhs_klmnValues = {{ mhs_klmn_values | tojson | safe }};
 
+      var gradientStroke1 = ctx9.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+      gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+      gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+      var gradientStroke2 = ctx9.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke2.addColorStop(1, 'rgba(44, 255, 255, 0.25)');
+      gradientStroke2.addColorStop(0.2, 'rgba(215, 255, 255, 0.25)');
+      gradientStroke2.addColorStop(0, 'rgba(44, 255, 255, 0.25)'); //purple colors
+      
       new Chart(ctx9, {
         type: "pie",
         data: {
           labels: mhs_klmnKeys,
           datasets: [{
-            label: "Projects",
+            label: "Student Gender",
+            borderColor: "#cb0c9f",
             weight: 9,
             cutout: 0,
             tension: 0.9,
             pointRadius: 2,
             borderWidth: 2,
-            backgroundColor: ['#17c1e8', '#cb0c9f', '#3A416F'],
+            backgroundColor: [gradientStroke1, gradientStroke2, '#3A416F'],
             data: mhs_klmnValues,
+            fill: false
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                display: false
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                display: false,
+              }
+            },
+          },
+        },
+      });
+
+    // kelamin bahasisswa
+      var ctx7 = document.getElementById("dsn-klmn").getContext("2d");
+      var dsn_klmnKeys   = {{ dsn_klmn_keys | tojson | safe }};
+      var dsn_klmnValues = {{ dsn_klmn_values | tojson | safe }};
+
+      var gradientStroke1 = ctx7.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
+      gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+      gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+      var gradientStroke2 = ctx7.createLinearGradient(0, 230, 0, 50);
+
+      gradientStroke2.addColorStop(1, 'rgba(44, 255, 255, 0.25)');
+      gradientStroke2.addColorStop(0.2, 'rgba(215, 255, 255, 0.25)');
+      gradientStroke2.addColorStop(0, 'rgba(44, 255, 255, 0.25)'); //purple colors
+      
+      new Chart(ctx7, {
+        type: "pie",
+        data: {
+          labels: dsn_klmnKeys,
+          datasets: [{
+            label: "Student Gender",
+            borderColor: "#cb0c9f",
+            weight: 9,
+            cutout: 0,
+            tension: 0.9,
+            pointRadius: 2,
+            borderWidth: 2,
+            backgroundColor: [gradientStroke1, gradientStroke2, '#3A416F'],
+            data: dsn_klmnValues,
             fill: false
           }],
         },
