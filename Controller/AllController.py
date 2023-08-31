@@ -71,6 +71,31 @@ class DASHBOARD:
 
     return stat_pt
 
+  def RerataCapaianIKU(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/v2/rerata_capaian_iku'
+    rerata_capaian_iku = reader.read_json(url)
+
+    # Mapping of original keys to new keys
+    key_mapping = {
+        "dosen_berkegiatan_diluar_kampus": "A",
+        "hasil_kerja_dosen_digunakan_masyarakat": "B",
+        "kelas_yang_kolaboratif": "C",
+        "lulusan_mendapat_pekerjaan_yang_layak": "D",
+        "mahasiswa_mendapatkan_pengalaman_diluar_kampus": "E",
+        "praktisi_mengajar_didalam_kampus": "F",
+        "program_studi_bekerja_sama_dengan_mitra_kelas_dunia": "G",
+        "program_studi_berstandar_internasional": "H"
+    }
+
+    # Create a new dictionary with renamed keys
+    renamed_rerata_capaian_iku = {
+        key_mapping.get(original_key, original_key): value
+        for original_key, value in rerata_capaian_iku.items()
+    }
+
+    return renamed_rerata_capaian_iku
+
 # ============ LECTURERS ==========================
 class LECTURERS:
 
