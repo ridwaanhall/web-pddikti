@@ -946,17 +946,35 @@
       var dsn_klmnKeys   = {{ dsn_klmn_keys | tojson | safe }};
       var dsn_klmnValues = {{ dsn_klmn_values | tojson | safe }};
 
+      // Create a linear gradient for gradientStroke1
       var gradientStroke1 = ctx4.createLinearGradient(0, 230, 0, 50);
-
-      gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-      gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-      gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
-
+      gradientStroke1.addColorStop(1, 'rgba(255, 0, 0, 0.2)');   // Red with transparency
+      gradientStroke1.addColorStop(0.2, 'rgba(0, 255, 0, 0.0)'); // Green with transparency
+      gradientStroke1.addColorStop(0, 'rgba(0, 0, 255, 0)');    // Blue with transparency
+      
+      // Create a linear gradient for gradientStroke2
       var gradientStroke2 = ctx4.createLinearGradient(0, 230, 0, 50);
-
-      gradientStroke2.addColorStop(1, 'rgba(44, 255, 255, 0.25)');
-      gradientStroke2.addColorStop(0.2, 'rgba(215, 255, 255, 0.25)');
-      gradientStroke2.addColorStop(0, 'rgba(44, 255, 255, 0.25)'); //purple colors
+      gradientStroke2.addColorStop(1, 'rgba(255, 255, 0, 0.2)'); // Yellow with transparency
+      gradientStroke2.addColorStop(0.2, 'rgba(0, 255, 255, 0.0)'); // Cyan with transparency
+      gradientStroke2.addColorStop(0, 'rgba(255, 0, 255, 0)');  // Magenta with transparency
+      
+      // Create a linear gradient for gradientStroke3
+      var gradientStroke3 = ctx4.createLinearGradient(0, 230, 0, 50);
+      gradientStroke3.addColorStop(1, 'rgba(128, 0, 128, 0.2)'); // Purple with transparency
+      gradientStroke3.addColorStop(0.2, 'rgba(255, 165, 0, 0.0)'); // Orange with transparency
+      gradientStroke3.addColorStop(0, 'rgba(0, 128, 128, 0)');  // Teal with transparency
+      
+      // Create a linear gradient for gradientStroke4
+      var gradientStroke4 = ctx4.createLinearGradient(0, 230, 0, 50);
+      gradientStroke4.addColorStop(1, 'rgba(255, 69, 0, 0.2)'); // Red-Orange with transparency
+      gradientStroke4.addColorStop(0.2, 'rgba(255, 255, 0, 0.0)'); // Yellow with transparency
+      gradientStroke4.addColorStop(0, 'rgba(255, 165, 0, 0)');  // Orange with transparency
+      
+      // Create a linear gradient for gradientStroke5
+      var gradientStroke5 = ctx4.createLinearGradient(0, 230, 0, 50);
+      gradientStroke5.addColorStop(1, 'rgba(0, 128, 0, 0.2)'); // Green with transparency
+      gradientStroke5.addColorStop(0.2, 'rgba(0, 255, 0, 0.0)'); // Bright Green with transparency
+      gradientStroke5.addColorStop(0, 'rgba(0, 128, 0, 0)');  // Green with transparency
       
       new Chart(ctx4, {
         type: "pie",
@@ -970,7 +988,7 @@
             tension: 0.9,
             pointRadius: 2,
             borderWidth: 2,
-            backgroundColor: [gradientStroke1, gradientStroke2, '#3A416F'],
+            backgroundColor: [gradientStroke1, gradientStroke2, gradientStroke3, gradientStroke4, gradientStroke5],
             data: dsn_klmnValues,
             fill: false
           }],
