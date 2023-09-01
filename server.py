@@ -16,8 +16,20 @@ def dashboard():
   dsn_klmn = dashboard.DsnKlmn()
   mhs_klmn = dashboard.MhsKlmn()
   dsn_pt = dashboard.DsnPt()
+  dsn_ik = dashboard.DsnIk()
+  pen_mhs = dashboard.PenMhs()
 
-  # kelamin dosen.
+  # Pendidikan mahasiswa
+  dsn_ik_series = dsn_ik['series']
+  dsn_ik_keys = [item['name'] for item in dsn_ik_series]
+  dsn_ik_values = [item['data'][0] for item in dsn_ik_series]
+  
+  # ikatan kerja dosen.
+  dsn_ik_series = dsn_ik['series']
+  dsn_ik_keys = [item['name'] for item in dsn_ik_series]
+  dsn_ik_values = [item['data'][0] for item in dsn_ik_series]
+  
+  # pendidikan dosen.
   dsn_pt_series = dsn_pt['series']
   dsn_pt_keys = [item['name'] for item in dsn_pt_series]
   dsn_pt_values = [item['data'][0] for item in dsn_pt_series]
@@ -62,7 +74,9 @@ def dashboard():
                          mhs_klmn_keys=mhs_klmn_keys,
                          mhs_klmn_values=mhs_klmn_values,
                          dsn_pt_keys=dsn_pt_keys,
-                         dsn_pt_values=dsn_pt_values)
+                         dsn_pt_values=dsn_pt_values,
+                         dsn_ik_keys=dsn_ik_keys,
+                         dsn_ik_values=dsn_ik_values)
 
 
 # ========== LECTURERS ===================
