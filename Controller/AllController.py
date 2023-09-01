@@ -128,6 +128,20 @@ class DASHBOARD:
 
     return dsn_pt
 
+  def DsnIk(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/column/dsnik'
+    dsn_ik = reader.read_json(url)
+
+    return dsn_ik
+
+  def PenMhs(self):
+    reader = ReadUrl()
+    url = 'https://api-frontend.kemdikbud.go.id/statistik/pie/penmhs'
+    pen_mhs = reader.read_json(url)
+
+    return pen_mhs
+
 
 # ============ LECTURERS ==========================
 class LECTURERS:
