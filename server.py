@@ -20,9 +20,9 @@ def dashboard():
   pen_mhs = dashboard.PenMhs()
 
   # Pendidikan mahasiswa
-  dsn_ik_series = dsn_ik['series']
-  dsn_ik_keys = [item['name'] for item in dsn_ik_series]
-  dsn_ik_values = [item['data'][0] for item in dsn_ik_series]
+  pen_mhs_series = pen_mhs['series'][0]['data']
+  pen_mhs_keys = [item[0] for item in pen_mhs_series]
+  pen_mhs_values = [item[1] for item in pen_mhs_series]
   
   # ikatan kerja dosen.
   dsn_ik_series = dsn_ik['series']
@@ -76,7 +76,9 @@ def dashboard():
                          dsn_pt_keys=dsn_pt_keys,
                          dsn_pt_values=dsn_pt_values,
                          dsn_ik_keys=dsn_ik_keys,
-                         dsn_ik_values=dsn_ik_values)
+                         dsn_ik_values=dsn_ik_values,
+                         pen_mhs_keys=pen_mhs_keys,
+                         pen_mhs_values=pen_mhs_values)
 
 
 # ========== LECTURERS ===================
