@@ -943,8 +943,8 @@
 
       // pendidikan mahasiswa.
       var ctx4 = document.getElementById("pen-mhs").getContext("2d");
-      var dsn_klmnKeys   = {{ dsn_klmn_keys | tojson | safe }};
-      var dsn_klmnValues = {{ dsn_klmn_values | tojson | safe }};
+      var pen_mhsKeys   = {{ pen_mhs_keys | tojson | safe }};
+      var pen_mhsValues = {{ pen_mhs_values | tojson | safe }};
 
       // Create a linear gradient for gradientStroke1
       var gradientStroke1 = ctx4.createLinearGradient(0, 230, 0, 50);
@@ -979,9 +979,9 @@
       new Chart(ctx4, {
         type: "pie",
         data: {
-          labels: dsn_klmnKeys,
+          labels: pen_mhsKeys,
           datasets: [{
-            label: "Student Gender",
+            label: "Student Degree",
             borderColor: "#cb0c9f",
             weight: 9,
             cutout: 0,
@@ -989,7 +989,7 @@
             pointRadius: 2,
             borderWidth: 2,
             backgroundColor: [gradientStroke1, gradientStroke2, gradientStroke3, gradientStroke4, gradientStroke5],
-            data: dsn_klmnValues,
+            data: pen_mhsValues,
             fill: false
           }],
         },
