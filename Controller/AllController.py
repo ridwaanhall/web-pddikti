@@ -156,11 +156,25 @@ class LECTURERS:
 # ============ STUDENTS ============================
 class STUDENTS:
 
+  def _format_date(self, date_str):
+    try:
+      date_obj = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
+      return date_obj.strftime("%A, %d %B %Y")
+    except Exception:
+      return "No Data"
+
   def GetStudentDetail(self, student_id):
     reader = ReadUrl()
     detail_url = f'https://api-frontend.kemdikbud.go.id/detail_mhs/{student_id}'
     student_details = reader.read_json(detail_url)
+    # Check if tgl_keluar exists in dataumum
+    if 'tgl_keluar' in student_details['dataumum']:
+      tgl_keluar = student_details['dataumum']['tgl_keluar']
+      formatted_date = self._format_date(tgl_keluar)
+      student_details['dataumum']['tgl_keluar'] = formatted_date
+
     return student_details
+  
 
   def GetMhsList(self, search_name=None):
     reader = ReadUrl()
